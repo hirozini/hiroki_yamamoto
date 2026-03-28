@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hiroki Yamamoto ─ A Map of Making and Thinking</title>
+<meta name="description" content="山本浩貴（いぬのせなか座）の制作と思考の全体像を把握するための見取り図。A map of the making and thinking of Hiroki Yamamoto (Inunosenakaza).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>:root {
+  --bg: #f5f3ef;
+  --card: #fff;
+  --fg: #1a1a1a;
+  --text: #2a2a2a;
+  --text-light: #555;
+  --text-muted: #888;
+  --border: #d8d3c8;
+  --border-light: #e8e4dc;
+  --green: #2d6a2e;
+  --green-light: #e8f0e8;
+  --green-hover: #1a4a1a;
+  --accent2: #7a6b52;
+  --warm-bg: #f9f7f3;
+  --warm-bg2: #f3f0ea;
+  --shadow: 0 1px 3px rgba(0,0,0,.06);
+  --serif: "Shippori Mincho", "Hiragino Mincho ProN", "YuMincho", serif;
+  --sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  font-size: 15px; line-height: 1.88; color: var(--text);
+  background: var(--bg); -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ── */
+.W {
+  max-width: 1020px; margin: 0 auto; background: var(--card);
+  box-shadow: 0 0 50px rgba(0,0,0,.04); min-height: 100vh;
+}
+.H {
+  padding: 48px 40px 28px;
+  border-bottom: 2px solid var(--green);
+  background: linear-gradient(180deg, #fff 0%, var(--warm-bg) 100%);
+}
+.H h1 {
+  font-family: var(--serif);
+  font-size: 36px; font-weight: 700; line-height: 1.3;
+  letter-spacing: .05em; color: var(--fg); margin-bottom: 6px;
+}
+.H .sub {
+  font-family: var(--serif);
+  font-size: 13.5px; color: var(--accent2); letter-spacing: .08em;
+  font-style: italic;
+}
+.B { display: flex; }
+
+/* ── Sidebar ── */
+.N {
+  width: 210px; min-width: 210px;
+  padding: 24px 14px 60px 18px;
+  border-right: 1px solid var(--border-light);
+  position: sticky; top: 0; align-self: flex-start;
+  max-height: 100vh; overflow-y: auto;
+  background: var(--warm-bg); font-size: 12.5px;
+}
+.nt {
+  font-family: var(--serif);
+  font-weight: 600; font-size: 12px; color: var(--green);
+  letter-spacing: .1em;
+  margin-bottom: 12px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.N a {
+  display: block; color: var(--text-light); text-decoration: none;
+  padding: 3px 8px; line-height: 1.5; border-radius: 3px; transition: all .12s;
+}
+.N a:hover { color: var(--green); background: rgba(0,0,0,.03); }
+.N .s { padding-left: 16px; font-size: 11px; color: var(--text-muted); }
+.N .s:hover { color: var(--green); }
+.N::-webkit-scrollbar { width: 3px; }
+.N::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* ── Content ── */
+.C { flex: 1; padding: 20px 40px 80px; min-width: 0; }
+.C p { margin: 14px 0; text-align: justify; }
+.C strong { font-weight: 700; color: var(--fg); }
+
+/* ── Links ── */
+a { color: var(--green); text-decoration: none; }
+a:visited { color: #3a7a3a; }
+a:hover { color: var(--green-hover); }
+.C a {
+  text-decoration: underline;
+  text-decoration-color: rgba(45,106,46,.25);
+  text-underline-offset: 2px;
+  transition: text-decoration-color .15s;
+}
+.C a:hover { text-decoration-color: var(--green); }
+
+/* ── Sections (details/summary) ── */
+details { margin: 0; }
+details > summary {
+  font-family: var(--serif);
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: var(--fg);
+  cursor: pointer;
+  padding: .6em 0;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: .5em;
+  border-bottom: 1px solid transparent;
+  transition: color .12s, border-color .12s;
+  user-select: none;
+  letter-spacing: .02em;
+  line-height: 1.35;
+}
+details > summary:hover { color: var(--green); }
+details[open] > summary {
+  color: var(--green);
+  border-bottom-color: var(--border-light);
+  margin-bottom: .15em;
+}
+details > summary::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform .2s ease;
+  flex-shrink: 0;
+  position: relative; top: -1px;
+  opacity: .45;
+}
+details[open] > summary::before { transform: rotate(45deg); top: -2px; }
+details > summary::-webkit-details-marker { display: none; }
+details > summary.st { font-size: 1.12rem; }
+details[open] > :not(summary) { animation: fadeIn .2s ease; }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+/* ── h3 collapsible ── */
+details.h3d { margin: .3em 0 0; }
+details.h3d > summary.h3s {
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--fg);
+  cursor: pointer;
+  padding: .45em 0 .35em;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: .45em;
+  border-bottom: none;
+  transition: color .12s;
+  user-select: none;
+  letter-spacing: .01em;
+  line-height: 1.35;
+}
+details.h3d > summary.h3s:hover { color: var(--green); }
+details.h3d[open] > summary.h3s {
+  color: var(--green);
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: .1em;
+}
+details.h3d > summary.h3s::before {
+  content: '';
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform .2s ease;
+  flex-shrink: 0;
+  position: relative; top: -1px;
+  opacity: .35;
+}
+details.h3d[open] > summary.h3s::before { transform: rotate(45deg); top: -2px; }
+details.h3d > summary.h3s::-webkit-details-marker { display: none; }
+
+/* ── h3 ── */
+.C h3 {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin: 1.8em 0 .5em;
+  padding: 0 0 .3em;
+  border-bottom: 1px solid var(--border-light);
+  line-height: 1.4;
+  letter-spacing: .01em;
+}
+.C summary + h3, .C h3:first-child, .C summary + details.h3d { margin-top: .6em; }
+
+/* ── h4 ── */
+.C h4 {
+  font-family: var(--sans);
+  font-size: .87rem; font-weight: 700;
+  color: var(--accent2);
+  margin: 1.4em 0 .25em;
+  letter-spacing: .03em;
+}
+
+/* ── Blockquote ── */
+.bq {
+  margin: 16px 0; padding: 14px 20px;
+  background: var(--warm-bg);
+  border-left: 3px solid var(--border);
+  border-radius: 0 4px 4px 0;
+  font-size: 14px; line-height: 1.85;
+  color: var(--text-light);
+}
+
+/* ── Infobox ── */
+.ib {
+  float: right; width: 270px; margin: 0 0 20px 24px;
+  background: var(--warm-bg); border: 1px solid var(--border);
+  border-radius: 6px; font-size: 12.5px; line-height: 1.55;
+  box-shadow: var(--shadow); overflow: hidden;
+}
+.ib-title {
+  text-align: center; padding: 12px 14px;
+  font-family: var(--serif);
+  font-size: 17px; font-weight: 700; color: #fff;
+  background: var(--green); letter-spacing: .04em;
+}
+.ib table { width: 100%; border-collapse: collapse; }
+.ib th {
+  background: var(--green-light); color: var(--green);
+  font-size: 10px; font-weight: 600; letter-spacing: .06em;
+  padding: 5px 10px; text-align: left;
+  border-bottom: 1px solid var(--border-light);
+}
+.ib td {
+  padding: 5px 10px; border-bottom: 1px solid var(--border-light); vertical-align: top;
+}
+.ib td:first-child { color: var(--text-muted); width: 64px; white-space: nowrap; font-size: 11px; }
+.ib-concepts { font-size: 11.5px; line-height: 1.6; color: var(--text-light); }
+
+/* ── Definitions ── */
+.sb { overflow: hidden; }
+.df {
+  margin: 8px 0; padding: 10px 16px 10px 2.2em; text-indent: -1.6em;
+  font-size: 14px; line-height: 1.85;
+  background: var(--warm-bg2); border-radius: 3px;
+  border-left: 2px solid var(--border);
+}
+
+/* ── hr ── */
+.C hr {
+  border: none; height: 1px; margin: 2em 0;
+  background: linear-gradient(90deg, transparent 0%, var(--border) 15%, var(--border) 85%, transparent 100%);
+}
+
+/* ── Meta (biblio) ── */
+.C .meta {
+  font-size: 12.5px; color: var(--text-muted); line-height: 1.6;
+  margin: -4px 0 12px; padding: 5px 12px;
+  background: var(--warm-bg2); border-radius: 3px;
+  border-left: 2px solid var(--border-light);
+}
+
+/* ── Visual break ── */
+.C .brk { margin-top: 1.4em; }
+
+/* ── Work titles ── */
+.wt { font-weight: 600; color: var(--fg); }
+a .wt {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: rgba(45,106,46,.3);
+  text-underline-offset: 2px;
+}
+a:hover .wt { color: var(--green); }
+
+/* ── Footer ── */
+.f {
+  text-align: right; padding: 16px 40px;
+  border-top: 1px solid var(--border-light);
+  font-size: 11px; color: var(--text-muted); background: var(--warm-bg);
+}
+
+/* ── Mobile ── */
+@media (max-width: 760px) {
+  .B { display: block; }
+  .N { display: none; }
+  .H { padding: 24px 18px 18px; }
+  .H h1 { font-size: 24px; }
+  .C { padding: 14px 18px 48px; }
+  .C h3 { font-size: .98rem; margin-top: 1.3em; }
+  details > summary { font-size: 1.1rem; }
+  details.h3d > summary.h3s { font-size: .98rem; }
+  .f { padding: 12px 18px; }
+  .ib { float: none; width: 100%; margin: 0 0 14px; font-size: 11px; line-height: 1.4; }
+  .ib-title { font-size: 13px !important; padding: 6px 8px !important; letter-spacing: .02em; }
+  .ib table, .ib th, .ib td { font-size: 10px !important; line-height: 1.35 !important; }
+  .ib th { padding: 3px 6px !important; }
+  .ib td { padding: 3px 6px !important; }
+  .ib td:first-child { width: 44px !important; font-size: 9px !important; }
+  .ib-concepts { font-size: 9px !important; line-height: 1.3 !important; }
+}
+
+.lang-toggle { display: flex; gap: 4px; margin-left: auto; }
+.lang-toggle button, .lang-toggle .lang-link {
+  font-family: var(--sans); font-size: 11px; font-weight: 600;
+  padding: 3px 10px; border: 1px solid var(--border); border-radius: 3px;
+  cursor: pointer; transition: all .15s; letter-spacing: .03em;
+  text-decoration: none; display: inline-block; line-height: 1.4;
+}
+.lang-toggle button.active {
+  background: var(--green); color: #fff; border-color: var(--green);
+  cursor: default;
+}
+.lang-toggle .lang-link {
+  background: transparent; color: var(--fg-dim);
+}
+.lang-toggle .lang-link:hover { border-color: var(--green); color: var(--green); }
+</style>
+</head>
+<body>
+<div class="W">
+  <div class="H">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <h1>Hiroki Yamamoto ─ A Map of Making and Thinking</h1>
+      <div class="lang-toggle">
+        <button class="active">EN</button>
+        <a href="yamamoto_hiroki_wiki.html" class="lang-link">JP</a>
+      </div>
+    </div>
+    <div class="sub">山本浩貴｜制作と思考の見取り図</div>
+  </div>
+  <div class="B">
+    <nav class="N">
+<div class="nt">Contents</div>
+<a href="#s1">Profile</a>
+<a href="#s2">Trajectory and Development</a>
+<a class="s" href="#s3">Starting Point — Literalism and the Feel of 〈Subjectivity〉</a>
+<a class="s" href="#s4">The Inescapability of &quot;Being Myself&quot; — Early Works</a>
+<a class="s" href="#s5">&quot;The Life on This Side&quot; — Neither &quot;Depth&quot; nor &quot;Surface&quot;</a>
+<a class="s" href="#s6">Inunosenakaza — Background to Its Founding</a>
+<a class="s" href="#s7">Inunosenakaza — Methods of Collaborative Production</a>
+<a class="s" href="#s8">The Early Core — Hōsaka Kazushi, Ōe Kenzaburō, Arakawa Shūsaku</a>
+<a class="s" href="#s9">Improvisation and Rewriting — Repetition as a Method of Production</a>
+<a class="s" href="#s10">Subjectivity, Objectivity, Layout — The Formalization of Theory</a>
+<a class="s" href="#s11">〈Atelier〉 and 〈Acting〉 — The Recent Central Concepts</a>
+<a class="s" href="#s12">Posterity, Education, and Archiving</a>
+<a href="#s13">Theoretical Map</a>
+<a class="s" href="#s14">Linguistic Expression and the Body — The Starting Point of Theory</a>
+<a class="s" href="#s15">〈Self + Environment〉</a>
+<a class="s" href="#s16">〈Subjectivity〉 and 〈Objectivity〉</a>
+<a class="s" href="#s17">〈Figure〉 and 〈Belief〉</a>
+<a class="s" href="#s18">〈Layout〉</a>
+<a class="s" href="#s19">〈Atelier〉</a>
+<a class="s" href="#s20">Improvisation and Rewriting</a>
+<a class="s" href="#s21">〈Renewed Distances〉 and 〈the Gaze from Death〉</a>
+<a class="s" href="#s22">Theoretical Foundations</a>
+<a href="#s23">Major Essays</a>
+<a class="s" href="#s24">&quot;Aratana Kyori — Ōe Kenzaburō ni okeru Seisaku to Shikō&quot; (Renewed Distances: Making and Thinking in Ōe Kenzaburō)</a>
+<a class="s" href="#s25">&quot;Sei ni totte Gengo Hyōgen to wa Nani ka&quot; (What Is Linguistic Expression to Life? — Hōsaka Kazushi and the Literalism of This Side of the Surface)</a>
+<a class="s" href="#s26">&quot;Seisaku-teki Kūkan to Gengo&quot; (Productive Space and Language: Toward the Design of a Community Woven by &quot;There I Am Over There&quot;)</a>
+<a class="s" href="#s27">&quot;Nikki to Jūryoku&quot; (Diary and Gravity)</a>
+<a class="s" href="#s28">&quot;Shukan-sei no Ugomeki to Sono Yado&quot; (The Stirring of Subjectivity and Its Dwelling)</a>
+<a class="s" href="#s29">&quot;Shukan-sei to Bussei no Gonin-teki Kankei&quot; (The Misrecognitive Relation of Subjectivity and Objectivity)</a>
+<a class="s" href="#s30">&quot;Tada no Shi ga Motarasu Gunsei Shita 〈Kishimi〉&quot; (The Clustered 〈Creaking〉 Brought About by Mere Death — Making and Thinking in Ōbayashi Nobuhiko)</a>
+<a class="s" href="#s31">&quot;Shi no Tōeisha (Projector) ni yoru Kokka to Shi&quot; (The Nation and Death by the Projector of Death)</a>
+<a class="s" href="#s32">&quot;Sei no Atelier&quot; (The Atelier of Life — Taking Expression at Face Value, Using It, and Making a Room of One&#x27;s Own)</a>
+<a class="s" href="#s33">&quot;Sekai no Haaku wa Ikani Shite Kokka ni Ni, Rekishi ni Ni, Biman Suru Mirai to Shite Watashi wo Kijutsu Shi-tsukusu no ka&quot; (How Does the Grasp of the World Come to Resemble the Nation, Resemble History, and Describe Me Exhaustively as a Suffusing Future)</a>
+<a href="#s34">Diary and &quot;the Diary-Notebook&quot; — Redefining Fiction</a>
+<a class="s" href="#s35">Two Propositions — Diary, Fiction, Archive</a>
+<a class="s" href="#s36">The Diary Boom and the Significance of Fiction</a>
+<a class="s" href="#s37">&quot;Conversation 9&quot; — Diary-Notebook, Correspondence, Improvisatory Performance</a>
+<a href="#s38">Law and Performance — Thinking through 〈Role〉</a>
+<a class="s" href="#s39">Theoretical Background — Four Keywords</a>
+<a class="s" href="#s40">Performance Criticism in Practice</a>
+<a class="s" href="#s41">Dramaturgical Theory — A Question of Form</a>
+<a class="s" href="#s42">Direction in Practice</a>
+<a class="s" href="#s43">&quot;Writing as Acting&quot; — Bridging Fiction and Performance</a>
+<a class="s" href="#s44">The Law of Layout Spanning Poetry, Fiction, and Performance</a>
+<a href="#s45">Fiction in Practice — The Closedness of &quot;the Self&quot; and Community</a>
+<a class="s" href="#s46">&quot;Puffer Train&quot;</a>
+<a class="s" href="#s47">The Serial Work &quot;Figural Void&quot;</a>
+<a class="s" href="#s48">&quot;Mudan to Tsuchi&quot; (Without Permission and Soil)</a>
+<a class="s" href="#s49">&quot;Chikashisa to Kū&quot; (Anchor and Void)</a>
+<a href="#s50">Publishing, Editing, and Design as Theoretical Practice</a>
+<a class="s" href="#s51">Mino Arata Essay — Photography, Editing, Collaborative Production</a>
+<a class="s" href="#s52">Tōmatsu Shōmei Essay — Photography and Page Layout</a>
+<a class="s" href="#s53">Toda Tsutomu Essay — Design and Linguistic Expression</a>
+<a class="s" href="#s54">Inunosenakaza Book Series and &quot;Ninshiki no Tsumiki&quot; (Building Blocks of Cognition)</a>
+<a class="s" href="#s55">The Design of *Yōsei DIZZY*</a>
+<a href="#s56">Recent Expansion and Current Position</a>
+<a class="s" href="#s57">&quot;Gūzen to Jinbutsu no Ichi&quot; (Chance and the Position of Persons) — AI and Poetry</a>
+<a class="s" href="#s58">&quot;Kibun&quot; (Mood) — Current Position</a>
+<a class="s" href="#s59">The Trilogy Plan</a>
+<a href="#s60">Definitions (March 2026 Version) — Full Text</a>
+<a class="s" href="#s61">1　Subjectivity and Objectivity</a>
+<a class="s" href="#s62">2　Layout and Blank</a>
+<a class="s" href="#s63">3　Figure and Belief</a>
+<a class="s" href="#s64">4　Self and Object</a>
+<a class="s" href="#s65">5　Atelier and Distance</a>
+    </nav>
+    <div class="C">
+<p><a href="https://inunosenakaza.com/member/hiroki_yamamoto" target="_blank" rel="noopener">Hiroki Yamamoto</a> (b. 1992) is a Japanese novelist, critic, designer, editor, and director. He leads <a href="https://inunosenakaza.com/" target="_blank" rel="noopener">Inunosenakaza</a>, a publishing house and production collective, working across fiction, criticism, poetry, performance, book design, editing, and publishing.</p>
+<p><strong>The central concern running through his work is to reconceive linguistic expression not as mere communication of meaning, but as a technique for reconfiguring the relations between body, environment, and community.</strong> Fiction, criticism, performance, design, and publishing are not separate activities but different modes of practice directed at a single set of questions: "What is expression?" "What does it mean for me to be myself?" "How can a text be handed on to others and to subsequent generations?"</p>
+<div class="brk"></div><p>This page offers a map for surveying the whole of Yamamoto's making and thinking. The first half traces his development and the skeleton of his theory; the second half follows his major essays and areas of practice. An appendix reproduces, in full, the "Definitions" as of March 2026.</p>
+<details id="s1">
+<summary>Profile</summary>
+<p>Born 1992, Ehime Prefecture. From his teens Yamamoto wrote fiction, receiving recognition including a third-round pass for the 111th Bungakukai New Writers' Prize and a final-round nomination for the 53rd Gunzō New Writers' Prize (fiction division). In 2015 he founded the production collective and publishing house Inunosenakaza, expanding his activities from fiction and poetry to criticism, editing, design, publishing, and performance production.</p>
+<p>From 2016 to 2022 he was a member of the editorial department of the literary journal <em>Waseda Bungaku</em>, where he planned and edited several special issues. In 2022 he served as art director for <em>Quick Japan</em> (issues 159–167). He continues to be involved in both the production and circulation of expression, including the editing, design, and staging of other artists' work alongside his own writing and practice.</p>
+<p>Major criticism: <a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Aratana Kyori</em> (Renewed Distances: Layout for (the Purpose of) Pushing Linguistic Expression to Its Limits)</a> (Filmart, 2024); <a href="https://inunosenakaza.stores.jp/items/691d9aa0928f9714111d6d06" target="_blank" rel="noopener"><em>Fiction to Nikkichō</em> (Fiction and the Diary-Notebook: What Are We Writing, Reading, and Passing On?)</a> (Inunosenakaza, 2025). Major fiction: <a href="https://puboo.jp/book/73331" target="_blank" rel="noopener">"Puffer Train"</a> (2012–13); <a href="https://anchor-and-void.inunosenakaza.com/" target="_blank" rel="noopener">"Mudan to Tsuchi" (Without Permission and Soil)</a> (in樋口恭介 ed., <em>Ijō Ronbun</em> [Anomalous Papers], Hayakawa Shobō, 2021); <a href="https://anchor-and-void.inunosenakaza.com/" target="_blank" rel="noopener">"Chikashisa to Kū" (Anchor and Void)</a> (serializing in <em>SF Magazine</em>). Design: Yoshida Yasuhiro, <a href="https://inunosenakaza.stores.jp/items/5c5e243dc2fc286e0a802e36" target="_blank" rel="noopener"><em>Hikari to Shigo</em> (Light and Asides)</a> (Inunosenakaza, 2019); <em>Quick Japan</em> 159–167. Planning and editing: <a href="https://www.chikumashobo.co.jp/special/wasebun_horror/" target="_blank" rel="noopener"><em>Waseda Bungaku Special Issue: The Reality of Horror</em></a> (Chikuma Shobō, 2021). Direction: <a href="https://inunosenakaza.com/performance/20251114" target="_blank" rel="noopener"><em>Impossible Gag: Reading Performance</em></a> (text by Matsuhara Shuntarō, 2025); <a href="https://inunosenakaza.com/performance/20260117" target="_blank" rel="noopener"><em>Onshitsu / Onsil</em></a> (text by Mino Arata, 2026).</p>
+</details>
+<hr>
+<details id="s2">
+<summary>Trajectory and Development</summary>
+<p>Yamamoto's work extends across fiction, criticism, performance, design, and publishing. At its center, however, lies a consistent set of questions: "How does language act on body and environment?" "How does the condition of 'being myself' waver and connect to others and to community?" Below, we trace how these questions have unfolded through his early fiction, the collaborative practice of Inunosenakaza, his engagements with key reference points, and the building of a conceptual apparatus.</p>
+<details class="h3d" id="s3">
+<summary class="h3s">Starting Point — Literalism and the Feel of 〈Subjectivity〉</summary>
+<p>At the root of Yamamoto's early interests lies a sensation that <strong>language does not merely describe reality but, simply by being written, generates an event.</strong> As a teenager Yamamoto was strongly drawn to SF, horror, and violent narratives, yet he also read novels by Le Clézio and Claude Simon — whose intense textual operations tend to earn them a reputation for difficulty — as if they were extensions of SF and horror. Leaps, ruptures, and warps in time-space within a sentence became, as they stood, forms of experience. This powerful literalism is his starting point.</p>
+<div class="brk"></div><p>This starting point connects directly to his later <a href="https://note.com/inunosenakaza/n/n8dda3f1c6768" target="_blank" rel="noopener">horror essay</a>, his essays on diary, and his theory of fiction. For Yamamoto, expression is first of all not a container for meaning but an event that produces specific thoughts, sensations, and constructions in the body. At the same time, this early interest was inseparable from the question of "the self in a text." No matter what kind of sentence, one cannot help sensing "who" said it, "from where," and "in what kind of environment." Yamamoto would later name this phenomenon 〈subjectivity〉, but even before he had any such concept, the sensation was already strongly felt.</p>
+</details>
+<details class="h3d" id="s4">
+<summary class="h3s">The Inescapability of &quot;Being Myself&quot; — Early Works</summary>
+<p>The novel <a href="https://puboo.jp/book/22915" target="_blank" rel="noopener">"Enro Shigai" (Distant Road, City Streets)</a> (written at age 17–18; third-round pass for the 111th Bungakukai New Writers' Prize) contains the raw prototypes of what would later become theoretical problems. The inhabitants of a city governed by a "keynote" — "the ceaseless keynote is faintly audible over one's shoulder, and yet before one's eyes there is nothing" — are absorbed by it, forced into repetition under an "inescapable ground." As the line "people, absorbed into the keynote and fearing that they would unknowingly slide between vanity and self-abasement, could not speak" condenses, <strong>the anguish of being unable to escape "being myself" within a world permeated by law, and the urgency of nonetheless attempting to speak (to write)</strong> drives the entire work. What would later be theorized as 〈objectivity〉, 〈law〉, and 〈free will〉 has its novelistic prototype here.</p>
+<h4>"Eiyōgaku no Sokutei" (A Measurement of Nutritional Science) — The First Essay</h4>
+<p><a href="https://hirokiyamamoto.hatenablog.com/entry/2013/07/23/223654" target="_blank" rel="noopener">"Eiyōgaku no Sokutei"</a>, written at age 19, is virtually Yamamoto's first critical essay. It can be positioned as an attempt to take the inescapability of "being myself" felt in "Enro Shigai" and work it through as a reconfiguration of the material environment that sustains the self — nutrition, food culture, the body. It treats the transmission of food culture from mother to child as "a process in which the transmission of history is half-forcibly passed on," extending in a single rush to eating disorders, cannibalism, the closedness and compossibility of the monad, the recognition that "the gazes of others are woven into my body," and the question of "deviation from the domesticated human."</p>
+<p>The closedness of this self and the way it connects (cannot help connecting) to the community of society, the problem of the body's constraint by law = environment and free will, the problem of historical transmission and education through the body — all are already set down as felt experience, before any theoretical vocabulary has been formed.</p>
+<h4>A Line from the Early Work to the Present</h4>
+<p>These early concerns would go on to connect to the concept of the 〈pseudo-I-novel〉 in the Ōe Kenzaburō essay — a method of rethinking "the self" not as naked disclosure of interiority but as an artificial unit of production that takes in the outside while still writing as "myself" — and from there to the problems of 〈atelier〉 and 〈acting〉, which attempt to process "being myself" in parallel across multiple spacetimes and other people's bodies. The inescapability of the keynote in "Enro Shigai," the reconfiguration of the material environment in <a href="https://hirokiyamamoto.hatenablog.com/entry/2013/07/23/223654" target="_blank" rel="noopener">"Eiyōgaku no Sokutei"</a>, the 〈pseudo-I-novel〉 of the <a href="https://inunosenakaza.stores.jp/items/5c1d99341444482501948d82" target="_blank" rel="noopener">Ōe essay</a>, and the theory of acting. All of them ask how to handle the inescapability of "being myself," and <strong>the single line that runs through Yamamoto's entire body of work begins here.</strong></p>
+</details>
+<details class="h3d" id="s5">
+<summary class="h3s">&quot;The Life on This Side&quot; — Neither &quot;Depth&quot; nor &quot;Surface&quot;</summary>
+<p>A foundational concern that has been consistently emphasized since before the founding of Inunosenakaza is the distinction among "depth," "surface," and "the life on this side" in writing. This problem is organized in connection with historical shifts in "Sei ni totte Gengo Hyōgen to wa Nani ka" (What Is Linguistic Expression to Life?), and continues to be treated in the title essay of <a href="https://inunosenakaza.stores.jp/items/691d9aa0928f9714111d6d06" target="_blank" rel="noopener"><em>Fiction to Nikkichō</em></a>.</p>
+<div class="brk"></div><p>Existing literary value systems and literary history have bundled and evaluated writing by its "depth" — a worldview or theme that subsumes into a single integration, and the presumed authorial figure. Against this, a "postmodern" stance was proposed that finds value in the operation of the multiple, mutually contradictory surface itself. Yamamoto occupies a third position distinct from either: he emphasizes <strong>"this side" of the text — the concrete body that reads and writes, the environment in which that body spends its days, the modest texture of life.</strong></p>
+<h4>The Age of "The Life on This Side"</h4>
+<div class="brk"></div><p>This recognition is deeply connected to changes in the situation surrounding linguistic expression from the 2010s onward: the diary boom, the foregrounding of experiential authority, the acceleration of personality consumption, the declining value of fiction. Yamamoto grasps these as the age of "the life on this side," neither simply affirming nor rejecting the trend, but rather searching for a theory and method that takes "the life on this side" seriously without letting it slide into naive valorization of personality or personal consumption. The stance received from Hōsaka Kazushi — "to think of text as continuous with the time of life" — was a foothold for this search. All of Inunosenakaza's activities since its founding — criticism, editing, design, publishing, performance — stand under the question of how to open "the life on this side" collaboratively and technically.</p>
+</details>
+<details class="h3d" id="s6">
+<summary class="h3s">Inunosenakaza — Background to Its Founding</summary>
+<p>Founded on May 1, 2015, Inunosenakaza was neither a coterie magazine circle nor a theater company. In the foreword to <a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Aratana Kyori</em></a>, Yamamoto writes that around the time of the founding a "conversion" had taken place within him: "a conversion from the idea that all living beings, including humans, might be able to escape death through some ongoing effort, to the idea that at least this self of mine will someday die in a form severed from those around me."</p>
+<div class="brk"></div><p>The founding of Inunosenakaza was triggered by "the suicide of a mutual friend." To leave expression and technique not for oneself but for those who live on after death — this recognition corresponds to the origin of the later problem-system of "posterity, education, and archiving" (discussed below).</p>
+<h4>The Founding Manifesto</h4>
+<p>The <a href="https://inunosenakaza.com/archives/20150501" target="_blank" rel="noopener">manifesto</a> published at the time of founding (under the name Yamamoto Hiroki + h) already concentrates the prototypes of the later theory. <strong>"To learn and seek out techniques for making things using the material of 'being myself'";</strong> to maintain "a place, like sediment, where as many selves as possible can be laid side by side"; to "design a place of education = experimentation"; and "you must not believe in a single improvisation. If you want to find merit in improvisation, it should be layered many times over." The later concepts of 〈atelier〉, 〈layout〉, 〈renewed distances〉, 〈objectivity〉, and the problem-system of education and archiving all have their seeds in this text.</p>
+</details>
+<details class="h3d" id="s7">
+<summary class="h3s">Inunosenakaza — Methods of Collaborative Production</summary>
+<p>A symbolic early method was the series of "conversations" (zadankai) carried out over long periods on Google Drive. Participants accessed a shared document from their own devices over a set period, building from a blank page a fictive record of dialogue. They considered and responded to other participants' statements while simultaneously revising their own past statements. Over weeks, "a record of dialogue that was never supposed to have existed" gradually took shape — a practice of collaborative writing in which each participant erected their own closed text = 〈atelier〉 under their own responsibility, then made these adjacent through the establishment of a fictional space of dialogue. Nine numbered conversations were held in total.</p>
+<h4>Publishing as a Form</h4>
+<p>For <a href="https://inunosenakaza.com/book" target="_blank" rel="noopener">Inunosenakaza</a>, a book was not a container for finished products but a form for bundling the accumulations of individual production and thought (ateliers) and casting them outward. To preserve individual works while preventing their isolation, inserting criticism, dialogue, records, design, publications, performances, and exhibitions between them. The creation of such habits was itself the work of Inunosenakaza.</p>
+</details>
+<details class="h3d" id="s8">
+<summary class="h3s">The Early Core — Hōsaka Kazushi, Ōe Kenzaburō, Arakawa Shūsaku</summary>
+<p>In the formation of Yamamoto's theory, the work on Hōsaka Kazushi, Ōe Kenzaburō, and Arakawa Shūsaku occupies a special position.</p>
+<h4>Hōsaka Kazushi — Literalism and Beyond</h4>
+<p>What Yamamoto received from Hōsaka was a way of seeing the novel not as commodity in the entertainment market but as something concerned with lived time, bodily sensation, and the very manner of thinking. As discussed in detail in <a href="https://inunosenakaza.stores.jp/items/654ede2f2a81740025c81eb1" target="_blank" rel="noopener">"Sei ni totte Gengo Hyōgen to wa Nani ka"</a>, Hōsaka positioned the novel as competing not with film or television as one more entertainment product but with ways of spending leisure time such as walking and gardening; he questioned management by plot and, in both practice and criticism, pursued a "literalism" of taking each sentence exactly as it stands.</p>
+<p>Yamamoto was strongly aided by this stance, yet he sees the danger that the Hōsaka-esque position, by emphasizing the life on this side of the text, may end up as a mere reflection of "the writer as they are" and thereby converge with the consumption of personality under post-Fordism. From here arises the need for a third position — to use linguistic expression as "an experimental ground for collaboratively reconfiguring life" (for details, see the sections on "the life on this side" and the Hōsaka essay).</p>
+<h4>Ōe Kenzaburō — The Producer Who Bears "the Self" and "After Death"</h4>
+<p>Ōe Kenzaburō is an even more central reference. For Yamamoto, Ōe is the novelist who kept asking how the Japanese-language novel could bear "the self," "the postwar," "the nation," "the dead," "education," and "the relation to the world," and to analyze Ōe's production process was simultaneously to think about what one could bear as a producer oneself. As discussed below, the Ōe essay "Aratana Kyori — Ōe Kenzaburō ni okeru Seisaku to Shikō" (Renewed Distances: Making and Thinking in Ōe Kenzaburō, 2015) already contains the cluster of problems at the core of all Yamamoto's subsequent work.</p>
+<h4>Arakawa Shūsaku — Designing the Environment and 〈Blank〉</h4>
+<p>The work on Arakawa Shūsaku opens linguistic expression toward fine art, architecture, perception, and community design. Arakawa + Madeline Gins aimed not to adapt to a given environment but to design new environments themselves and thereby change the body ("reversible destiny").</p>
+<p>When Yamamoto would later foreground 〈layout〉 and 〈atelier〉 as central concepts, Arakawa's orientation stands behind them. In "Nikki to Jūryoku" (Diary and Gravity), Arakawa's placing of "being myself" at the core of production and education, and his project of reversing death, are connected to a theory of making linguistic expression. More concrete discussion of Arakawa is developed in <a href="https://ekrits.jp/2018/12/2914/" target="_blank" rel="noopener">"Seisaku-teki Kūkan to Gengo"</a> (discussed below). Yamamoto's theoretical concept 〈blank〉 also derives from Arakawa + Gins' 〈blank〉; its relation to Takiguchi Shūzō's 〈margin〉 is treated in detail in the entry for that essay.</p>
+</details>
+<details class="h3d" id="s9">
+<summary class="h3s">Improvisation and Rewriting — Repetition as a Method of Production</summary>
+<p>From the beginning of his novel-writing career Yamamoto treated rewriting as a core method of production. This recognition deepened through his analysis of Ōe Kenzaburō's production process, and was further theorized, after the fact, on the basis of the Hōsaka essay and insights from ecological psychology.</p>
+<p>In "Sei ni totte Gengo Hyōgen to wa Nani ka," taking Hōsaka as a starting point, the understanding of improvisation is organized. Yamamoto there conceives of human thought as "a process of simulating, in multiples, at sites external to thought itself (body, matter, text, etc.), the contingent responses of the human body to its surrounding environment (= improvisation), including memory and fiction, combining them, discovering higher-order patterns (= 〈figure〉) there, and putting them to use in controlling one's next thought." One does not deepen thought alone in the here and now; one discovers one's own thought in the course of accumulating simulations carried out through the interplay of self and external law. <strong>Rather than unconditionally affirming the one-time improvisation, it is rewriting as a compounding of improvisations that supports this process of discovery.</strong></p>
+<p>The idea articulated in "Conversation 1" (2015), at the time of Inunosenakaza's founding — "by writing in this way I can make a soul that sees the world in this way" — and the methodology of describing and operating under a monistic framework of "discovering" expression (for oneself and others) are also introduced in this essay (for details see the entry on "Sei ni totte Gengo Hyōgen to wa Nani ka" in the Major Essays section).</p>
+<h4>The Compounding of Environments and Immortality</h4>
+<p>This problem-system also further extends the ecological-psychological idea that "the soul exists within the environment." In <a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">"Nikki to Jūryoku"</a> (Diary and Gravity, in <em>Aratana Kyori</em>), language is conceived as "a device that brings about the compounding of environments," and with Arakawa Shūsaku's architectural disruption of bodily balance as a clue, a path is drawn toward defining free will not as a soul isolated from the environment but as the compounding of multiple contradictory environments. Immortality too is grasped as a circulation of communal succession of trial and error aimed at better compounding of environments (see the Major Essays entry on "Nikki to Jūryoku" for details).</p>
+</details>
+<details class="h3d" id="s10">
+<summary class="h3s">Subjectivity, Objectivity, Layout — The Formalization of Theory</summary>
+<p>Around 2018, Yamamoto's theory acquired a clear conceptual apparatus. The turning point was the second session of the Inunosenakaza lecture series "Layout for (the Purpose of) Pushing Linguistic Expression to Its Limits," titled "Shukan-sei no Ugomeki to Sono Yado" (The Stirring of Subjectivity and Its Dwelling, 2018), later published as a booklet (Inunosenakaza, 2023). The definitions of 〈subjectivity〉, 〈objectivity〉, 〈figure〉, 〈blank〉, 〈object〉, and 〈subject/self〉 were established here, and a framework for treating selfhood, fiction, politics, the body, design, and performance within a single vocabulary was achieved (see "Theoretical Map" for each concept).</p>
+<h4>The Formalization of 〈Belief〉 (2019)</h4>
+<p>At the workshop "Miracle, Figure, Belief (The Gesture of Hurling-Forth Salvation)" in 2019, 〈belief〉 was formalized and the discussion extended to dance and bodily movement, opening the next stage of the theory. The most recent definitions as of March 2026 are given in the "Definitions" reproduced at the end of this page.</p>
+</details>
+<details class="h3d" id="s11">
+<summary class="h3s">〈Atelier〉 and 〈Acting〉 — The Recent Central Concepts</summary>
+<p>From the late 2010s onward, Yamamoto's theory has increasingly been organized around 〈atelier〉 and 〈acting〉, rebundling 〈subjectivity〉, 〈objectivity〉, and 〈layout〉. The foreword to <em>Fiction to Nikkichō</em> states:</p>
+<blockquote class="bq">The fact that I have come to place "atelier" and "acting" at the center of my theory is significant. The terms "diary-notebook" and "addressee" treated in the essays collected in this book mean, in my recent principal terminology, "atelier," and to read, write, and live using them means, in other words, the body's taking-on of the "atelier" = "acting."</blockquote>
+<p><strong>〈Atelier〉 is the central concept that Yamamoto himself calls "the most important concept for me"</strong>: an environment that sustains production, a unit of analysis for the environment retroactively constructed from a text, and also a basis for community design that can be taught. 〈Acting〉 refers to the practice of taking on that atelier with the body (see "Theoretical Map" for details of each concept).</p>
+<div class="brk"></div><p>The lecture <a href="https://www.dropbox.com/scl/fi/pyybza8kupzkpk2mzmnx9/_20231104.pdf?rlkey=wc8r4fpufuesf8cip2wfp66fn&e=1&dl=0" target="_blank" rel="noopener">"Sei no Atelier"</a> (The Atelier of Life, 2023), delivered at Tōkō Gakuen, is the text in which this concept is explained most plainly. It contains, among other things, the argument that <strong>to be selfish — to make one's own atelier — can itself be altruistic</strong>, and gathers Yamamoto's thinking about the affirmation of each individual life (see the Major Essays entry on "Sei no Atelier" for details).</p>
+<h4>The Turn to Performance Criticism</h4>
+<p>The foregrounding of these concepts is also linked to shifts in Yamamoto's areas of activity. The reason Yamamoto has recently been writing performance criticism intensively is the concreteness of "taking-on" that can only be seen in that place. The taking-on here is double: the body on stage takes on "what is not here and now" (role, law, script), and the spectator, facing that, also takes on something other than the here and now — both occur within a single performance.</p>
+<h4>Workshops — The Communal Activation of 〈Atelier〉</h4>
+<p>The concept of 〈atelier〉 extends beyond Yamamoto's individual theory of production into practices in which multiple bodies communally activate an 〈atelier〉.</p>
+<p>In the workshop "Miracle, Figure, Belief (The Gesture of Hurling-Forth Salvation)" (STspot, 2019), a process was designed in which each participant wrote short texts, shuffled them, took on others' texts as their own, generated 〈figures〉, and produced new texts.</p>
+<p>In the lecture + workshop <a href="https://www.dropbox.com/scl/fi/dxs38571kr8p8sbcy5t8l/_20240330.pdf?rlkey=jkxg1essx0n10hht0ne6jahmo&e=1&st=wyy2q4ow&dl=0" target="_blank" rel="noopener">"Making 〈the Gaze from Death〉"</a> (blanClass + Kamimura Megumi "Living with Just a Body," BankART Life7, 2024), participants went out into the city to write, exchanged texts, and then walked the city retracing each other's texts.</p>
+<div class="brk"></div><p>In each case, the presentation of theory leads directly into collective production practice, embodying the fact that 〈atelier〉 arises not within individual introspection but among multiple bodies.</p>
+</details>
+<details class="h3d" id="s12">
+<summary class="h3s">Posterity, Education, and Archiving</summary>
+<p>The founding of Inunosenakaza was triggered by "the suicide of a mutual friend," and <strong>leaving expression and technique not for oneself but for those who live on after death</strong> has been a consistent concern from the earliest days of Yamamoto's activity. In "Conversation 1" (2015) Yamamoto states, "The season in which the current me should live with myself as my axis is over as of today; from now on I must devote myself to the people who will live after my death."</p>
+<h4>The Wavering of "Belief in Posterity"</h4>
+<div class="brk"></div><p>That said, Yamamoto does not place great faith in the idea that the texts he has written will survive long into "posterity." In "Conversation 9" (2024) he frankly speaks of a recognition that the world might end tomorrow, while at the same time voicing a desire to convey and pass on something to contemporaries. If expression is to be inherited on the scale of centuries, it is more likely to be through conversion into abstract technique and principle, exchanged among contemporaries and then quietly, vaguely carried on, than through works being read as they are.</p>
+<h4>Leaving Works + Methods of Use + Criticism as a Set</h4>
+<div class="brk"></div><p>What follows from this recognition is <strong>a policy of not presenting works alone but unfolding their methods of use and criticism as a set.</strong> Inunosenakaza's publications have consistently been designed on this principle. <a href="https://inunosenakaza.stores.jp/items/5c1d99341444482501948d82" target="_blank" rel="noopener"><em>Inunosenakaza Issue 1</em></a> and <a href="https://inunosenakaza.stores.jp/items/5c1d9ac9c3976c675749bd51" target="_blank" rel="noopener"><em>Issue 2</em></a> place conversations, criticism, and design commentary alongside the works; <a href="https://inunosenakaza.stores.jp/items/5c1d9c2ec2fc28029dbed7fe" target="_blank" rel="noopener"><em>Hai to Ie</em></a> (Ash and House) is accompanied by interpretive notes; the Kōno Satoko poetry collection includes "Conversation 5." Records of the lecture series "Layout for (the Purpose of) Pushing Linguistic Expression to Its Limits" were published in a format that combines lecture content with workshop design.</p>
+<div class="brk"></div><p>It is not enough for a work to be excellent in itself; design must extend to what techniques and communities the work creates and how it is handed on to subsequent production. To make each achievement reusable by subsequent bodies. This stance also forms the practical foundation of the later 〈atelier〉 concept.</p>
+<h4>Archive Lecture — Redefining "Leaving"</h4>
+<div class="brk"></div><p>The lecture <a href="https://www.dropbox.com/scl/fi/678n30bpl5bwmkl4cdebi/_-1021.pdf?rlkey=m7gf6elpvfb3wsce7ot0hojbg&dl=0" target="_blank" rel="noopener">"Kotoba, Hyōgen, Archive"</a> (Words, Expression, Archive: What Does It Mean to Make Expression, Share It, and Leave It Behind?), delivered at the Tokyo University of the Arts Future Creation and Succession Center (2025), articulates this policy more clearly.</p>
+<blockquote class="bq">Share not only the "work" but also its production process. Value not the work itself so much as what techniques and communities it creates and how it propagates (after death). By conveying not only how to use but also how to make, "translation" becomes possible even after that genre has lost its social significance/function.</blockquote>
+<div class="brk"></div><p>Yamamoto <strong>thinks of "leaving" as the design of "methods of reading," "methods of using," and "methods of re-performing" before physical preservation.</strong> The same lecture also contains the definition "education is the process of selecting from a large archive and giving what is chosen to subsequent human bodies."</p>
+</details>
+</details>
+<hr>
+<details id="s13">
+<summary>Theoretical Map</summary>
+<p>Yamamoto's theory is composed of several central concepts and their interrelations. Below, we organize what each concept refers to and how they are connected. The final subsection, "Theoretical Foundations," indicates the prior intellectual traditions from which these concepts draw nourishment.</p>
+<details class="h3d" id="s14">
+<summary class="h3s">Linguistic Expression and the Body — The Starting Point of Theory</summary>
+<p>At the starting point of Yamamoto's theory is the decision not to see language merely as a tool for conveying meaning. In the lecture <a href="https://www.dropbox.com/scl/fi/pyybza8kupzkpk2mzmnx9/_20231104.pdf?rlkey=wc8r4fpufuesf8cip2wfp66fn&e=1&dl=0" target="_blank" rel="noopener">"Sei no Atelier"</a> (2023), he states: "Language is in fact a very powerful, distinctive, and handy device, custom-made to act on the human body." Books, pages, scripts, poems, and critical essays, when read, generate certain movements, thoughts, and constructions in the body.</p>
+<p>At the heart of this recognition is <strong>the property that linguistic expression cannot help making the body before it construct "the bearer of expression = 〈person〉 and the surrounding 〈environment〉."</strong> For instance, the sentence "A dog came from the other side of the fence" generates, in the reading body, a "this side" that is not literally written. Even with mechanically arranged words, insofar as one finds expression there, one reads into it the existence of the person who made it and the surrounding environment.</p>
+<p>In this sense, linguistic expression must be understood as a problem of the arrangement of "the bearer of expression + environment," including layout, speed, repetition, blank, format, and medium, not just an analysis of meaning. The methodology presented in <a href="https://inunosenakaza.stores.jp/items/654ede2f2a81740025c81eb1" target="_blank" rel="noopener">"Sei ni totte Gengo Hyōgen to wa Nani ka"</a> — describing and operating monistically under the rubric of "discovering expression (for self and others)," rather than siding with either writing or reading — takes this recognition as its departure point.</p>
+</details>
+<details class="h3d" id="s15">
+<summary class="h3s">〈Self + Environment〉</summary>
+<p>The theoretical minimum unit derived from the above recognition is 〈self + environment〉. One cannot think of the "self" alone; where expression exists, the person who made it and the surrounding environment are constructed as one. 〈Self + environment〉 is not the author's actual existence but a fictional unit — yet one powerfully imposed on the body — that the reading body retroactively assembles from expression. Every poem, every novel, comes to be seen as a swarm of 〈self + environment〉 units laid side by side, layered, passing each other, and contending.</p>
+</details>
+<details class="h3d" id="s16">
+<summary class="h3s">〈Subjectivity〉 and 〈Objectivity〉</summary>
+<blockquote class="bq">A text cannot help retroactively constructing the 〈person〉 who 〈expressed〉 it and the 〈environment〉 that determined and enabled 〈expression〉 in its surroundings. A certain coherence of this tendency/quality is called 〈subjectivity〉. / The lawfulness that determined and enabled 〈expression〉 is called 〈objectivity〉. / A text is a construction in which 〈subjectivity〉 — the force that compels retroactive reading into the active gesture of expression — and 〈objectivity〉 — the force that compelled expression passively — are laid out in multilayered overlap.</blockquote>
+<p>></p>
+<blockquote class="bq">— Yamamoto Hiroki, <a href="https://inunosenakaza.stores.jp/items/654edeaa6a8b0d218bc27b87" target="_blank" rel="noopener"><em>Shukan-sei no Ugomeki to Sono Yado</em></a></blockquote>
+<p><strong>〈Subjectivity〉 does not mean "the author's inner life" but the tendency of expression to generate a subject and environment behind it.</strong></p>
+<p><strong>〈Objectivity〉 does not mean "objective fact" but the force of the lawfulness that made the expression what it is.</strong></p>
+<p><strong>Expression exists within the misrecognitive entanglement of these two, and Yamamoto's theory does not reject this misrecognition but seeks to take it on as the essential process of expression.</strong></p>
+</details>
+<details class="h3d" id="s17">
+<summary class="h3s">〈Figure〉 and 〈Belief〉</summary>
+<p>The tendency/quality constituting the interior of 〈subjectivity〉 is called 〈figure〉. 〈Figure〉 is not a rhetorical technique of metaphor but a more fundamental operation that functions beyond the scale of 〈subjectivity〉. In <em>Shukan-sei no Ugomeki to Sono Yado</em>, through Yoshimoto Takaaki's theory of 〈kyoyu〉 (virtual trope) and the relation between the upper and lower verses of tanka, 〈figure〉 is positioned as a tendency/quality at the root of language. Paul de Man's discussion of prosopopoeia is also connected here.</p>
+<p>〈Belief〉 is defined as the misrecognitive relation between 〈subjectivity〉 and 〈objectivity〉. What is seen as genuine feeling, what as external compulsion — that this judgment constantly slips and can be reversed is what sustains the operation of expression.</p>
+<p>〈Projector〉 refers to the agent that, before expression, supplies and projects 〈figure〉 to construct a subject and environment; 〈belief〉 exists as what constrains that 〈figure〉.</p>
+<p>At the presentation "Shukan-sei to Bussei no Gonin-teki Kankei" (The Misrecognitive Relation of Subjectivity and Objectivity) at the first session of the workshop "Miracle, Figure, Belief" (STspot, 2019), 〈belief〉 was formalized and extended to body theory; in "Shi no Tōeisha (Projector) ni yoru Kokka to Shi" (The Nation and Death by the Projector of Death), the concept of 〈projector〉 was presented and developed. The concrete analyses of 〈belief〉 developed in the <a href="https://inunosenakaza.com/craZZZyfishstudio/theory/obayashi" target="_blank" rel="noopener">Ōbayashi essay</a> and the <a href="https://www.suiseisha.net/blog/2023/12/14/%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B%E6%9F%B3%E7%94%B0%E5%9C%8B%E7%94%B7/" target="_blank" rel="noopener">Yanagita essay</a> are all based on this formalization.</p>
+</details>
+<details class="h3d" id="s18">
+<summary class="h3s">〈Layout〉</summary>
+<p>For Yamamoto, 〈layout〉 is what he himself positions as the most important concept of his earlier period, and it is not limited to the question of page design.</p>
+<h4>Text Is the Layout of 〈the Self〉</h4>
+<p>At the heart of Yamamoto's theory is the proposition that <strong>a text is a construction in which 〈subjectivity〉 and 〈objectivity〉 are laid out in multilayered overlap</strong> (<em>Shukan-sei no Ugomeki to Sono Yado</em>). When one writes a sentence, a 〈self + environment〉 is constructed there. When one writes the next sentence, another 〈self + environment〉 arises. The very act of laying sentences side by side forms the layout of 〈the self〉.</p>
+<p>In "Sei ni totte Gengo Hyōgen to wa Nani ka" this recognition is stated most clearly. Language exists as a "layout of provocation" that forces specific thoughts and sensations on the body; the constructions generated sentence by sentence collide with surrounding words and sentences and are invented as new forms of integration = new thought. The body set in motion writes the next sentence. Thought as 〈the self〉 through text is nothing other than this chain of "construction — collision — recombination."</p>
+<div class="brk"></div><p>Accordingly, 〈layout〉 refers not only to the arrangement of characters on a page but to <strong>the very condition of expression</strong> — how it is divided, laid out, made to collide, how it generates blanks and gives rise to different environments and subjects. It resonates with the "arrangement of surfaces of the environment" that comes from Gibson/Sasaki's ecological psychology. Line breaks in poetry, chapter structure in novels, page design, the order of lecture materials, the arrangement of actors on stage can all be treated on the same theoretical plane, because each concerns how 〈self + environment〉 units are arranged.</p>
+<h4>The Law of Layout as 〈Objectivity〉</h4>
+<div class="brk"></div><p>This layout of 〈the self〉 is not something the writer freely designs. In <em>Shukan-sei no Ugomeki to Sono Yado</em>, 〈objectivity〉 is defined as the lawfulness governing layout. In a text written from the viewpoint of a person in a room, 〈environment〉 — the spatial relation of kitchen and television, the smell of grass, the presence of a window — is embodied implicitly by the selection and arrangement of words, even without explicit mention. 〈Objectivity〉 is a concept for grasping the event in which the content of expression and the layout of expression overlap, and the lawfulness of a single sentence extends to the lawfulness of the arrangement of sentences.</p>
+<p>In the Ōe essay "Aratana Kyori," Ōe's practice of introducing unusual 〈objectivity〉 into his texts through descriptions of painting, film, and theater, thereby inventing singular arrangements of language, is treated. Further, the event in which multiple 〈self + environment〉 units are juxtaposed within a single text — the self of morning and the self of night, the living self and the dead self, utterly different yet connected by uncanny resemblance — is formalized as 〈renewed distances〉, using the many-worlds interpretation as a guide. The recognition that text is the layout of 〈the self〉 is thus opened onto questions of cosmological scale.</p>
+<h4>Extension to Poetry</h4>
+<p><a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Aratana Kyori</em></a> contains many essays applying this perspective to concrete analysis of works. Among them, <a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">"Sei(katsu) no Haichi, 〈Shirabe〉 no Kizuki"</a> (The Arrangement of Life/Living, Noticing the 〈Melody〉) squarely addresses historical questions of poetic form, ranging from Hagiwara Sakutarō's 〈melody〉 to the parallel tracks of Shinkoku Seiichi's visual poetry = 〈pictographic poetry〉 and recitation = 〈sound-pictographic poetry〉, and onward to contemporary practitioners such as Fukuda Hisayo, ni_ka, and TOLTA, discussing 〈blank〉 as a multi-layered emotional space woven by characters on the page.</p>
+<p>The book also contains an essay on Fukuda Wakayuki discussing the objectification of time-space in haiku, an essay on Sadahisa Hideki examining the process of writing poetry itself, an essay on Saihate Tahi treating blank and the arrangement of rooms of the self, and an essay on Katō Kōta treating the arrangement of the world and its mineralized depth — all of which develop the theory of 〈subjectivity〉, 〈objectivity〉, and 〈layout〉 as individual analyses of poetry.</p>
+</details>
+<details class="h3d" id="s19">
+<summary class="h3s">〈Atelier〉</summary>
+<blockquote class="bq">The term 〈atelier〉 is employed in this book to refer, by deliberately overlaying, to both the physical environment in which the producer's body is placed and the abstract space (system, matrix) that the producer prepares, constructs, and outputs for production. Even while living disorderly days, the producer can return there and restart the accumulation of production, placing the next brushstroke / the next word. Moreover, such an 〈atelier〉 can also be counted as one of the constituent elements of a text (a high-level unit thereof), as the environment that compelled (afforded) production in the producer, in retroactively grasping the producer.</blockquote>
+<p>></p>
+<blockquote class="bq">— Yamamoto Hiroki, <em>Aratana Kyori</em>, p. 13</blockquote>
+<p><strong>Yamamoto's recent central concept.</strong> First, atelier is a technique for sustaining production, a unit that persists across interruptions; second, an analytical unit for the environment that recipients retroactively construct from a text; third, a foundational unit for inheritable community design. 〈Atelier〉 is not simply a new concept of the later period but functions as a hub rebundling the earlier 〈subjectivity〉, 〈objectivity〉, and 〈layout〉. 〈Acting〉 refers to the practice of taking on this atelier with the body, passing through it, transforming it, and opening it to others.</p>
+<h4>"Atelier no Tame no Memo" (Memo for the Atelier)</h4>
+<p>"Atelier no Tame no Memo" (in <em>Aratana Kyori</em>) is the most condensed definition text for this concept. It departs from the proposition that "a person is a bundle (stratum) of environments they have encountered," and the coupling between this bundle and action, ungraspable from the outside, is what is called 〈atelier〉. "Language" and "art" exist as means of more fully compressing the bundle of environments and "placing" it outside the body.</p>
+<p>A refined action output by one body arrives for another body as a new environment — "such a bundle of environments is possible?" — and simultaneously becomes a transmission/education on the methodological side — "expression can be done in this way?" Through works made as such nodal points, one learns of another 〈atelier〉's existence, uses it as something that figures one's own life, and thereby acquires the accumulated technique of 〈atelier〉, heading toward the design of an 〈atelier〉 to save oneself. <strong>An act for the individual is simultaneously an act for others, and my life becomes a figure for the life of another</strong> — this recognition forms the foundation of Yamamoto's fundamental idea that selfishness can be altruistic.</p>
+</details>
+<details class="h3d" id="s20">
+<summary class="h3s">Improvisation and Rewriting</summary>
+<p>In Yamamoto's theory, improvisation and rewriting are not opposed concepts but two sides of the same coin.</p>
+<p>When the human body encounters a law = script (〈objectivity〉), an improvisatory expression is generated as the coupling of that law and the body. This improvisation is not a one-time accident but arises at the intersection of the structure of law and the response of the body; only by multiplying it and opening it onto diverse acts does free will come to be discovered after the fact (this problem is examined in detail in the Ōbayashi essay).</p>
+<p>The <a href="https://inunosenakaza.com/archives/20150501" target="_blank" rel="noopener">founding manifesto of Inunosenakaza</a> also contains the line: "You must not believe in a single improvisation. If you want to find merit in improvisation, it should be layered many times over." In "Sei ni totte Gengo Hyōgen to wa Nani ka," this problem is organized from Hōsaka as a starting point: rather than opposing the once-ness of improvisation to the technique of rewriting, rewriting as a compounding of improvisations is pursued.</p>
+<p>On the other hand, viewed from the side of 〈objectivity〉, rewriting is also an act of repeatedly passing through the lawfulness of expression and, in the process, inserting misrecognition (〈belief〉) to re-erect 〈subjectivity〉. The law = script exists first as the force (〈objectivity〉) that makes expression what it is, and "the self" is discovered after the fact in the process of expression arising from it. Rewriting is nothing other than the technique of repeatedly updating this discovery.</p>
+<p>The concept of 〈atelier〉 stands at the juncture of improvisation and rewriting. The property of atelier — that one can leave and return to restart the accumulation of production — is the condition for not closing improvisation into a one-time event but making it accumulable and transmissible through rewriting; it is also the technical foundation that sustains the continuation of production and succession to community.</p>
+</details>
+<details class="h3d" id="s21">
+<summary class="h3s">〈Renewed Distances〉 and 〈the Gaze from Death〉</summary>
+<p>〈Renewed distances〉 is a concept whose prototype was presented almost simultaneously in the Inunosenakaza founding manifesto (May 1, 2015) and at the conclusion of the Ōe Kenzaburō essay. In the manifesto, Yamamoto writes of "the instantaneous perception of the breadth between many-worlds, which would be acquired in the process of using selves that have scattered and begun to contradict each other in the course of making, to think while constantly hurling-forth (saving) 'this self.'" In the <a href="https://inunosenakaza.stores.jp/items/5c1d99341444482501948d82" target="_blank" rel="noopener">Ōe essay</a>, against the background of many-worlds theory, the instantaneous quality of perceiving that the self of morning and the self of night, the self at birth and the self just before death, are utterly different yet connected by uncanny resemblance, as multiple spacetimes are linked through expression, was discussed.</p>
+<p>In the March 2026 Definitions, when the community that has arisen through 〈atelier〉 is "rediscovered in expression as a 〈figure〉 of robust construction," that 〈figure〉, as something bringing about a singular gap between expression and 〈the self〉, is also called 〈renewed distances〉. <strong>It refers not to the establishment of community per se but to a distance of difference that can be traversed through expression, criticism, technique, and atelier while preserving individual isolation.</strong></p>
+<h4>〈The Gaze from Death〉</h4>
+<p>A key for further excavating the substance of this concept is 〈the gaze from death〉. In the lecture + workshop <a href="https://www.dropbox.com/scl/fi/dxs38571kr8p8sbcy5t8l/_20240330.pdf?rlkey=jkxg1essx0n10hht0ne6jahmo&e=1&st=wyy2q4ow&dl=0" target="_blank" rel="noopener">"Making 〈the Gaze from Death〉"</a> (blanClass + Kamimura Megumi, BankART Life7, 2024), the origins of Yoshimoto Takaaki's 〈world gaze〉 — an ideal gaze that surveys the world from above at a stroke — developed in his urban theory <em>High Image-Ron</em>, are retraced. What is revealed is that this was a 〈gaze from death〉, rooted in Yanagita Kunio's schema of "the ordinary person" and "the traveler," Miyazawa Kenji's overlap of science and faith, and the out-of-body experience of near-death.</p>
+<p>〈The gaze from death〉 is at once a perception of a viewpoint that looks at the here and now from a distance, from another place, and an event in which everything is described in advance under a certain lawfulness. Yamamoto extends this discussion to the point of reconnecting it to "the life on this side" of the page and reconceiving the city as a device = environment that brings about the multi-layered generation of 〈atelier〉.</p>
+<p>"Atelier no Tame no Memo" (in <em>Aratana Kyori</em>) is simultaneously the most condensed definition text for the 〈atelier〉 concept and a text that develops 〈the gaze from death〉 in conjunction with 〈atelier〉; it presents Yamamoto's fundamental idea of community as a relation in which, while remaining mutually isolated, persons figure each other and make each other into 〈ateliers〉 (see the entry on 〈atelier〉 in the Theoretical Map for details). Also in <em>Aratana Kyori</em>, the Kiyohara Yui essay "Shi kara no Shisen" (The Gaze from Death) takes the film <em>All the Long Nights</em> as its subject, discussing the experience of the survivor taking on the gaze of the dead and reliving the present under that gaze — concretizing 〈the gaze from death〉 and 〈renewed distances〉 within film criticism.</p>
+</details>
+<details class="h3d" id="s22">
+<summary class="h3s">Theoretical Foundations</summary>
+<p>Behind the above cluster of concepts lie several theoretical genealogies. We organize them into the central references and supplementary intellectual threads.</p>
+<h4>Central References</h4>
+<p>Three genealogies directly shaped Yamamoto's theoretical language.</p>
+<p>Tokieda Motoki's language-process theory is most deeply involved in the skeleton of Yamamoto's theory. In <em>Shukan-sei no Ugomeki to Sono Yado</em>, Yamamoto rereads Tokieda as a theorist who pushed the problem of subject and scene further than cognitive linguistics (Ronald Langacker's 〈ground〉 concept). Tokieda's distinction between 〈shi〉 (words representing material) and 〈ji〉 (words representing the subject's intentionality), their nested multilayered structure composing a sentence, and the concept of "zero-sign ji" are all emphasized. Yamamoto's concepts of 〈subjectivity〉, 〈objectivity〉, and 〈blank〉 can each be understood as inheriting and abstracting this Tokieda-esque framework.</p>
+<p>Yoshimoto Takaaki is read by Yamamoto not only as political thinker and poet but as a theoretical resource on 〈figure〉 and 〈belief〉. Yoshimoto's development of Tokieda's 〈ji〉 and 〈shi〉 into 〈self-expression〉 and 〈referential expression〉, his positioning of prosody as "the root of referentiality," the concept of 〈kyoyu〉 (virtual trope), and the 〈world gaze〉 developed in his urban theory <em>High Image-Ron</em> (reformulated by Yamamoto as 〈the gaze from death〉) are all directly involved in Yamamoto's concept formation.</p>
+<p>Ecological psychology was decisively shaped by Sasaki Masato's mediation of J. J. Gibson's theory of perception into Japanese art, design, and body theory. Sasaki treated perception as a problem of environmental exploration and action, understanding the world as a multi-layered "layout." Yamamoto's concept of 〈layout〉 derives from here. Further, the argument presented by Hirakura Kei in <em>Godard-teki Hōhō</em> (The Godardian Method) and elsewhere — that "through exposure to an artwork, the very sensory organization of the body can change" — supported Yamamoto's orientation of treating expression not as adaptation to an environment but as the design of a new environment = atelier.</p>
+<h4>Supplementary Intellectual Threads</h4>
+<p>Paul de Man's theory of prosopopoeia is an important foothold for the formation of the 〈figure〉 concept. The argument in "Autobiography as De-facement" — that any text can have an autobiographical structure — was presented in the <a href="https://inunosenakaza.stores.jp/items/5c1d99341444482501948d82" target="_blank" rel="noopener">Ōe essay</a> and then fully developed in <a href="https://ekrits.jp/2018/12/2914/" target="_blank" rel="noopener">"Seisaku-teki Kūkan to Gengo"</a>. The chain of references from Yasukawa Nao's lyric poetry theory to de Man and then to Bruno Clément's <em>La Voix verticale</em> supports the recognition that 〈figure〉 is a force that provokes voice in the body.</p>
+<p>Eduardo Viveiros de Castro's perspectivism (multinaturalism) resonates deeply with the concept of 〈being myself〉. In "Conversation 5" (2017) Viveiros' text was directly quoted as the plurality and mutual inclusion of 〈being myself〉 were discussed. This conversation was also the occasion on which the theoretical difference between Yamamoto and Suzuki Ippei was most clearly articulated.</p>
+<p>Walter Benjamin, Nicholas of Cusa, and David Deutsch all greatly influenced Yamamoto's early intellectual formation and are discussed in detail in the notes to the Ōe essay and in "Conversation 1." Benjamin's theory of the redemption of the past, Cusa's "you must become your own," and Deutsch's many-worlds interpretation are directly involved in the formation of the concept of 〈renewed distances〉.</p>
+</details>
+</details>
+<hr>
+<details id="s23">
+<summary>Major Essays</summary>
+<p>Below, we introduce the essays particularly important to the formation of Yamamoto's theory, in order of publication. Each can be read independently, but they carry over concepts and problems from one another, forming a single theoretical system as a whole.</p>
+<details class="h3d" id="s24">
+<summary class="h3s">&quot;Aratana Kyori — Ōe Kenzaburō ni okeru Seisaku to Shikō&quot; (Renewed Distances: Making and Thinking in Ōe Kenzaburō)</summary>
+<div class="meta">First published: <a href="https://inunosenakaza.stores.jp/items/5c1d99341444482501948d82" target="_blank" rel="noopener"><em>Inunosenakaza</em> Issue 1</a> (2015). Later collected in <a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Aratana Kyori</em></a> (Filmart, 2024).</div>
+<p>For Yamamoto, Ōe Kenzaburō is not merely an important writer but a foundational apparatus for thinking about what kind of producer he himself could be. <strong>This <a href="https://inunosenakaza.stores.jp/items/5c1d99341444482501948d82" target="_blank" rel="noopener">Ōe essay</a> already contains the cluster of problems at the core of all Yamamoto's subsequent work.</strong> The essay's notes discuss in detail the influences of thinkers including Benjamin, Cusa, de Man, and Deutsch (see "Theoretical Foundations" in the Theoretical Map for content).</p>
+<div class="brk"></div><p>The essay begins with the declaration that novels are expression "made from mere kilobytes of material" yet relate to life and the universe in a fundamental way, and proceeds to an analysis of Ōe's 〈pseudo-I-novel〉 method. In Ōe's production process, memory and fiction intermingle and the self is rewritten each time. Yamamoto reads in this the doubleness of what it means for the production of novels to be thought — to be thought as an act, and to handle thought as material for production.</p>
+<h4>〈The Novel of Film〉 and 〈Mori no Fushigi〉</h4>
+<p>Next, using Ōe's original concept of 〈the novel of film〉 as a guide, the essay discusses how, although novels possess neither vision nor hearing, an "excessively" vivid vision is generated fictionarily within the thinking body that reads and writes. In the "great vertigo" scene of <em>Suishi</em> (Death by Water), a poem carved on a round stone seen by the narrator is materially repeated on the page in ink, establishing an experience in which the narrator's self and the reader's self "see the same object." This is attributed not to visual resemblance but to the reflexivity of 〈the self〉, triggered by language pointing at and provoking the body on this side of the text.</p>
+<p>The concept of 〈Mori no Fushigi〉 (Forest Mystery), recurrent in Ōe's work, is then organized under three properties: ① a recording medium from the universe that changes form and color in response to language; ② the totality of all souls when they were once many yet one (reincarnation through the force of 〈nostalgia〉); ③ a description of a disabled child's music (utterly different timbres that are yet "truly the same"). The blank of "being myself" is positioned at the heart of this 〈Mori no Fushigi〉.</p>
+<h4>〈Style〉 and 〈Dramatic Education〉</h4>
+<p>Ōe's distinctive concept of 〈style〉 is also examined. That the language itself communicates what kind of person the writer is, beyond what is written — this is 〈style〉 for Ōe, and Yamamoto, noting its affinity with the linguistic views of cognitive linguistics and ecological psychology, reinterprets it as the function by which a text causes the body on this side to retroactively construct the 〈self + environment〉 that produced it.</p>
+<p>The latter half discusses 〈dramatic education〉 and 〈defamiliarization〉. Two kinds of linguistic error — making words that point to concrete objects understood abstractly, and making words that should not point to concrete objects understood concretely — operate at the clause and sentence level and take shape as 〈style〉, i.e., 〈voice〉, involving the body. The problem of poetic quotation and translation is also connected here. That the reading subject of the translator emerges in the space toward which two different things — original and translation — travel together, and that this process foregrounded is used as prime material for novel production, is identified as the core of Ōe's method.</p>
+<h4>〈The Odd Couple〉 and Mis-seeing</h4>
+<p>The technique of 〈the odd couple〉 is also analyzed. Ōe's method of generating new narrative from the slippage between similar characters functions as integrative person-combination at the layer of 〈dramatic education〉. From there, the essay argues that what is aimed at is not only the coupling of persons (the logic of imitative magic) but the coupling of persons and things (the logic of contagious magic) — that is, the generation of non-human narration. The father's "mis-seeing" — confusing 森々 and 淼々 and recognizing a new 〈style〉 in the confusion — is positioned as the culmination of this technique.</p>
+<h4>〈The New Man〉 and Posthumous Education</h4>
+<p>In the essay's conclusion, the problem of 〈the new man〉 is developed. The novelist cannot fully immerse in the "child"-like parallel-distributed thinking, but by carrying a technique that converts the misrecognitive force of "being myself" into communality, can embed the possibility of posthumous reincarnation in the novel's production process, sustaining the world's continuation. Ōe's 〈pseudo-I-novel〉 is concluded to have been a technique not of negating the metaphorical circuit but of accelerating it to the verge of collapse, thereby converting the autobiographical structure itself into material for production.</p>
+<p>As Yamamoto himself states that the Ōbayashi essay "was written with a feeling like a sequel to the Ōe essay," the problems treated here — 〈dramatic education〉, 〈defamiliarization〉, 〈voice〉, 〈the odd couple〉, 〈the novel of film〉, mis-seeing, translation, posthumous education and 〈the new man〉 — are directly inherited by the <a href="https://inunosenakaza.com/craZZZyfishstudio/theory/obayashi" target="_blank" rel="noopener">Ōbayashi essay</a>, the <a href="https://note.com/inunosenakaza/n/n8dda3f1c6768" target="_blank" rel="noopener">horror essay</a>, the atelier essays, and the theory of acting.</p>
+<h4>"Zetsubō to Moderu" (Despair and Models) — Ōe as 〈Atelier〉</h4>
+<p><a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">"Zetsubō to Moderu"</a> (Despair and Models: A Personal Sentiment and the Atelier in <em>Bungaku Nōto</em>), published in <em>Eureka</em> special issue on Ōe (July 2023), rereads Ōe through the 〈atelier〉 concept.</p>
+<p>Starting from bone-searching in Ōkuma-machi, Fukushima, and the witnessing of "despair" in Ōe's final-period lecture, and under the recognition that <strong>"a novel cannot change the world. But it can happen that a self transformed by writing a novel relates to the world in a way not possible before,"</strong> Ōe's <em>Bungaku Nōto</em> (Literary Notes) is re-read in five compressed sections (① chaos and freedom, ② the concrete, experience, the totality, ③ characters as ateliers, ④ rewriting, ⑤ sharing). "Hand-making" Ōe Kenzaburō "as material for a novelist to be installed in myself" — the method of using Ōe as 〈atelier〉 — is presented as a method for taking on Ōe's "despair."</p>
+</details>
+<details class="h3d" id="s25">
+<summary class="h3s">&quot;Sei ni totte Gengo Hyōgen to wa Nani ka&quot; (What Is Linguistic Expression to Life? — Hōsaka Kazushi and the Literalism of This Side of the Surface)</summary>
+<div class="meta">Collected in <em>Aratana Kyori</em>. Originally published as the booklet <a href="https://inunosenakaza.stores.jp/items/654ede2f2a81740025c81eb1" target="_blank" rel="noopener"><em>Layout... Part 0: Sei ni totte Gengo Hyōgen to wa Nani ka</em></a> (Inunosenakaza, 2023).</div>
+<p>The question of why one chooses literature and linguistic expression is squarely treated. Yamamoto first organizes the historical shifts in the reception of texts in three stages: "literalism of depth" (reading texts under the integration of a worldview, theme, or presumed author), "literalism of the surface" (represented by Deleuze and Hasumi Shigehiko, attending to the fine movements of the textual surface), and "literalism of the life on this side" (represented by Hōsaka Kazushi, squarely looking at the relationship between text and the life on this side).</p>
+<p>Hōsaka positioned the novel not as one more entertainment product competing with film and television, but as competing with ways of spending leisure time such as walking and gardening; he questioned management by plot and emphasized propelling each day's writing as far as possible. Yamamoto, strongly aided by this stance, nonetheless sees the danger that the Hōsaka-esque position may, by emphasizing the life on this side, end up as a mere reflection of "the writer as they are" and converge with the consumption of personality under post-Fordism. A third position is pursued: using linguistic expression as "an experimental ground for collaboratively reconfiguring life," rejecting both reading a work as "the writer's reflection" and reading it solely as "movements within the text."</p>
+<h4>Expression as "Discovery" and Rewriting</h4>
+<p>The methodological core presented in this essay is the attitude of describing and operating monistically under the rubric of "discovering expression (for self and others)" — a level more fundamental than either writing or reading, making or receiving. Each time one faces a text, one cannot help finding expression fictionarily tied to the lives of self and others. That one takes the alteration of text to be the same as the alteration of life — it is in the mode of this misrecognition that the irreplaceability of linguistic expression lies. Not a single improvisation (and through it, a reflection of the self onto expression) but something that enables one to speak of multiple improvisations layered together is required; the problem-system of rewriting as a compounding of improvisations is thereby prepared (see "Improvisation and Rewriting" in the Theoretical Map).</p>
+<h4>Hirakura Kei's 〈Figure〉 and Yamamoto's 〈Figure〉</h4>
+<div class="brk"></div><p>The essay also touches on the relation between Hirakura Kei's concept of 〈figure〉 and Yamamoto's own 〈figure〉. What Hirakura extracted as "figure" was the event in which, through exposure to an artwork, the very sensory organization of the body can change; Yamamoto's 〈figure〉, while inheriting this Hirakura-esque argument, is more specifically formalized as the tendency/quality constituting the interior of 〈subjectivity〉 in the field of linguistic expression. That both use the word <em>figure</em> indicates a shared problem-sphere of action on the body.</p>
+<div class="brk"></div><p>This essay demonstrates that Yamamoto's theory begins not as "literary theory" alone but as a practical self-inquiry — "why practice linguistic expression at all?" — and records, in the most plainly written form, the concerns behind concepts such as 〈subjectivity〉, 〈objectivity〉, 〈layout〉, and 〈atelier〉.</p>
+</details>
+<details class="h3d" id="s26">
+<summary class="h3s">&quot;Seisaku-teki Kūkan to Gengo&quot; (Productive Space and Language: Toward the Design of a Community Woven by &quot;There I Am Over There&quot;)</summary>
+<div class="meta">Collected in <em>Aratana Kyori</em>. First published in <a href="https://ekrits.jp/2018/12/2914/" target="_blank" rel="noopener"><em>Écrits</em></a> (2018). Based on a talk for the publication of Kozuma Sekai's <em>Seisaku e</em> (Toward Production).</div>
+<p>One of the longest single essays in Yamamoto's books, it resets and expands the problems of linguistic expression from the side of art, architecture, and perception theory.</p>
+<p>The essay takes Kozuma's <em>Seisaku e</em> as its starting point, noting that while the argument stakes much on language, its concrete connection to the techniques of linguistic expression remains unclear. From here, a four-part discussion unfolds: Part 1 "Non-personal Space" retraces Miyakawa Jun's work within the 1960s Japanese art controversies; Part 2 "Lyric Subject and 〈Figure〉" goes through Yasukawa Nao's lyric poetry theory, de Man's "Autobiography as De-facement," and Clément's prosopopoeia theory; Part 3 "Further toward Mimesis" traces Arakawa's work from Duchamp's lineage; and the conclusion "Toward the Design of a Community Woven by 'There I Am Over There'" offers poetry as 〈instruction〉 for forcing the body to insert and exchange multiple incompatible selves.</p>
+<div class="brk"></div><p>Yamamoto concludes that Arakawa is important to his thought because he provided a path for thinking of art as a technique for redesigning body and environment.</p>
+<p>The concept of 〈blank〉 derives from Arakawa + Gins' 〈blank〉. This problem is also treated in the essay <a href="https://www.art-c.keio.ac.jp/news/archives/correspondence-poems/" target="_blank" rel="noopener"><em>Shiteki Atesaki kara Kōtsūmō Sono Mono no Chōkoku e</em></a> (From Private Addressee to a Sculpture of the Traffic Network Itself, Keiō Art Center, 2025) and in <a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Obuje to Watashi, Shomotsu to Atelier</em></a> (Object and Self, Book and Atelier), also in <em>Aratana Kyori</em>.</p>
+</details>
+<details class="h3d" id="s27">
+<summary class="h3s">&quot;Nikki to Jūryoku&quot; (Diary and Gravity)</summary>
+<p><a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Aratana Kyori</em></a>.</p>
+<p>Departing from Hiroshige's woodblock print "Tagoto no Tsuki" (Moon at Each Paddy) — a composition in which multiple moons are reflected in the surfaces of terraced paddies, optically impossible from a single eye — the essay draws a single line through diary, sketching from life, linguistic expression, architecture, and immortality. Language is conceived as "a device that brings about the compounding of environments"; Arakawa's architectural disruption of bodily balance is used as a clue for defining free will not as a soul isolated from the environment but as a compounding of contradictory environments. Immortality is what is obtained when a cycle of communal succession of trial and error, aimed at better compounding of environments, grants communality to itself through its results and begins trial and error anew.</p>
+</details>
+<details class="h3d" id="s28">
+<summary class="h3s">&quot;Shukan-sei no Ugomeki to Sono Yado&quot; (The Stirring of Subjectivity and Its Dwelling)</summary>
+<div class="meta"><a href="https://inunosenakaza.stores.jp/items/654edeaa6a8b0d218bc27b87" target="_blank" rel="noopener">Inunosenakaza, 2023</a>. Based on the 2018 lecture.</div>
+<p><strong>The keystone in which problems long felt by Yamamoto were for the first time formalized in theoretical language.</strong> From cognitive linguistics (Langacker), through Tokieda's language-process theory, Yoshimoto's theory and prosody, Sugaya's "zero-sign ji," to de Man's prosopopoeia — concepts are combined to examine how a text causes "the self" and "environment" to be constructed behind it. Starting from haiku, the analysis expands to tanka, to poetry, and then to prose, redefining linguistic expression from the ground up. <strong>All of Yamamoto's other work stands on the problems set out here.</strong></p>
+<p>The essay also includes the full development of this theory as applied to contemporary haiku practice. Six sequences by six poets are close-read, tracing how the "cut" in haiku pushes the expressive subject outside the linguistic surface and causes 〈objectification〉. The two "routes" shown in the conclusion — the flow from 〈objectification〉 within the text to the mutation of the body on this side, and the flow from the recording/decomposition of this-side bodily sensation to the transformation of the layout of verses — anticipate the later paired concepts of 〈atelier〉 and 〈acting〉.</p>
+</details>
+<details class="h3d" id="s29">
+<summary class="h3s">&quot;Shukan-sei to Bussei no Gonin-teki Kankei&quot; (The Misrecognitive Relation of Subjectivity and Objectivity)</summary>
+<div class="meta">Workshop presentation <a href="https://www.dropbox.com/scl/fi/06v396di1pxfa64m3fqqf/.pdf?rlkey=10myyimo02gvge6uzk9xxco0d&e=2&st=q0zpjpbr&dl=0" target="_blank" rel="noopener">slides</a> (2019).</div>
+<p>Where <em>Shukan-sei no Ugomeki to Sono Yado</em> established the definitions, this presentation squarely treats 〈belief〉 — the misrecognitive relation between the concepts — marking the next stage of the theory. The first half, starting from Yoshimoto's text, reformulates 〈self-expression〉 and 〈referential expression〉 as the 〈subjectivity〉/〈objectivity〉 pair and formalizes their misrecognitive relation as 〈belief〉. The second half extends the discussion to dance and bodily movement, and the possibility that the theory of linguistic expression can reach as far as the body's movement — including dance and acting — is preliminarily opened here.</p>
+</details>
+<details class="h3d" id="s30">
+<summary class="h3s">&quot;Tada no Shi ga Motarasu Gunsei Shita 〈Kishimi〉&quot; (The Clustered 〈Creaking〉 Brought About by Mere Death — Making and Thinking in Ōbayashi Nobuhiko)</summary>
+<div class="meta"><em>Eureka</em> special issue on Ōbayashi (September 2020). (<a href="https://inunosenakaza.com/craZZZyfishstudio/theory/obayashi" target="_blank" rel="noopener">Full text</a>)</div>
+<p>Yamamoto explicitly applies to Ōbayashi the same procedure he applied to Ōe. With the posthumous film <em>Labyrinth of Cinema</em> at its center, 〈war〉 is read not as a specific historical event but as a recurring structure/curse, and the act of an 〈actor playing a role〉 is identified as the means of escape. The precise examination of the crossing of 〈one actor, multiple roles〉 and 〈multiple actors, one role〉 is the core of the essay. Through this double structure, what Yamamoto extracts is the double 〈discovery〉 between actor and audience, and the misrecognitive relation that arises there. <strong>The later concept of 〈acting〉 is excavated here almost to its core.</strong></p>
+</details>
+<details class="h3d" id="s31">
+<summary class="h3s">&quot;Shi no Tōeisha (Projector) ni yoru Kokka to Shi&quot; (The Nation and Death by the Projector of Death)</summary>
+<div class="meta"><em>Eureka</em> special issue on J-Horror (September 2022). (<a href="https://note.com/inunosenakaza/n/n8dda3f1c6768" target="_blank" rel="noopener">Full text</a>)</div>
+<p>Treats horror as an experimental ground where 〈subjectivity〉, 〈objectivity〉, and 〈belief〉 become visible in extreme form. The newly presented concept is 〈projector〉. Ghosts are redefined as <strong>"effects that arise when a body tries to self-referentially describe the infrastructure that makes life life."</strong> The core argument traces how individual projection connects to the hierarchical structure of social/institutional law. The world becomes <strong>"a noisy spirit-nation = theatrical space in which laws compete behind every expression to update their ranking."</strong> The problem-systems of 〈projector〉, 〈spirit-nation〉, and 〈the malfunction of belief〉 have since pervaded Yamamoto's work broadly.</p>
+</details>
+<details class="h3d" id="s32">
+<summary class="h3s">&quot;Sei no Atelier&quot; (The Atelier of Life — Taking Expression at Face Value, Using It, and Making a Room of One&#x27;s Own)</summary>
+<div class="meta"><a href="https://www.dropbox.com/scl/fi/pyybza8kupzkpk2mzmnx9/_20231104.pdf?rlkey=wc8r4fpufuesf8cip2wfp66fn&e=1&dl=0" target="_blank" rel="noopener">Lecture</a> at Tōkō Gakuen (2023). Shortened version in <a href="https://sayusha.com/books/-/isbn978-4-86528-405-5" target="_blank" rel="noopener"><em>Kōkōsei to Kangaeru Jinsei no Shinro Sōdan</em></a> (Sayūsha, 2024).</div>
+<div class="meta">A lecture for high-school students on "the meaning of engaging in art and literature now." Yamamoto himself calls it "one of the clearest and most important things in my work." It defines language as "a very powerful, distinctive, and handy device, custom-made to act on the human body," premises that art and literature have already achieved much historically and that AI's rapid development has considerably diminished the social significance of new human engagement, and then asks how "my life of engaging in art and literature" can be reappraised. The crucial point is the argument that to be selfish — to make one's own atelier — can itself be altruistic.</div>
+</details>
+<details class="h3d" id="s33">
+<summary class="h3s">&quot;Sekai no Haaku wa Ikani Shite Kokka ni Ni, Rekishi ni Ni, Biman Suru Mirai to Shite Watashi wo Kijutsu Shi-tsukusu no ka&quot; (How Does the Grasp of the World Come to Resemble the Nation, Resemble History, and Describe Me Exhaustively as a Suffusing Future)</summary>
+<div class="meta">Collected in Ōtsuka Eiji ed., <a href="https://www.suiseisha.net/blog/2023/12/14/%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B%E6%9F%B3%E7%94%B0%E5%9C%8B%E7%94%B7/" target="_blank" rel="noopener"><em>Setsuzoku Suru Yanagita Kunio</em></a> (Connecting Yanagita Kunio).</div>
+<p>An essay that expands the problems of 〈subjectivity〉, 〈objectivity〉, and 〈belief〉 to the scale of nation and history, with an especially wide range. The starting point is the 〈déjà vu〉 pervading Yoshimoto Takaaki's "Yanagita Kunio-ron" — the sensation of "Ah, this feeling has been there before" that one cannot help having upon encountering Yanagita's style. Yamamoto rereads this as a form of 〈belief〉. The essay traces Yoshimoto's reading of Yanagita in close detail, treating the "traveler's style," natural law, the "tragedy" brought by natural law, and a comparison with Miyazawa Kenji. Finally, the discussion is connected to the present situation of personality consumption, SNS, and AI, asking for a means of describing and constituting the relation between individual and community from within the experience of "the self."</p>
+</details>
+</details>
+<hr>
+<details id="s34">
+<summary>Diary and &quot;the Diary-Notebook&quot; — Redefining Fiction</summary>
+<p>Yamamoto's theory unfolds also through a questioning of the relation between "diary" and "fiction." In the foreword to <a href="https://inunosenakaza.stores.jp/items/691d9aa0928f9714111d6d06" target="_blank" rel="noopener"><em>Fiction to Nikkichō</em></a>, Yamamoto writes: "If novels, criticism, essays, and even film, music, performance, and art are all the accumulated result of expression made by some body at some place on some day, then we might as well say that everything is made of diary." However, Yamamoto does not connect this diary-nature to a celebration of "the truth" or "experiential authority."</p>
+<details class="h3d" id="s35">
+<summary class="h3s">Two Propositions — Diary, Fiction, Archive</summary>
+<p>The title essay "Fiction to Nikkichō" presents two propositions for redefining linguistic expression in general from diary. <strong>First, "a text is a layout of multiple diaries, each bearing a date behind it."</strong> An essay or novel written over many days is a stratum built by "slamming diaries together"; each sentence was improvisationally written at a certain time on a certain date. <strong>Second, "diary is a form of expression that can make a single day's self take on multiple days' selves."</strong> As a memory from ten years ago is recalled by some event and written under today's date, one lives the present bearing multiple dates.</p>
+<p>Where these two are overlaid, fiction is positioned as the work of layout — in what order, at what speed, with what blanks, toward what addressee, taken on by what body — of diary-like fragments and experiences; archive follows as the technique of transporting the method of fiction's layout to other bodies. These three are on a single line.</p>
+</details>
+<details class="h3d" id="s36">
+<summary class="h3s">The Diary Boom and the Significance of Fiction</summary>
+<p>"Sasayaka na 'Hontōrashisa' kara Kono Sekai Sono Mono no 'Fiction' e" (From Modest "Verisimilitude" to "Fiction" of This World Itself), in <em>Fiction to Nikkichō</em>, points out that the diary boom and the horror boom both originated around 2020, both rely on found-footage form, and circulate as content that provokes affect and thought under the collusion of "verisimilitude" and "personality." Yamamoto argues that the human-historical significance of what has been called fiction lies not in the value of "stories" per se but in the imagination and ethics toward the world, based on distance, that could be invented in the process of production and reception.</p>
+</details>
+<details class="h3d" id="s37">
+<summary class="h3s">&quot;Conversation 9&quot; — Diary-Notebook, Correspondence, Improvisatory Performance</summary>
+<p>Under this perspective, in "Conversation 9" (2024), Yamamoto speaks more frankly about his own stance on "diary." <strong>For Yamamoto, diary is grasped not as a form for reviewing a day date by date, but as an activity of making, while writing, the "diary-notebook" itself — the space into which days are thrown and from which the way the world appears changes.</strong> That "diary-notebook" was what novels and poems were. Yamamoto also states that he has placed more trust in "correspondence" — reporting and conveying to a specific someone — than in diary addressed to no one.</p>
+</details>
+</details>
+<hr>
+<details id="s38">
+<summary>Law and Performance — Thinking through 〈Role〉</summary>
+<p>In Yamamoto's work, "performance" is not confined to one genre of the performing arts but is grasped as a problem pertaining to expression in general. Below, we first organize the theoretical skeleton, then follow the concrete practices of performance criticism, dramaturgical theory, and direction, and finally confirm how these are continuous with fiction and poetry.</p>
+<details class="h3d" id="s39">
+<summary class="h3s">Theoretical Background — Four Keywords</summary>
+<p>What runs through Yamamoto's theory of performance is the relation among four concepts: <strong>〈law〉, 〈role〉, 〈projection〉, and 〈free will〉.</strong></p>
+<p><strong>〈Law〉</strong> refers to the lawfulness (= 〈objectivity〉) that makes expression what it is: script, natural law, nation, custom, physical law — forces that determine action from outside the body. <strong>〈Role〉</strong> is what the body cannot help taking on under that law — a certain shape or position of conduct. <strong>〈Projection〉</strong> is the process by which law performs itself through individual bodies, developed in detail in the <a href="https://note.com/inunosenakaza/n/n8dda3f1c6768" target="_blank" rel="noopener">horror essay</a>. And <strong>〈free will〉</strong> is positioned as something measured only after the fact, within the distance between law and body.</p>
+</details>
+<details class="h3d" id="s40">
+<summary class="h3s">Performance Criticism in Practice</summary>
+<p>Yamamoto's performance criticism is a recently begun body of work, readable as experimental records of how the problems of 〈law〉, 〈role〉, 〈projection〉, and 〈free will〉 organized in the Theoretical Map can be tested in a place where actual bodies are present.</p>
+<h4>〈Role〉 and the Body's Taking-On</h4>
+<p>The question most repeatedly foregrounded in the performance criticism is how the body takes on 〈role〉. The criticism of Mino Arata's <em>Soto ga Shizuka ni Naru Made</em> in <a href="https://note.com/inunosenakaza/n/nd4087ae78855" target="_blank" rel="noopener">"Anata wo Enjiru Basho"</a> (The Place Where You Are Performed) extracts the minimum component of 〈role〉 from the contradictory self-designation "I am sleeping," demonstrating that 〈role〉 is not an object of immersion but a gap that produces "here" and "elsewhere," and that the passage between them constitutes 〈theater〉.</p>
+<p>In the criticism of 7-do's <em>Tokyo Notes</em>, the "quantitative gap" generated when a single body processes a script designed for multiple persons is noted: the vast "numbers" constituting society and era are compressed into the very limited human body/spacetime of a work, and then further compressed into a single body. Here the problems of 〈one actor, multiple roles〉 and 〈multiple actors, one role〉 from the <a href="https://inunosenakaza.com/craZZZyfishstudio/theory/obayashi" target="_blank" rel="noopener">Ōbayashi essay</a> are found in more urgent form in individual performances.</p>
+<h4>Projection and Law — Film, Exhibition, Comedy</h4>
+<p>The problem of 〈projection〉 developed in the <a href="https://note.com/inunosenakaza/n/n8dda3f1c6768" target="_blank" rel="noopener">horror essay</a> — the process by which law performs itself through the body — is also a central theme in performance criticism. In the review of Ōiwa Yūsuke's exhibition "Nation and Poison," the preemption (Projection) of the viewer's action by law is examined. In the dialogue with Suzuki Ippei, "On 'Performance: The Cleaning Woman' and the Reconstruction of Cinema," the coexistence of projected image on a scrim and live body onstage in a work by Shichiri Kei is analyzed: the situation arises in which the scrim image seems to possess resolute free will while the body onstage merely follows. The relation of law = script, performance, and free will is considered in conjunction with the theme of a choreographic relation between mother and daughter.</p>
+<p>Yamamoto's interest in performance extends beyond the performing arts in the narrow sense. In a trialogue published in <em>Eureka</em> (December 2024, special issue on comedy and criticism), Yamamoto discusses manzai comedy as a performing art that realizes, in extremely condensed form, the alternation between the bare body and fictional roles, and points out that comedy functions as an origin for inventing and circulating a kind of social 〈role〉.</p>
+<h4>Sharing of Method and Recording of the Production Process</h4>
+<p>Another characteristic of the performance criticism is that criticism and the recording of the production process are integrated. In the review of Ishikawa Asahi ≠ Harasaori's "(Shitsutsu)" showing, months of involvement as a co-researcher in rehearsals are recorded and offered as part of the showing itself. In "Life Work" (Nagamekurashitsu) and the <em>P wave</em> review (Harasaori), the body is depicted not as a closed subject but as an open field that explores information within the environment.</p>
+<p>In the serial essays on Suzuki Ippei's poetry collection (in <a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Aratana Kyori</em></a>), the act of reading text itself is treated as performance, and methods for "performing" a poetry collection are pursued.</p>
+</details>
+<details class="h3d" id="s41">
+<summary class="h3s">Dramaturgical Theory — A Question of Form</summary>
+<p>Yamamoto's thinking on performance includes a question about the form of "script" itself. The presentation <a href="https://www.dropbox.com/scl/fi/avu30e13ix9p7ezv2ato9/_-20211024.pdf?rlkey=bzjsdu5z3vwrgm2ikpk511o89&st=4uiedcgg&dl=0" target="_blank" rel="noopener">"Gikyoku ni totte Watashi / Kūkan / Nikutai / Yu to wa Nani ka?"</a> (2021) discusses the political and cultural motifs behind the play "Uraraka to Ruporutāju" alongside Yamamoto's conception of "script" as a form.</p>
+<p>The presentation at the "Datsugoku Keikaku (Kari)" mini-symposium (Dr. Holiday Laboratory), taking Bioy Casares's novel <em>Plan de evasión</em> as its starting point, examines more radically what a script is: the tension between "law = script" and "the body's free will" possesses the same problem-structure as the 〈creaking〉 between 〈form〉 and 〈expression〉 treated in the Ōbayashi and horror essays.</p>
+</details>
+<details class="h3d" id="s42">
+<summary class="h3s">Direction in Practice</summary>
+<p>In the program notes for <a href="https://inunosenakaza.com/performance/20251114" target="_blank" rel="noopener"><em>Impossible Gag: Reading Performance</em></a> (text by Matsuhara Shuntarō, 2025), Yamamoto's own approach to direction is directly recorded. He takes as his starting point the recognition that human action is not born of "free will" or "heart" but is something compelled by "situations" descending from outside. The form of a reading performance — holding text in hand and reading aloud — physically makes visible, without hiding it inside the body, the "strange distance" between words and body.</p>
+<p>Yamamoto states here that what is called "free will" or "heart" can be rephrased as "a bundle of situations that are not here in the surroundings but are somewhere," and that inner heart and situation are continuous as "the cause that made the body utter those words in that way."</p>
+<h4><em>Onshitsu / Onsil</em></h4>
+<p>In 2026, Yamamoto also directed <a href="https://inunosenakaza.com/performance/20260117" target="_blank" rel="noopener"><em>Onshitsu / Onsil</em></a> (text by Mino Arata), expanding his involvement in the performing arts.</p>
+</details>
+<details class="h3d" id="s43">
+<summary class="h3s">&quot;Writing as Acting&quot; — Bridging Fiction and Performance</summary>
+<p>In <a href="https://inunosenakaza.stores.jp/items/691d9aa0928f9714111d6d06" target="_blank" rel="noopener"><em>Fiction to Nikkichō</em></a>, the recognition that to take something on and write is improvisatory performance is articulated (see "Diary and the Diary-Notebook"). The essay "Kaku to Iu Engi" (Writing as Acting — Yamashita Sumito's <em>FICTION</em>) in <a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Aratana Kyori</em></a> is the most comprehensive development of this bridge between theater and fiction. Yamamoto positions Yamashita's novel as "a theory of theater written in novel form," identifying at its base the inescapability of "seeing-as." The conclusion — that the totality realized through the passage between theater and fiction, body and language, living and dead, plurality and solitude is "theater" — presents Yamamoto's theories of performance and fiction as inseparable.</p>
+</details>
+<details class="h3d" id="s44">
+<summary class="h3s">The Law of Layout Spanning Poetry, Fiction, and Performance</summary>
+<p>The lecture <a href="https://www.dropbox.com/scl/fi/5wly51uee7i854zw3zhry/AAF-_20240310.pdf?rlkey=m6jxl16lwhbttvta2g5jn4j3h&dl=0" target="_blank" rel="noopener">"Kotoba wo Atsukau to wa Nani wo Atsukau Koto na no ka?"</a> (AAF Dramaturgical Prize program, 2024) comprehensively traces Inunosenakaza's practice and argument under the keyword "direction," and positions the perspective of "the law of layout" as spanning poetry, fiction, and design.</p>
+<p><strong>Poetry</strong> is a form that condenses the collision of 〈subjectivity〉 and 〈objectivity〉 in a small quantity, generating 〈figure〉. <strong>Fiction</strong> uses far longer time and quantity to compound couplings of 〈environment〉 and 〈person〉 and erect an 〈atelier〉. <strong>Performance</strong> is the site where these are taken on in actual body, space, and time, and the body is tested in the distance between 〈role〉 and 〈law〉.</p>
+<div class="brk"></div><p>Under this continuity, Yamamoto's theory operates as a theory of poetry, of fiction, and of performance alike. Line breaks in poetry, chapter structure in fiction, the placement of actors on stage, and the design of a page are all treated on the same theoretical plane as problems of the layout of 〈subjectivity〉 and 〈objectivity〉.</p>
+</details>
+</details>
+<hr>
+<details id="s45">
+<summary>Fiction in Practice — The Closedness of &quot;the Self&quot; and Community</summary>
+<p>As seen in "Starting Point" and "The Inescapability of 'Being Myself,'" Yamamoto's activity began with the practice of writing fiction. Major works include <a href="https://puboo.jp/book/73331" target="_blank" rel="noopener">"Puffer Train"</a> (2012–13), the SF-horror novel <a href="https://anchor-and-void.inunosenakaza.com/" target="_blank" rel="noopener">"Mudan to Tsuchi"</a> (Without Permission and Soil; in Higuchi Kyōsuke ed., <em>Ijō Ronbun</em>, Hayakawa Shobō, 2021), and its sequel <a href="https://anchor-and-void.inunosenakaza.com/" target="_blank" rel="noopener">"Chikashisa to Kū"</a> (Anchor and Void; serializing in <em>SF Magazine</em>). These novels treat diverse themes — memory and the resurrection of the dead, war and mobilization, AI and diary, the emperor system and memorialization, eating disorders and gender, animals (other species) and self-identity — but in every case the closedness of the self that expresses and its (inevitable) connection to the community of society are addressed.</p>
+<details class="h3d" id="s46">
+<summary class="h3s">&quot;Puffer Train&quot;</summary>
+<p><a href="https://puboo.jp/book/73331" target="_blank" rel="noopener">"Puffer Train"</a> (2012–13) is Yamamoto's early representative work, a long novel. An abridged version of the first half of the work (from Chapter 1 through section 4 of Chapter 2, with line breaks removed as much as possible) was a final-round nominee for the 56th Gunzō New Writers' Prize. Novelist Machiya Ryōhei has called Yamamoto "an author representative of the 2010s" and described the early fiction including "Puffer Train" as "one of the finest works written in the 2010s."</p>
+<p>The novel comprises three parts plus an epilogue, and opens with epigraphs on many-worlds from Nicholas of Cusa and Henry More. In Part 1, "trial and error," the daily life of a certain "I" (watashi) is narrated. A habit of deleting all sent e-mails; a life with her mother; hearing from her friend Haru that "Kazuna, who was supposed to be dead, is walking through town." Yet "I" exchanged e-mails with Kazuna just days before and has no awareness of his death. With the narrator's identity left ambiguous, anomalies emerge: at a café where she meets Kazuna, a woman with three arms walks past the window; a sensation of tens of thousands of shrimp churning in the stomach arises. Eventually "I" boards a train running in the opposite direction from school, disembarks at a station once visited for a childhood trip to the sea, wanders unable to reach the ocean, and begins working at a fast-food restaurant in the back of a zoo. The viewpoint gradually slips toward Kazuna.</p>
+<p>Part 2, "tank mate," shifts to Kazuna's perspective: part-time work dismantling ships, cohabitation with "I" (Shirai), the relationship between colleague Tsuzuki and his lover Marubatsu-san who died in an accident. That the dead can be "regenerated" in this world is revealed when Haru, faced with his great-grandfather's death, is asked, "Why don't you bring him back?" Shrimp overflow from Shirai's body; she is told that the "data discrepancy" is too great for regeneration, and she moves toward death. The scene in which Haru's great-grandfather's diary — university notebooks recording only dates, weather, and what happened — is read is one of the earliest sites where Yamamoto's problem-consciousness about "diary" appears.</p>
+<p>Part 3, "phylogenetic tree," expands the viewpoint at a stroke to a cosmic and geological scale: mineral crystal structures, planetary cycles, the evolution from dinosaurs to birds, surveillance satellites, battlefields, the lives of dogs and cats — all without interruption. It is suggested that the characters' names were used as fragments of DNA chains in computation, and the SF setting — the town itself being a large-scale computational system that re-edits the memory logs of the dead — surfaces. The epilogue, "shrimp," returns to the details of intimate life: a rabbit and soccer ball drawn in a notebook, the orbit of surveillance satellites, a bombed city and a barber's dog, all arrayed in the same style. The SF setting never comes to the fore as explanation; it is embedded in the novel as the very texture of a daily life in which the boundary between the dead and the living remains ambiguous.</p>
+</details>
+<details class="h3d" id="s47">
+<summary class="h3s">The Serial Work &quot;Figural Void&quot;</summary>
+<p>"Mudan to Tsuchi" and "Chikashisa to Kū" constitute the serial work <em>Figural Void</em>. "Mudan to Tsuchi" is episode zero; "Chikashisa to Kū" is Part 2. Spanning more than a century from the early 1900s to 2037, the works are set across Asian countries including Japan, the Philippines, and China. Settings and synopses are published, under the author's supervision, on a <a href="https://anchor-and-void.inunosenakaza.com" target="_blank" rel="noopener">dedicated page</a>.</p>
+</details>
+<details class="h3d" id="s48">
+<summary class="h3s">&quot;Mudan to Tsuchi&quot; (Without Permission and Soil)</summary>
+<div class="meta">The entire work is composed as an academic presentation and its Q&A. The presentation centers on the analysis of a VR horror game of unknown developer, <em>WPS (Without Permission and Soil)</em>, and unfolds in four parts. The poem-fragments appearing at the end of WPS are demonstrated to be anagrams of tanka by Emperor Meiji and Emperor Shōwa; WPS is positioned as a "concrete enactment = performance of the monstrous development" of the emperor system. In the Q&A, the real-life poet Suzuki Ippei appears as "Questioner 4," intentionally disturbing the boundary between fact and fiction.</div>
+</details>
+<details class="h3d" id="s49">
+<summary class="h3s">&quot;Chikashisa to Kū&quot; (Anchor and Void)</summary>
+<p>A long novel serializing in <em>SF Magazine</em>. In 2028, a nuclear weapon detonates over the Philippines (the Manila Nuclear Flash Incident); the following year, a mutant strain of coronavirus (J-Amnesia) impairs the episodic memory of approximately 30% of humanity. In the Japan of 2037, the personality-assistance AI 〈Nōkā〉 has been adopted by over 95% of adults. Through the figures of Futakami Yuzuha, Maria K. Bautista, and Nerobe Mayo, tensions between individual memory and national memory, intimate relationships and institutional violence, art-making and political movement emerge. Each installment adopts a different form.</p>
+<p>"Enro Shigai" confronted the inescapability of "being myself"; in these novels, that condition is re-situated under different social and technological conditions each time. Poetry activity also continues through Inunosenakaza publications and related outlets.</p>
+</details>
+</details>
+<hr>
+<details id="s50">
+<summary>Publishing, Editing, and Design as Theoretical Practice</summary>
+<p>In Yamamoto's work, <strong>editing, bookmaking, and design are not "peripheral duties" but the practice of theory itself.</strong> In <a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Aratana Kyori</em></a>, the essay <a href="https://note.com/inunosenakaza/n/n41ba469c1179" target="_blank" rel="noopener">"Gengo Hyōgen no Un'yō ni 'Kami no Shuppanbutsu' wa Dō Yūkō ka?"</a> discusses the need to be simultaneously involved in the "inside" (production and theory formation) and the "outside" (publishing and producing) of expression.</p>
+<details class="h3d" id="s51">
+<summary class="h3s">Mino Arata Essay — Photography, Editing, Collaborative Production</summary>
+<p>The Mino Arata essay "Yori Engeki-teki katsu Kasetsu-teki na 〈Butai〉 de." (On a More Theatrical and Provisional 〈Stage〉), in <a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Aratana Kyori</em></a>, discusses the collaborative project <a href="https://inunosenakaza.com/book/kubakara" target="_blank" rel="noopener"><em>Kuba e / Kuba kara</em></a> between Inunosenakaza and Mino Arata, treating the Okinawan landscape, (non-)positionality and expression, and the process of editing and producing a photobook.</p>
+</details>
+<details class="h3d" id="s52">
+<summary class="h3s">Tōmatsu Shōmei Essay — Photography and Page Layout</summary>
+<p><a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">The Tōmatsu essay</a> (also in <em>Aratana Kyori</em>), written as a supplement to the Mino essay, squarely treats the relation of photography and page layout as a problem of 〈subjectivity〉 and 〈objectivity〉. The "group photographs" of Tōmatsu Shōmei are contrasted with the "combination photographs" of Natori Yōnosuke.</p>
+</details>
+<details class="h3d" id="s53">
+<summary class="h3s">Toda Tsutomu Essay — Design and Linguistic Expression</summary>
+<p>The longest and densest essay in Yamamoto's design theory, treating Toda Tsutomu's concept of 〈giba〉 (pseudo-site), the intersection of design and linguistic expression, and the problems of 〈noise〉, 〈shadow〉, and 〈surface area〉.</p>
+</details>
+<details class="h3d" id="s54">
+<summary class="h3s">Inunosenakaza Book Series and &quot;Ninshiki no Tsumiki&quot; (Building Blocks of Cognition)</summary>
+<p>Design practice in the Inunosenakaza book series is also significant. The design of Suzuki Ippei's <a href="https://inunosenakaza.stores.jp/items/5c1d9c2ec2fc28029dbed7fe" target="_blank" rel="noopener"><em>Hai to Ie</em></a> and Kōno Satoko's <a href="https://inunosenakaza.stores.jp/items/5bdc4c1f5496ff580f5b0003" target="_blank" rel="noopener"><em>Chijō de Okita Dekigoto wa Zenbu Koko kara Mite Iru</em></a> (Inunosenakaza, 2017), both by <a href="https://inunosenakaza.com/member" target="_blank" rel="noopener">Yamamoto Hiroki + h</a>, put into practice the design of the arrangement of text on the page as the layout of 〈self + environment〉.</p>
+<p>The contemporary poetry anthology <a href="https://bijutsutecho.com/magazine/series/s10/16929" target="_blank" rel="noopener">"Ninshiki no Tsumiki"</a> (<em>Bijutsu Techō</em> March 2018) is a work that puts layout theory into practice as the editing of a poetry anthology.</p>
+</details>
+<details class="h3d" id="s55">
+<summary class="h3s">The Design of *Yōsei DIZZY*</summary>
+<p>The most advanced example of this design theory in practice is the design of Nomura Kiwao's <a href="http://www.shichosha.co.jp/newrelease/item_2756.html" target="_blank" rel="noopener"><em>Yōsei DIZZY</em></a> (Fairy DIZZY, Shichōsha, 2023). The book presents the same text in entirely different layouts: Book 1 (intensely manipulated design) and Book 2 (plain design), published as two volumes. Yamamoto references the lineage of visual poetry from Mallarmé through Shinkoku Seiichi to Toda Tsutomu, and presents the recognition that the design of a text is not mere flow-in but the act of standing in the 〈atelier〉 that "performs" the text's poetry.</p>
+</details>
+</details>
+<hr>
+<details id="s56">
+<summary>Recent Expansion and Current Position</summary>
+<p>In Yamamoto's recent work, problems from the early period are being pushed to a larger scale. Especially foregrounded are the theory of diary, thinking about AI, and through these the question of the significance of "a human being making expression."</p>
+<details class="h3d" id="s57">
+<summary class="h3s">&quot;Gūzen to Jinbutsu no Ichi&quot; (Chance and the Position of Persons) — AI and Poetry</summary>
+<p>"Gūzen to Jinbutsu no Ichi" (<em>Gendaishi Techō</em> July 2025) is an essay on AI and poetry. Yamamoto first defines poetry as "the activity of producing and analyzing devices that cause the human body to newly discover and perform higher-order lawfulness encompassing the existing lawfulness of the world," then describes the practice of designing a system in which multiple objects are simulated within an LLM and revise each other. The poet thereby changes from "the subject who lines up characters one by one" to "a design collaborator and measuring instrument for generating new lawfulness."</p>
+</details>
+<details class="h3d" id="s58">
+<summary class="h3s">&quot;Kibun&quot; (Mood) — Current Position</summary>
+<p>"Kibun" (<em>Eureka</em> special issue on Okazaki Kenjirō, July 2025) is a short text that most frankly records Yamamoto's current position. It begins from the recognition that art and humanity are already things that have ended. While frankly recording the "mood" that the stage at which the activity of receiving works as educational devices and leaving them for posterity will soon be reduced to zero, it closes with the line: <strong>"I want to make a new form of expression. A form in which, precisely now, we can thoroughly and goofily use up this body of ours and cheerfully ask each other all sorts of questions."</strong></p>
+</details>
+<details class="h3d" id="s59">
+<summary class="h3s">The Trilogy Plan</summary>
+<p><a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Aratana Kyori</em></a> is conceived as the first volume of a trilogy. According to Yamamoto's own description, this book examines linguistic expression from the perspective of "the self / life's layout"; the second, <em>Shi to Gunsei</em> (Death and Clustering), will examine resistance to law and free will from the perspective of "body and performance"; and the third, <em>Sei no Atelier</em> (The Atelier of Life), will develop an original theory of linguistic expression composed of concepts such as 〈subjectivity〉, 〈figure〉, and 〈objectivity〉, threading through and compressing the trilogy.</p>
+</details>
+</details>
+<hr>
+<details id="s60">
+<summary class="st">Definitions (March 2026 Version) — Full Text</summary>
+<div class="sb">
+<p>Below is the full text of Yamamoto Hiroki's "Definitions" (as of March 2026).</p>
+<details class="h3d" id="s61">
+<summary class="h3s">1　Subjectivity and Objectivity</summary>
+<p class="def">● All that can be perceived and thought possesses the tendency/quality of causing the construction of the 〈person〉 who made it as 〈expression〉, together with the surrounding 〈environment〉. A certain coherence/unit of this is called 〈subjectivity〉.</p>
+<p class="def">● 〈Environment〉 is constituted by 〈material〉 — what the 〈person〉 perceived and operated on (i.e. 〈expressed〉) — and 〈intentionality〉, the tendency/quality of expansion from 〈person〉 toward 〈material〉. In the case of linguistic expression, 〈material〉 is strongly indicated by nouns and similar <em>shi</em>, and 〈intentionality〉 by auxiliary verbs and similar <em>ji</em>.</p>
+<p class="def">● The lawfulness that determined and enabled 〈expression〉 is called 〈objectivity〉.</p>
+<p class="def">● When 〈intentionality〉 is applied to 〈objectivity〉 and spatial-temporal extension is found within the 〈material〉 positioned there, it becomes 〈environment〉. 〈Environment〉 requires the support of 〈person〉 and therefore always arises simultaneously with 〈person〉, inseparably.</p>
+<p class="def">● 〈Expression〉 exists as a process discovered after the fact, at the point when 〈person〉 is deemed to have shown 〈intentionality〉 toward 〈objectivity〉 and, expanding itself, to have made 〈objectivity〉 into 〈material〉. In other words, whenever 〈material〉 is perceived, a 〈person〉 who expanded itself through 〈intentionality〉 (who 〈expressed〉 it) is always found.</p>
+<p class="def">● A text is a construction in which 〈subjectivity〉 — the force that compels retroactive reading into the active gesture of expression — and 〈objectivity〉 — the force that compelled expression passively — are laid out in multilayered overlap.</p>
+</details>
+<details class="h3d" id="s62">
+<summary class="h3s">2　Layout and Blank</summary>
+<p class="def">● When 〈expression〉 closes into one, what arises outside it is called 〈blank〉.</p>
+<p class="def">● 〈Expression〉 closed by 〈blank〉 is further enclosed by another 〈expression〉, forming a multilayered structure, or placed alongside in contention. The lawfulness of the layout of 〈expression〉 thus born is 〈objectivity〉.</p>
+<p class="def">● When a singular layout of 〈expression〉 is established by 〈objectivity〉, and 〈expression〉 is half-forcibly discovered in 〈blank〉, the event in which 〈subjectivity〉 remains undifferentiated and refuses to settle into a single determination — the stirring of 〈subjectivity〉 — occurs.</p>
+</details>
+<details class="h3d" id="s63">
+<summary class="h3s">3　Figure and Belief</summary>
+<p class="def">● The tendency/quality constituting the interior of 〈subjectivity〉 is called 〈figure〉. The stirring of 〈subjectivity〉 is a strong example.</p>
+<p class="def">● 〈Figure〉 is the content of 〈subjectivity〉 as a unit corresponding to the coupling of a single 〈person〉 and 〈environment〉, yet it functions beyond that scale (in linguistic expression, the span whose primary guideline is the "sentence" based on "grammar") as something more fundamental and extensive. It is rather at the point of such deviation from 〈subjectivity〉 that it is most often recognized and named as something distinctive (for instance, between expressions, or between expression and 〈the self〉 — the former is called metonymy, the latter metaphor). There, 〈figure〉 is first of all conscious of and objectified as the extremely abstract distance it brings about, more than as a tendency/quality.</p>
+<p class="def">● The misrecognitive relation of 〈subjectivity〉 and 〈objectivity〉 is called 〈belief〉.</p>
+<p class="def">● When the construction of 〈person〉 and 〈environment〉 is about to occur through 〈subjectivity〉, the agent of that construction is called 〈projector〉.</p>
+<p class="def">● What the 〈projector〉 supplies, projects, and uses to make the object into expression is 〈figure〉. 〈Belief〉 exists as what constrains that 〈figure〉.</p>
+</details>
+<details class="h3d" id="s64">
+<summary class="h3s">4　Self and Object</summary>
+<p class="def">● The site whose erection is demanded outside 〈expression〉 in order to bundle and exchange incompatible 〈persons〉 is called 〈self (subject)〉. 〈The self〉 generates singular combinations of 〈person〉 and 〈environment〉. Here too it is 〈figure〉 that functions to bond 〈persons〉 and 〈environments〉.</p>
+<p class="def">● When different 〈subjectivities〉 enter a state of mutual inclusion — that is, at the far end of the collision and complication of different 〈beliefs〉 — the state in which 〈person〉 is pushed out to the side of 〈material〉 and established is called 〈object〉.</p>
+<p class="def">● 〈Material〉 that has undergone 〈objectification〉 functions as a dwelling that compresses, packs, and transports 〈subjectivity〉. As a result, it comes to feel as though it points to the 〈person〉 itself.</p>
+<p class="def">● When 〈objectification〉 occurs in multiple layers, the distance between words on the page and the distance in spacetime coordinates both come to be felt as representing the switching (of 〈expression〉) between 〈objects〉. This is also related to the fact that 〈objectivity〉 as the law of layout generates the gaps = 〈blanks〉 between 〈objects〉.</p>
+<p class="def">● As a site that embraces and exchanges the distances and 〈blanks〉 woven by multiple 〈objects〉, 〈the self〉 is constructed after the fact on the page. Linguistic expression exists as the art of constituting and inventing such a 〈self〉.</p>
+</details>
+<details class="h3d" id="s65">
+<summary class="h3s">5　Atelier and Distance</summary>
+<p class="def">● Layout causes 〈object〉 and 〈self〉 to travel back and forth, opening 〈environment〉 in multiple layers. The trajectory drawn by 〈environment〉 is called 〈atelier〉.</p>
+<p class="def">● 〈Atelier〉 is at once a trigger for generating 〈belief〉, a technique for transforming 〈belief〉, and a high-level unit for analyzing 〈belief〉 — transmissible and shareable across different 〈projectors〉 and different spacetimes.</p>
+<p class="def">● A community that has arisen through 〈atelier〉 is rediscovered within expression as a 〈figure〉 of robust construction. At that point, the 〈figure〉, as something that brings about a singular gap between expression and 〈the self〉, is also called 〈renewed distances〉.</p>
+</details>
+</div>
+</details>
+    </div>
+  </div>
+  <div class="f">Last updated: 2026.03</div>
+</div>
+<script>
+document.querySelectorAll("a[href^='#']").forEach(function(a){
+  a.addEventListener("click",function(e){
+    e.preventDefault();
+    var id=a.getAttribute("href").slice(1),t=document.getElementById(id);
+    if(!t)return;
+    if(t.tagName==="DETAILS") t.open=true;
+    var el=t;
+    while(el=el.parentElement){if(el.tagName==="DETAILS")el.open=true;}
+    setTimeout(function(){t.scrollIntoView({behavior:"smooth",block:"start"})},60);
+  });
+});
+var first=document.querySelector("details");
+if(first) first.open=true;
+if(window.innerWidth>760){
+  document.querySelectorAll("details.h3d").forEach(function(d){d.open=true;});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>山本浩貴｜制作と思考の見取り図</title>
+<meta name="description" content="山本浩貴（いぬのせなか座）の制作と思考の全体像を把握するための見取り図。A map of the making and thinking of Hiroki Yamamoto (Inunosenakaza).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>:root {
+  --bg: #f5f3ef;
+  --card: #fff;
+  --fg: #1a1a1a;
+  --text: #2a2a2a;
+  --text-light: #555;
+  --text-muted: #888;
+  --border: #d8d3c8;
+  --border-light: #e8e4dc;
+  --green: #2d6a2e;
+  --green-light: #e8f0e8;
+  --green-hover: #1a4a1a;
+  --accent2: #7a6b52;
+  --warm-bg: #f9f7f3;
+  --warm-bg2: #f3f0ea;
+  --shadow: 0 1px 3px rgba(0,0,0,.06);
+  --serif: "Shippori Mincho", "Hiragino Mincho ProN", "YuMincho", serif;
+  --sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  font-size: 15px; line-height: 1.88; color: var(--text);
+  background: var(--bg); -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ── */
+.W {
+  max-width: 1020px; margin: 0 auto; background: var(--card);
+  box-shadow: 0 0 50px rgba(0,0,0,.04); min-height: 100vh;
+}
+.H {
+  padding: 48px 40px 28px;
+  border-bottom: 2px solid var(--green);
+  background: linear-gradient(180deg, #fff 0%, var(--warm-bg) 100%);
+}
+.H h1 {
+  font-family: var(--serif);
+  font-size: 36px; font-weight: 700; line-height: 1.3;
+  letter-spacing: .05em; color: var(--fg); margin-bottom: 6px;
+}
+.H .sub {
+  font-family: var(--serif);
+  font-size: 13.5px; color: var(--accent2); letter-spacing: .08em;
+  font-style: italic;
+}
+.B { display: flex; }
+
+/* ── Sidebar ── */
+.N {
+  width: 210px; min-width: 210px;
+  padding: 24px 14px 60px 18px;
+  border-right: 1px solid var(--border-light);
+  position: sticky; top: 0; align-self: flex-start;
+  max-height: 100vh; overflow-y: auto;
+  background: var(--warm-bg); font-size: 12.5px;
+}
+.nt {
+  font-family: var(--serif);
+  font-weight: 600; font-size: 12px; color: var(--green);
+  letter-spacing: .1em;
+  margin-bottom: 12px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.N a {
+  display: block; color: var(--text-light); text-decoration: none;
+  padding: 3px 8px; line-height: 1.5; border-radius: 3px; transition: all .12s;
+}
+.N a:hover { color: var(--green); background: rgba(0,0,0,.03); }
+.N .s { padding-left: 16px; font-size: 11px; color: var(--text-muted); }
+.N .s:hover { color: var(--green); }
+.N::-webkit-scrollbar { width: 3px; }
+.N::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* ── Content ── */
+.C { flex: 1; padding: 20px 40px 80px; min-width: 0; }
+.C p { margin: 14px 0; text-align: justify; }
+.C strong { font-weight: 700; color: var(--fg); }
+
+/* ── Links ── */
+a { color: var(--green); text-decoration: none; }
+a:visited { color: #3a7a3a; }
+a:hover { color: var(--green-hover); }
+.C a {
+  text-decoration: underline;
+  text-decoration-color: rgba(45,106,46,.25);
+  text-underline-offset: 2px;
+  transition: text-decoration-color .15s;
+}
+.C a:hover { text-decoration-color: var(--green); }
+
+/* ── Sections (details/summary) ── */
+details { margin: 0; }
+details > summary {
+  font-family: var(--serif);
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: var(--fg);
+  cursor: pointer;
+  padding: .6em 0;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: .5em;
+  border-bottom: 1px solid transparent;
+  transition: color .12s, border-color .12s;
+  user-select: none;
+  letter-spacing: .02em;
+  line-height: 1.35;
+}
+details > summary:hover { color: var(--green); }
+details[open] > summary {
+  color: var(--green);
+  border-bottom-color: var(--border-light);
+  margin-bottom: .15em;
+}
+details > summary::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform .2s ease;
+  flex-shrink: 0;
+  position: relative; top: -1px;
+  opacity: .45;
+}
+details[open] > summary::before { transform: rotate(45deg); top: -2px; }
+details > summary::-webkit-details-marker { display: none; }
+details > summary.st { font-size: 1.12rem; }
+details[open] > :not(summary) { animation: fadeIn .2s ease; }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+/* ── h3 collapsible ── */
+details.h3d { margin: .3em 0 0; }
+details.h3d > summary.h3s {
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--fg);
+  cursor: pointer;
+  padding: .45em 0 .35em;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: .45em;
+  border-bottom: none;
+  transition: color .12s;
+  user-select: none;
+  letter-spacing: .01em;
+  line-height: 1.35;
+}
+details.h3d > summary.h3s:hover { color: var(--green); }
+details.h3d[open] > summary.h3s {
+  color: var(--green);
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: .1em;
+}
+details.h3d > summary.h3s::before {
+  content: '';
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform .2s ease;
+  flex-shrink: 0;
+  position: relative; top: -1px;
+  opacity: .35;
+}
+details.h3d[open] > summary.h3s::before { transform: rotate(45deg); top: -2px; }
+details.h3d > summary.h3s::-webkit-details-marker { display: none; }
+
+/* ── h3 ── */
+.C h3 {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin: 1.8em 0 .5em;
+  padding: 0 0 .3em;
+  border-bottom: 1px solid var(--border-light);
+  line-height: 1.4;
+  letter-spacing: .01em;
+}
+.C summary + h3, .C h3:first-child, .C summary + details.h3d { margin-top: .6em; }
+
+/* ── h4 ── */
+.C h4 {
+  font-family: var(--sans);
+  font-size: .87rem; font-weight: 700;
+  color: var(--accent2);
+  margin: 1.4em 0 .25em;
+  letter-spacing: .03em;
+}
+
+/* ── Blockquote ── */
+.bq {
+  margin: 16px 0; padding: 14px 20px;
+  background: var(--warm-bg);
+  border-left: 3px solid var(--border);
+  border-radius: 0 4px 4px 0;
+  font-size: 14px; line-height: 1.85;
+  color: var(--text-light);
+}
+
+/* ── Infobox ── */
+.ib {
+  float: right; width: 270px; margin: 0 0 20px 24px;
+  background: var(--warm-bg); border: 1px solid var(--border);
+  border-radius: 6px; font-size: 12.5px; line-height: 1.55;
+  box-shadow: var(--shadow); overflow: hidden;
+}
+.ib-title {
+  text-align: center; padding: 12px 14px;
+  font-family: var(--serif);
+  font-size: 17px; font-weight: 700; color: #fff;
+  background: var(--green); letter-spacing: .04em;
+}
+.ib table { width: 100%; border-collapse: collapse; }
+.ib th {
+  background: var(--green-light); color: var(--green);
+  font-size: 10px; font-weight: 600; letter-spacing: .06em;
+  padding: 5px 10px; text-align: left;
+  border-bottom: 1px solid var(--border-light);
+}
+.ib td {
+  padding: 5px 10px; border-bottom: 1px solid var(--border-light); vertical-align: top;
+}
+.ib td:first-child { color: var(--text-muted); width: 64px; white-space: nowrap; font-size: 11px; }
+.ib-concepts { font-size: 11.5px; line-height: 1.6; color: var(--text-light); }
+
+/* ── Definitions ── */
+.sb { overflow: hidden; }
+.df {
+  margin: 8px 0; padding: 10px 16px 10px 2.2em; text-indent: -1.6em;
+  font-size: 14px; line-height: 1.85;
+  background: var(--warm-bg2); border-radius: 3px;
+  border-left: 2px solid var(--border);
+}
+
+/* ── hr ── */
+.C hr {
+  border: none; height: 1px; margin: 2em 0;
+  background: linear-gradient(90deg, transparent 0%, var(--border) 15%, var(--border) 85%, transparent 100%);
+}
+
+/* ── Meta (biblio) ── */
+.C .meta {
+  font-size: 12.5px; color: var(--text-muted); line-height: 1.6;
+  margin: -4px 0 12px; padding: 5px 12px;
+  background: var(--warm-bg2); border-radius: 3px;
+  border-left: 2px solid var(--border-light);
+}
+
+/* ── Visual break ── */
+.C .brk { margin-top: 1.4em; }
+
+/* ── Work titles ── */
+.wt { font-weight: 600; color: var(--fg); }
+a .wt {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: rgba(45,106,46,.3);
+  text-underline-offset: 2px;
+}
+a:hover .wt { color: var(--green); }
+
+/* ── Footer ── */
+.f {
+  text-align: right; padding: 16px 40px;
+  border-top: 1px solid var(--border-light);
+  font-size: 11px; color: var(--text-muted); background: var(--warm-bg);
+}
+
+/* ── Mobile ── */
+@media (max-width: 760px) {
+  .B { display: block; }
+  .N { display: none; }
+  .H { padding: 24px 18px 18px; }
+  .H h1 { font-size: 24px; }
+  .C { padding: 14px 18px 48px; }
+  .C h3 { font-size: .98rem; margin-top: 1.3em; }
+  details > summary { font-size: 1.1rem; }
+  details.h3d > summary.h3s { font-size: .98rem; }
+  .f { padding: 12px 18px; }
+  .ib { float: none; width: 100%; margin: 0 0 14px; font-size: 11px; line-height: 1.4; }
+  .ib-title { font-size: 13px !important; padding: 6px 8px !important; letter-spacing: .02em; }
+  .ib table, .ib th, .ib td { font-size: 10px !important; line-height: 1.35 !important; }
+  .ib th { padding: 3px 6px !important; }
+  .ib td { padding: 3px 6px !important; }
+  .ib td:first-child { width: 44px !important; font-size: 9px !important; }
+  .ib-concepts { font-size: 9px !important; line-height: 1.3 !important; }
+}
+
+.lang-toggle { display: flex; gap: 4px; margin-left: auto; }
+.lang-toggle button, .lang-toggle .lang-link {
+  font-family: var(--sans); font-size: 11px; font-weight: 600;
+  padding: 3px 10px; border: 1px solid var(--border); border-radius: 3px;
+  cursor: pointer; transition: all .15s; letter-spacing: .03em;
+  text-decoration: none; display: inline-block; line-height: 1.4;
+}
+.lang-toggle button.active {
+  background: var(--green); color: #fff; border-color: var(--green);
+  cursor: default;
+}
+.lang-toggle .lang-link {
+  background: transparent; color: var(--fg-dim);
+}
+.lang-toggle .lang-link:hover { border-color: var(--green); color: var(--green); }
+</style>
+</head>
+<body>
+<div class="W">
+  <div class="H">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <h1>山本浩貴｜制作と思考の見取り図</h1>
+      <div class="lang-toggle">
+        <button class="active">JP</button>
+        <a href="yamamoto_hiroki_wiki_en.html" class="lang-link">EN</a>
+      </div>
+    </div>
+    <div class="sub">Hiroki Yamamoto ─ A Map of Making and Thinking</div>
+  </div>
+  <div class="B">
+    <nav class="N">
+<div class="nt">目次</div>
+<a href="#s1">プロフィール</a>
+<a href="#s2">軌跡と展開史</a>
+<a class="s" href="#s3">出発点――リテラリズムと〈主観性〉の体感</a>
+<a class="s" href="#s4">「私が私であること」からの逃れ難さ――初期作品</a>
+<a class="s" href="#s5">「手前側の生」――「奥」でも「表層」でもなく</a>
+<a class="s" href="#s6">いぬのせなか座――立ち上げの背景</a>
+<a class="s" href="#s7">いぬのせなか座――共同制作の方法</a>
+<a class="s" href="#s8">初期の核――保坂和志、大江健三郎、荒川修作</a>
+<a class="s" href="#s9">即興と書き直し――制作の方法としての反復</a>
+<a class="s" href="#s10">主観性・物性・レイアウト――理論の定式化</a>
+<a class="s" href="#s11">〈アトリエ〉と〈演技〉――近年の中心概念</a>
+<a class="s" href="#s12">後世・教育・アーカイブ</a>
+<a href="#s13">理論地図</a>
+<a class="s" href="#s14">言語表現と肉体――理論の起点</a>
+<a class="s" href="#s15">〈私＋環境〉</a>
+<a class="s" href="#s16">〈主観性〉と〈物性〉</a>
+<a class="s" href="#s17">〈喩〉と〈信〉</a>
+<a class="s" href="#s18">〈レイアウト〉</a>
+<a class="s" href="#s19">〈アトリエ〉</a>
+<a class="s" href="#s20">即興と書き直し</a>
+<a class="s" href="#s21">〈新たな距離〉と〈死からの視線〉</a>
+<a class="s" href="#s22">理論的基盤</a>
+<a href="#s23">主要論考</a>
+<a class="s" href="#s24">「新たな距離――大江健三郎における制作と思考」</a>
+<a class="s" href="#s25">「生にとって言語表現とはなにか――保坂和志と表層の手前側のリテラリズム」</a>
+<a class="s" href="#s26">「制作的空間と言語――『あそこに私がいる』で編まれた共同体の設計にむけて」</a>
+<a class="s" href="#s27">「日記と重力」</a>
+<a class="s" href="#s28">「主観性の蠢きとその宿」</a>
+<a class="s" href="#s29">「主観性と物性の誤認的関係（テクストの衝突、運動の構え）」</a>
+<a class="s" href="#s30">「ただの死がもたらす群生した〈軋み〉――大林宣彦における制作と思考」</a>
+<a class="s" href="#s31">「死の投影者（projector）による国家と死」</a>
+<a class="s" href="#s32">「生のアトリエ――表現を真に受け、使い、自分だけの部屋を作る」</a>
+<a class="s" href="#s33">「世界の把握はいかにして国家に似、歴史に似、瀰漫する未来として私を記述し尽くすのか」</a>
+<a href="#s34">日記と「日記帳」――フィクションの再定義</a>
+<a class="s" href="#s35">二つの命題――日記・フィクション・アーカイブ</a>
+<a class="s" href="#s36">日記ブームとフィクションの意義</a>
+<a class="s" href="#s37">「座談会9」――日記帳・書簡・即興的上演</a>
+<a href="#s38">法と上演――〈役〉をめぐる思考</a>
+<a class="s" href="#s39">理論的背景――四つの鍵語</a>
+<a class="s" href="#s40">上演批評の実践</a>
+<a class="s" href="#s41">戯曲論――形式への問い</a>
+<a class="s" href="#s42">演出の実践</a>
+<a class="s" href="#s43">「書くという演技」――小説と上演の架橋</a>
+<a class="s" href="#s44">詩・小説・上演を貫くレイアウトの法則</a>
+<a href="#s45">小説の実作――「私」の閉鎖性と共同性</a>
+<a class="s" href="#s46">「Puffer Train」</a>
+<a class="s" href="#s47">連作「フィギュラル・ヴォイド」</a>
+<a class="s" href="#s48">「無断と土」</a>
+<a class="s" href="#s49">「親さと空」</a>
+<a href="#s50">出版・編集・デザインという理論実践</a>
+<a class="s" href="#s51">三野新論――写真・編集・共同制作</a>
+<a class="s" href="#s52">東松照明論――写真と紙面レイアウト</a>
+<a class="s" href="#s53">戸田ツトム論――デザインと言語表現の接続</a>
+<a class="s" href="#s54">いぬのせなか座叢書と「認識の積み木」</a>
+<a class="s" href="#s55">『妖精DIZZY』のデザイン</a>
+<a href="#s56">近年の拡張と現在地</a>
+<a class="s" href="#s57">「偶然と人物の位置」――AIと詩</a>
+<a class="s" href="#s58">「気分」――現在地</a>
+<a class="s" href="#s59">三部作の構想</a>
+<a href="#s60">定義群（2026年3月版）全文</a>
+<a class="s" href="#s61">1　主観性と物性</a>
+<a class="s" href="#s62">2　レイアウトと空白</a>
+<a class="s" href="#s63">3　喩と信</a>
+<a class="s" href="#s64">4　私と物</a>
+<a class="s" href="#s65">5　アトリエと距離</a>
+    </nav>
+    <div class="C">
+<p><a href="https://inunosenakaza.com/member/hiroki_yamamoto" target="_blank" rel="noopener">山本浩貴</a>（やまもと・ひろき、1992年–）は、日本の小説家・批評家・デザイナー・編集者・演出家。出版版元／制作集団<a href="https://inunosenakaza.com/" target="_blank" rel="noopener">「いぬのせなか座」</a>を主宰し、小説、批評、詩歌、上演、書籍デザイン、編集・出版を横断して活動している。</p>
+<p><strong>その仕事を貫く主題は、言語表現を単なる意味伝達ではなく、肉体・環境・共同体の関係を組み替える技術として捉え直すことにある。</strong>小説、批評、上演、デザイン、出版はそれぞれ別個の活動ではなく、「表現とは何か」「私が私であるとはどういうことか」「テクストはいかにして他者や後続の世代へ受け渡されるのか」という一連の問いに対する、異なる実践形式としてある。</p>
+<p>本ページは、そうした山本の制作と思考の全体像を見渡すための見取り図である。前半ではその展開史と理論の骨格を整理し、後半では主要論考と実践領域をたどる。巻末には、2026年3月時点の定義群全文を付した。</p>
+<details id="s1">
+<summary>プロフィール</summary>
+<p>1992年愛媛県生まれ。10代より小説を執筆し、第111回「文學界新人賞」三次選考通過、第53回「群像新人文学賞」小説部門最終候補などの評価を受ける。2015年に制作集団・出版版元「いぬのせなか座」を立ち上げ、小説や詩歌の執筆に加え、批評、編集、デザイン、出版、上演制作へと活動領域を広げた。</p>
+<p>2016年から2022年まで文芸誌『早稲田文学』編集部に在籍し、複数の特集を企画・編集。2022年には『クイック・ジャパン』（159–167号）のアートディレクションを担当。現在も、自身の著作・実作に加え、他者の作品の編集・デザイン・上演化を含むかたちで、表現の制作と流通の両面に関わっている。</p>
+<p>主な批評に<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">『新たな距離――言語表現を酷使する（ための）レイアウト』</a>（フィルムアート社、2024年）、<a href="https://inunosenakaza.stores.jp/items/691d9aa0928f9714111d6d06" target="_blank" rel="noopener">『フィクションと日記帳――私らは何を書き、読み、引き継いでいるのか？』</a>（いぬのせなか座、2025年）。主な小説に<a href="https://puboo.jp/book/73331" target="_blank" rel="noopener">「Puffer Train」</a>（2012–13年）、<a href="https://anchor-and-void.inunosenakaza.com/" target="_blank" rel="noopener">「無断と土」</a>（樋口恭介編『異常論文』早川書房、2021年）、<a href="https://anchor-and-void.inunosenakaza.com/" target="_blank" rel="noopener">「親さと空」</a>（『SFマガジン』連載中）。デザインに吉田恭大<a href="https://inunosenakaza.stores.jp/items/5c5e243dc2fc286e0a802e36" target="_blank" rel="noopener">『光と私語』</a>（<a href="https://inunosenakaza.stores.jp/items/5c5e243dc2fc286e0a802e36" target="_blank" rel="noopener">いぬのせなか座、2019年</a>)、『クイック・ジャパン』159–167号。企画・編集に<a href="https://www.chikumashobo.co.jp/special/wasebun_horror/" target="_blank" rel="noopener">『早稲田文学特集＝ホラーのリアリティ』</a>（筑摩書房、2021年）。演出に<a href="https://inunosenakaza.com/performance/20251114" target="_blank" rel="noopener">『インポッシブル・ギャグ リーディング公演』</a>（松原俊太郎作、2025年）、<a href="https://inunosenakaza.com/performance/20260117" target="_blank" rel="noopener">『温室／オンシル』</a>（三野新作、2026年）。</p>
+</details>
+<hr>
+<details id="s2">
+<summary>軌跡と展開史</summary>
+<p>山本の仕事は、小説、批評、上演、デザイン、出版と多方面に広がっている。しかしその中心には一貫して、「言葉が肉体や環境にどのように働きかけるか」「『私が私であること』はいかにして揺らぎ、他者や共同体へ接続されるか」という問いがある。以下では、その問いが初期小説、いぬのせなか座の共同制作、主要な参照対象との格闘、概念装置の整備を通じてどのように展開してきたかをたどる。</p>
+<details class="h3d" id="s3">
+<summary class="h3s">出発点――リテラリズムと〈主観性〉の体感</summary>
+<p>山本の初期関心の根には、<strong>言葉が単に現実を描写するものではなく、書かれたというだけでひとつの出来事を発生させてしまう</strong>という感覚がある。十代のころの山本は、SF、ホラー、暴力的な物語に強く惹かれつつ、ル・クレジオやクロード・シモンといったテクストの激しい操作ゆえに難解とされがちな小説をも、むしろSFやホラーの延長にあるものとして読んでいた。文のなかの飛躍、断裂、時空間のねじれが、そのまま経験の形式になる。そのような強いリテラリズムが原点にある。</p>
+<p>この出発点は、のちの<a href="https://note.com/inunosenakaza/n/n8dda3f1c6768" target="_blank" rel="noopener">ホラー論</a>、日記論、フィクション論にそのままつながる。山本にとって表現は、まず意味の容器ではなく、肉体に特定の思考・感覚・仮構を発生させる出来事である。同時に、こうした初期関心は「文章における私」の問題と不可分であった。どのような文であれ、人はそこに「誰が」「どこから」「どのような環境で」それを言ったのかを感じ取ろうとする。山本はこの事態を後年〈主観性〉と名づけることになるが、出発点ではまだ概念化されていないにせよ、すでに強く体感されていた。</p>
+</details>
+<details class="h3d" id="s4">
+<summary class="h3s">「私が私であること」からの逃れ難さ――初期作品</summary>
+<p>小説<a href="https://puboo.jp/book/22915" target="_blank" rel="noopener">「遠路市街」</a>（17–18歳時の作品、第111回「文學界新人賞」三次選考通過）には、のちの理論的問題の原型がもっとも生々しいかたちで現れている。街を支配する「基調音」――「途絶えることのない基調音が小さく肩越しに聞こえ、それでいて、目の前には何もない」――に回収され、「逃れようのない基盤」のもとで反復を強いられる人々。「人々は基調音に回収されて知らぬ間に自惚れ、自虐へ陥ることをおそれ、語ることはできず」という一節に凝縮されるように、<strong>法に貫かれた世界のなかで「私が私であること」から逃れられないという苦痛と、それでもなお語ろうとする（書こうとする）ことの切実さ</strong>が、作品全体を駆動している。のちに〈物性〉〈法〉と〈自由意志〉の問題として理論化されるものの、小説的な体感としての原型がここにある。</p>
+<h4>「栄養学の測定」――最初の論考</h4>
+<p>19歳の時点で書かれた<a href="https://hirokiyamamoto.hatenablog.com/entry/2013/07/23/223654" target="_blank" rel="noopener">「栄養学の測定」</a>は、山本のほとんど最初の論考にあたり、「遠路市街」で体感されていた「私が私であること」の逃れ難さを、私を支える物質的環境――栄養、食文化、肉体――の組み換えの試みとして展開したものと位置づけられる。母親から子への食文化の伝達を「歴史の伝達がなかば強制的に受け継がれていく過程」として捉え、摂食障害、カニバリズム、モナドの閉鎖性と共可能性、「わたしの身体には他者の視線が織り込まれてある」という認識、「家畜化された人間からの逸脱」の問いにまで一気に及ぶ。</p>
+<p>この私の閉鎖性とそれが社会の共同性に接続する（してしまう）事態、法＝環境による肉体の拘束と自由意志の問題、肉体を通じた歴史の伝達と教育の問題が、理論語彙の形成以前にすでに体感として書きつけられている。</p>
+<h4>初期から現在への線</h4>
+<div class="brk"></div><p>こうした初期の問題意識は、のちの大江健三郎論における〈擬似私小説〉――「私」を内面の裸の開示ではなく外部を引き受けながらなお「私」として書くための人工的な制作単位として捉え直す方法――へとつながり、さらにそこから、「私が私であること」を複数の時空間や他者の肉体を通じて並列的に処理しようとする〈アトリエ〉や〈演技〉の問題へと進んでいく。「遠路市街」の基調音からの逃れ難さ、<a href="https://hirokiyamamoto.hatenablog.com/entry/2013/07/23/223654" target="_blank" rel="noopener">「栄養学の測定」</a>の物質的環境の組み換え、<a href="https://inunosenakaza.stores.jp/items/5c1d99341444482501948d82" target="_blank" rel="noopener">大江論</a>の〈擬似私小説〉、そして演技論。いずれも「私が私であること」からの逃れ難さをどう処理するかを問うており、<strong>山本の仕事全体を貫く一本の線はここから始まっている。</strong></p>
+</details>
+<details class="h3d" id="s5">
+<summary class="h3s">「手前側の生」――「奥」でも「表層」でもなく</summary>
+<p>山本の活動を支える基底的な問題意識として、いぬのせなか座立ち上げ以前から一貫して重視されてきたのが、文章の「奥」「表層」「手前側の生」をめぐる認識である。「生にとって言語表現とはなにか――保坂和志と表層の手前側のリテラリズム」でこの問題は時代的推移と結びつけて整理され、<a href="https://inunosenakaza.stores.jp/items/691d9aa0928f9714111d6d06" target="_blank" rel="noopener">『フィクションと日記帳』</a>の表題論考でも引き続き扱われている。</p>
+<p>既存の文学的価値基準や文学史において、文章は「奥」――単一の統合に回収されるような世界観や主題、想定される作家像――によって束ねられ評価されてきた。これに対し、相互に矛盾しあい横溢する多重的な表層の操作そのものに価値を見出す「ポストモダン」的な立場が提出された。山本はそのいずれとも異なる第三の地点として、文章の<strong>「手前側」――テクストを読み書きする具体的な肉体、その肉体が日々を過ごしている環境、ささやかな生の質感</strong>――を重視する。</p>
+<h4>「手前側の生」の時代</h4>
+<p>この認識は、2010年代以降の言語表現をめぐる状況の変化とも深く関わっている。日記ブーム、当事者性の前景化、パーソナリティ消費の加速、フィクションの価値低下。山本はこれらを「手前側の生」の時代として捉え、その流れを単純に肯定も否定もせず、むしろ「手前側の生」を重視しつつもそれを人格消費やパーソナリティへの素朴な価値づけに流さないための理論と方法を模索してきた。保坂和志から受け取った「テクストを生の時間と地続きに考える」姿勢は、この模索のための足場であった。いぬのせなか座の立ち上げ以来の活動――批評、編集、デザイン、出版、上演のすべてが、この「手前側の生」をいかにして共同的かつ技術的に開いていくかという問いのもとにある。</p>
+</details>
+<details class="h3d" id="s6">
+<summary class="h3s">いぬのせなか座――立ち上げの背景</summary>
+<p>2015年5月1日に立ち上げられたいぬのせなか座は、単なる同人誌サークルでも劇団でもなかった。<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">『新たな距離』</a>の「はじめに」で山本は、立ち上げの前後に自らのなかで「転向」が生じていたことを記している。すなわち、「人を含めた生物はみな何らかの試みの継続によって死を免れうるのではないかという考えから、少なくともこの私はいつかは周囲と隔絶されたかたちで死ぬのだという考えへの転向」である。</p>
+<p>いぬのせなか座の立ち上げは「或る共通の友人の自死」を契機としていた。自身のためにではなく、死後に生きる者たちのために表現や技術を残すこと――この認識が、のちの「後世・教育・アーカイブ」の問題系の原点にあたる（後述）。</p>
+<h4>立ち上げ宣言文</h4>
+<p>立ち上げのタイミングで発表された<a href="https://inunosenakaza.com/archives/20150501" target="_blank" rel="noopener">宣言文</a>（山本浩貴+h名義）には、のちの理論の原型がすでに凝縮されたテクストである。<strong>「『私が私であること』を材料にものをつくる技術を学び、探そうとしてみる」</strong>「なるべくたくさんの私を並置して使える澱みのような場所」を保つ、「教育＝実験の場を設計する」、「一回だけの即興なんてものを信じちゃいけない。即興に利点を見いだそうとするなら、何重にも重ねた即興であるべき」。のちの〈アトリエ〉、〈レイアウト〉、〈新たな距離〉、〈物性〉、教育とアーカイブの問題系は、このテクストにその種子を持っている。</p>
+</details>
+<details class="h3d" id="s7">
+<summary class="h3s">いぬのせなか座――共同制作の方法</summary>
+<p>初期の方法として象徴的なのが、Google Drive上で長期間にわたり行なわれた座談会群である。参加者は一定期間、ドキュメントに各々の端末からアクセスし、白紙の状態からフィクショナルな発言記録を書き進めていく。他の参加者による発言を思考し応答し、並行して自らの過去の発言を書き直す。数週間かけて「存在しなかったはずの対話の記録」が立ち上がっていく過程は、あくまでばらばらに各々の閉じたテクスト＝〈アトリエ〉を各々の責任のもと立ち上げ、それらをフィクショナルな対話空間の設立を通して隣接させていくかたちでの共同執筆の実践であった。ナンバリング付きで全9回行なわれている。</p>
+<h4>出版という形式</h4>
+<p><a href="https://inunosenakaza.com/book" target="_blank" rel="noopener">いぬのせなか座</a>にとって本は、完成品の容器ではなく、個々の制作と思考の蓄積（アトリエ）を一度まとめて外へ投げ出すための形式であった。個別の作品を保ちつつ、しかしそれらが孤立しないよう、あいだに批評、対話、記録、デザイン、刊行物、上演、展示を挟みこむこと。そのような習慣づくり自体が、いぬのせなか座の仕事であった。</p>
+</details>
+<details class="h3d" id="s8">
+<summary class="h3s">初期の核――保坂和志、大江健三郎、荒川修作</summary>
+<p>山本の理論形成において、保坂和志、大江健三郎、荒川修作をめぐる仕事は特別な位置にある。</p>
+<h4>保坂和志――リテラリズムとその先</h4>
+<p>保坂和志から山本が引き受けたのは、小説を物語消費ではなく生活時間、肉体感覚、思考のしかたそのものに関わるものとして捉える視点である。<a href="https://inunosenakaza.stores.jp/items/654ede2f2a81740025c81eb1" target="_blank" rel="noopener">「生にとって言語表現とはなにか」</a>で詳しく扱われているように、保坂は小説を、映画やテレビと同じ娯楽市場の一商品ではなく、散歩や園芸のような余暇時間の使い方と競合するものとして位置づけ、プロットによる管理を疑い、一文一文をそのまま真に受ける「リテラリズム」の姿勢を実作と批評の両面で展開した。</p>
+<p>山本はこの姿勢に強く助けられつつも、保坂的立場がテクストの手前側の生を重視するあまり、ポストフォーディズム下のパーソナリティ消費と結果的に合流しうる危険を見据えている。ここから「書き手の反映」でも「テクスト内部の運動」でもない第三の立場――言語表現を「生を共同で組み換えるための実験場」として使うこと――が模索される（詳しくは「手前側の生」および保坂論の項を参照）。</p>
+<h4>大江健三郎――「私」と「死後」を背負う制作者</h4>
+<p>大江健三郎はさらに中心的な参照先である。山本にとって大江は、日本語の小説が「私」「戦後」「国家」「死者」「教育」「世界との関係」をどう背負いうるかを問い続けた作家であり、その制作プロセスを分析することは、同時に自分自身が制作者として何を背負いうるかを考えることであった。後述するように、大江論「新たな距離――大江健三郎における制作と思考」（2015年）には、山本の後の仕事全般の核にあたる問題群が詰め込まれている。</p>
+<h4>荒川修作――環境の設計と〈ブランク〉</h4>
+<p>荒川修作をめぐる仕事は、言語表現を美術、建築、知覚、共同体設計へと開くものである。荒川＋マドリン・ギンズは、所与の環境に適応するのではなく新しい環境そのものを設計し、そのなかで肉体のほうを変えること（「天命反転」）を目指した。</p>
+<p>山本が後年〈レイアウト〉や〈アトリエ〉を中心概念として押し出していくとき、その背後にはこうした荒川の志向がある。また「日記と重力」では、荒川が「私が私であること」の分析を制作と教育の核に据え、死の反転を企図していたことが、言語表現の制作論に接続されている。荒川をめぐるより具体的な議論は、後述の<a href="https://ekrits.jp/2018/12/2914/" target="_blank" rel="noopener">「制作的空間と言語」</a>で扱われる。山本の理論概念〈空白 blank〉も荒川＋ギンズの〈ブランク〉に由来するものであり、瀧口修造の〈余白〉との関係を含め、同論考の項で詳しく扱う。</p>
+</details>
+<details class="h3d" id="s9">
+<summary class="h3s">即興と書き直し――制作の方法としての反復</summary>
+<p>山本は小説執筆の初期から書き直しを制作の中核的な方法として重視していた。大江健三郎の制作プロセスの分析を通じてこの認識はさらに深まり、事後的に保坂和志論や生態心理学の知見をもとにさらに理論化されている。</p>
+<p>「生にとって言語表現とはなにか」では、保坂和志を起点にしつつ、即興をめぐる認識が整理されている。山本はそこで、人間の思考を「周辺環境とそれへの人体の偶然的反応（＝即興）を、記憶や虚構を含め多重的に、思考外部（人体・物質・テクスト等）においてシミュレートし、掛け合わせ、そこに高次のパターン（＝〈喩〉）を発見し、自らの次なる思考の制御に役立てていくプロセス」として捉えている。人は今ここでひとり思考をひたすら深めるのではなく、自身とその外部の法則性が組み合いつつ行なうシミュレートを積み上げていくなかで自身の思考を発見する。<strong>一回きりの即興を無条件に肯定するのではなく、即興の掛け合わせとしての書き直しが、この発見のプロセスを支える。</strong></p>
+<p>いぬのせなか座の立ち上げ時に行なわれた「座談会1」で語られた「こう書いたら世界がこう見えている魂をつくることができる」という考え方、および表現を（自他に）「発見する」ことのもと一元論的に記述・操作していく方法論も、同論考で紹介されている（詳しくは主要論考「生にとって言語表現とはなにか」を参照）。</p>
+<h4>環境の掛け合わせと不死</h4>
+<div class="brk"></div><p>この問題系は、生態心理学的な「環境のなかに魂がある」という考え方をさらに多重的にしていくものでもある。<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">「日記と重力」</a>（『新たな距離』所収）では、言語を「環境の掛け合わせをもたらす装置」として捉え、荒川修作の建築における体のバランスの攪乱を手がかりに、自由意志を環境から隔離された魂としてではなく矛盾する複数の環境の掛け合わせとして定義する道筋が描かれている。不死もまた、環境のよりよい掛け合わせに向けた試行錯誤の共同的な引き継ぎの循環として捉えられる（詳しくは主要論考「日記と重力」を参照）。</p>
+</details>
+<details class="h3d" id="s10">
+<summary class="h3s">主観性・物性・レイアウト――理論の定式化</summary>
+<p>2018年前後から山本の理論は、明瞭な概念装置を持つようになる。その節目となったのは、2018年に開催されたいぬのせなか座・連続講義「言語表現を酷使する（ための）レイアウト」第2回「主観性の蠢きとその宿」であり、のちにこの講義の内容が『言語表現を酷使する（ための）レイアウト――或るワークショップの記録 第1部 主観性の蠢きとその宿』（いぬのせなか座、2023年）として刊行された。〈主観性〉〈物性〉〈喩〉〈空白〉〈物〉〈私〉の定義がここで整えられ、私性、フィクション、政治性、肉体、デザイン、上演を一つの語彙で扱う枠組みが成立する（各概念の内容は「理論地図」を参照）。</p>
+<h4>〈信〉の定式化（2019年）</h4>
+<p>2019年のワークショップ「奇跡、喩、信（救い投げだす身ぶり）」では〈信〉が定式化され、議論がダンスや肉体運動にまで拡張されることで、理論の次の段階が開かれた。2026年3月時点での最新の定義は、本稿末尾に全文を掲載した「定義群」に示されている。</p>
+</details>
+<details class="h3d" id="s11">
+<summary class="h3s">〈アトリエ〉と〈演技〉――近年の中心概念</summary>
+<p>2010年代後半以降、山本の理論は〈主観性〉〈物性〉〈レイアウト〉を束ね直すかたちで、〈アトリエ〉と〈演技〉を中心に据えるようになっている。『フィクションと日記帳』の「はじめに」には次のようにある。</p>
+<blockquote class="bq">特に「アトリエ」と「演技」を理論の中心に据えるようになったことは大きい。本書所収の論で扱われた「日記帳」や「宛先」といった語は、私の近年の主たる概念である「アトリエ」を意味し、それらを用いて読み書き生きるとは、すなわち「アトリエ」の体による引き受け＝「演技」を意味する。</blockquote>
+<p><strong>〈アトリエ〉は山本自身が「自分のなかでは一番大事な概念」と述べる中心概念</strong>であり、制作を継続させる環境であると同時に、テクストから遡行的に仮構される環境の単位でもあり、教育されうる共同体設計の基礎でもある。〈演技〉はそのアトリエを肉体で引き受ける実践を指す（各概念の詳細は「理論地図」を参照）。</p>
+<p>桐光学園講演会での講演<a href="https://www.dropbox.com/scl/fi/pyybza8kupzkpk2mzmnx9/_20231104.pdf?rlkey=wc8r4fpufuesf8cip2wfp66fn&e=1&dl=0" target="_blank" rel="noopener">「生のアトリエ」</a>（2023年）は、この概念をもっとも平明に語ったテクストであり、<strong>利己的であること――自分だけのアトリエをつくること――がそのまま利他的になりうる</strong>という論点を含め、ひとりひとりの生の肯定をめぐる山本の考え方が集約されている（詳しくは主要論考「生のアトリエ」を参照）。</p>
+<h4>上演批評への展開</h4>
+<p>この概念の前景化は、山本の活動領域の変化とも連動している。近年の山本が上演批評を強く書くのは、その場でしか見えない「引き受け」の具体性があるためである。ここでの引き受けは二重であり、舞台上の肉体が「今ここではないもの」（役、法、戯曲）を引き受けることと、それを前にした観客の側が今こことは別のものを引き受けてしまうこと――その双方がひとつの上演のなかで生じる。</p>
+<h4>ワークショップ――共同的な〈アトリエ〉の起動</h4>
+<p>〈アトリエ〉の概念は、山本個人の制作論にとどまらず、複数の肉体が共同で〈アトリエ〉を起動する実践へも広がっている。</p>
+<p>ワークショップ「奇跡、喩、信（救い投げだす身ぶり）」（STspot、2019年）では、参加者各自が書いた短いテクストをシャッフルし、他者のテクストを自身のものとして引き受け、〈喩〉を立ち上げ、新たなテクストを制作するプロセスが設計されている。</p>
+<p>レクチャー＋ワークショップ<a href="https://www.dropbox.com/scl/fi/dxs38571kr8p8sbcy5t8l/_20240330.pdf?rlkey=jkxg1essx0n10hht0ne6jahmo&e=1&st=wyy2q4ow&dl=0" target="_blank" rel="noopener">「〈死からの視線〉をつくる」</a>（blanClass+神村恵「身ひとつで生きる」、BankART Life7、2024年）でも、参加者が街に出て文章を書き、交換し、他者の文章をたどり直すように街を歩くワークショップへと接続される。</p>
+<p>いずれも、理論の提示がそのまま集団での制作実践へと直結する設計を持ち、〈アトリエ〉が個人の内省ではなく複数の肉体のあいだで立ち上がるものであることを体現している。</p>
+</details>
+<details class="h3d" id="s12">
+<summary class="h3s">後世・教育・アーカイブ</summary>
+<p>いぬのせなか座の立ち上げは「或る共通の友人の自死」を契機としており、<strong>自身のためにではなく、死後に生きる者たちのために表現や技術を残すこと</strong>は、山本の活動の初期から一貫する関心である。「座談会1」（2015年）で山本は「今のぼくがぼくの軸になって生きるべき季節は今日でおしまいだ、もうこれからはぼくはぼくの死んだあとの人のために尽くさないといけない」と述べている。</p>
+<h4>「後世への信」の揺らぎ</h4>
+<p>ただし山本は、自分が書いたテクストそのものが「後世」に長く残ることにはさほど期待を置いていない。「座談会9」（2024年）で山本は、世界が明日には終わっているかもしれないという認識を率直に語りつつ、それでも同時代の誰かに何かを伝え引き継ぐことへの欲望を語っている。表現がもし数百年の単位で受け継がれるとすれば、作品がそのまま読み継がれるよりも、同時代の人とのあいだで交わされるなかで抽象的な技術や理念に変換され、曖昧にひっそり受け継がれていく――そうしたかたちで残るものだろう、という認識がある。</p>
+<h4>作品＋使用法＋批評をセットで残す</h4>
+<p>こうした認識から導かれるのは、<strong>作品だけを提示するのではなく、その使用法や批評をセットで展開するという方針</strong>である。いぬのせなか座の刊行物は、一貫してこの原則に基づいて設計されてきた。<a href="https://inunosenakaza.stores.jp/items/5c1d99341444482501948d82" target="_blank" rel="noopener">『いぬのせなか座1号』</a><a href="https://inunosenakaza.stores.jp/items/5c1d9ac9c3976c675749bd51" target="_blank" rel="noopener">『2号』</a>には座談会・批評・デザイン解説が作品と並置され、<a href="https://inunosenakaza.stores.jp/items/5c1d9c2ec2fc28029dbed7fe" target="_blank" rel="noopener">『灰と家』</a>には読み解きのためのノートが付され、河野聡子詩集には「座談会5」が同封された。連続講義「言語表現を酷使する（ための）レイアウト」の記録は、講義内容とワークショップの設計をひとつの冊子に収めるかたちで刊行されている。</p>
+<p>作品そのものが優れていればよいのではなく、その作品がどのような技術や共同体を作り、どのように別の制作へ受け渡されるかまでを含めて設計すること。個々の達成を後続の肉体が再利用できるようにすること。この姿勢は、のちの〈アトリエ〉概念の実践的な基盤でもある。</p>
+<h4>アーカイブ講演――「残す」ことの再定義</h4>
+<p>「アートとプロジェクトの記録と記憶を語る茶話会」vol.6（東京藝術大学未来創造継承センター、2025年）での講演<a href="https://www.dropbox.com/scl/fi/678n30bpl5bwmkl4cdebi/_-1021.pdf?rlkey=m7gf6elpvfb3wsce7ot0hojbg&dl=0" target="_blank" rel="noopener">「言葉、表現、アーカイブ――表現を行ない、共有し、残していくとはどういうことか？」</a>では、上記の方針がより明確に言語化されている。</p>
+<blockquote class="bq">「作品」だけでなくその制作プロセスを含めて共有する。作品そのものより、それがどのような技術や共同体を作り、（死後に）伝播していくかを重視する。使い方はもちろん、作り方を伝えることで、そのジャンルが社会的意義／機能を失ったあとも、「翻訳」が可能となる。</blockquote>
+<div class="brk"></div><p>山本は<strong>「残す」ことを物理的保存よりもまず「読み取る方法」「使う方法」「再演する方法」の設計として考えている。</strong>同講演には「教育とは大量のアーカイブを取捨選択し後続の人体に与えるプロセス」という定義もある。</p>
+</details>
+</details>
+<hr>
+<details id="s13">
+<summary>理論地図</summary>
+<p>山本の理論は、いくつかの中心概念とその相互関係によって構成されている。以下では、それぞれの概念が何を指し、互いにどのように結びついているかを整理する。末尾の「理論的基盤」では、これらの概念がどのような先行する思想から養分を得ているかを示す。</p>
+<details class="h3d" id="s14">
+<summary class="h3s">言語表現と肉体――理論の起点</summary>
+<p>山本の理論の起点には、言葉を意味伝達の道具としてだけ見ないという決定がある。桐光学園講演会での講演<a href="https://www.dropbox.com/scl/fi/pyybza8kupzkpk2mzmnx9/_20231104.pdf?rlkey=wc8r4fpufuesf8cip2wfp66fn&e=1&dl=0" target="_blank" rel="noopener">「生のアトリエ」</a>（2023年）では「言葉は実は、人間の体に働きかけられるようオーダーメイドされた、とても強くて独特で、手軽な装置である」と述べられている。本、ページ、戯曲、詩、批評文は、読まれることで肉体に一定の動きや思考や仮構を起こさせる。</p>
+<p>この認識の核心にあるのは、<strong>言語表現がそれを前にした肉体に「表現の担い手＝〈者〉とその周囲の〈環境〉」を仮構させずにはいられない</strong>という性質である。例えば「いぬが塀の向こう側からやってきた」という文は、文字通りには書かれていない「こちら側」を、読む肉体に発生させる。機械的に並べられた言葉であっても、そこに表現を見出す以上、それを為した者の存在と周囲の環境を読み取ってしまう。</p>
+<div class="brk"></div><p>この意味で言語表現は、意味の分析だけでなく、レイアウト、速度、反復、空白、フォーマット、媒体を含む「表現の担い手＋環境」の配置をめぐる問題として捉えられる必要がある。<a href="https://inunosenakaza.stores.jp/items/654ede2f2a81740025c81eb1" target="_blank" rel="noopener">「生にとって言語表現とはなにか」</a>で提示された、書くことにも読むことにも寄らず「表現を（自他に）発見すること」のもと一元論的に記述・操作していく方法論は、この認識を出発点としている。</p>
+</details>
+<details class="h3d" id="s15">
+<summary class="h3s">〈私＋環境〉</summary>
+<p>上記の認識から導かれる理論上の最小単位が〈私＋環境〉である。「私」だけを単独で考えることはできず、表現がある以上、それを為した者とその周囲の環境が一体のものとして仮構される。〈私＋環境〉は作者の実在そのものではなく、読む肉体が表現から遡行的に組み立てるフィクショナルな――しかし極めて強く肉体に強いられる――単位として捉えられる。あらゆる詩歌、あらゆる小説は、いくつもの〈私＋環境〉が並べられ、重ねられ、すれ違い、拮抗する群れとして見えてくることになる。</p>
+</details>
+<details class="h3d" id="s16">
+<summary class="h3s">〈主観性〉と〈物性〉</summary>
+<blockquote class="bq">テクストは、それを〈表現 expression〉した〈者 person〉や、その周囲で〈表現〉を規定した〈環境 environment〉を、さかのぼって仮構しないではいられない。この傾向・質をめぐる一定のまとまりを〈主観性 subjectivity〉と呼ぶ。／〈表現〉を規定しそれたらしめた法則性を〈物性 objectivity〉と呼ぶ。／テクストとは、それを能動的に表した手つきへの遡行を強いる力たる〈主観性〉と、それを受動的に表すよう強いた力たる〈物性〉の、両者が多重的に折り重なったかたちでレイアウトされた構築物である。</blockquote>
+<p>></p>
+<blockquote class="bq">――山本浩貴<a href="https://inunosenakaza.stores.jp/items/654edeaa6a8b0d218bc27b87" target="_blank" rel="noopener">『主観性の蠢きとその宿』</a></blockquote>
+<p><strong>〈主観性〉は「作者の内面」ではなく、表現がその背後に主体と環境を立ち上げさせてしまう傾向を指す。</strong></p>
+<p><strong>〈物性〉は「客観的事実」ではなく、その表現をそうであらしめた法則性の力を指す。</strong></p>
+<p><strong>表現はこの二つの誤認的な絡み合いのうちにあり、山本の理論はこうした誤認を否定するのではなく、表現の本質的プロセスとして引き受けようとする。</strong></p>
+</details>
+<details class="h3d" id="s17">
+<summary class="h3s">〈喩〉と〈信〉</summary>
+<p>〈主観性〉の内部を構成する傾向・質は〈喩 figure〉と呼ばれる。〈喩〉は比喩表現の一技法ではなく、〈主観性〉のスケールを超えて機能するより根底的な作用である。『主観性の蠢きとその宿』では、吉本隆明の〈虚喩〉論や短歌の上句と下句の関係を通じて、〈喩〉が言語の根底にある傾向・質として位置づけられている。プロソポペイア（活喩法）をめぐるポール・ド・マンの議論もここに接続される。</p>
+<p>〈信 belief〉は〈主観性〉と〈物性〉の誤認的関係として定義される。何を本心と見るか、何を外的強制と見るか。その判定が常にずれ、反転しうることそのものが、表現の作動を支えている。</p>
+<p>〈投影者 projector〉は、表現を前にしたとき〈喩〉を備給し投じて主体と環境を仮構する担い手を指し、その〈喩〉を拘束するものとして〈信〉はある。</p>
+<p>ワークショップ「奇跡、喩、信（救い投げだす身ぶり）」第一回（STspot、2019年）での発表「主観性と物性の誤認的関係（テクストの衝突、運動の構え）」で〈信〉の定式化と肉体論への展開がなされ、「死の投影者（projector）による国家と死」で〈投影者〉の概念が提示・展開された。<a href="https://inunosenakaza.com/craZZZyfishstudio/theory/obayashi" target="_blank" rel="noopener">大林論</a>や<a href="https://www.suiseisha.net/blog/2023/12/14/%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B%E6%9F%B3%E7%94%B0%E5%9C%8B%E7%94%B7/" target="_blank" rel="noopener">柳田論</a>で展開される〈信〉の具体的分析も、いずれもこの定式化に基づいている。</p>
+</details>
+<details class="h3d" id="s18">
+<summary class="h3s">〈レイアウト〉</summary>
+<p>山本において〈レイアウト〉は、山本自身が前期の最重要概念と位置づけるものであり、紙面デザインの問題にとどまらない。</p>
+<h4>テクストとは〈私〉のレイアウトである</h4>
+<p>山本の理論の核心にあるのは、<strong>テクストとは〈主観性〉と〈物性〉が多重的に折り重なったかたちでレイアウトされた構築物である</strong>という命題（『主観性の蠢きとその宿』）である。一文を書くとき、そこには〈私＋環境〉がひとつ仮構される。次の一文を書けば、また別の〈私＋環境〉が立ち上がる。文と文を並べていくこと自体が、〈私〉のレイアウトを形成する。</p>
+<p>「生にとって言語表現とはなにか」ではこの認識がもっとも明確に語られている。言葉は肉体に特定の思考や感覚を強いる「触発のレイアウト」としてあり、一文ごとに立ち上げられた仮構は周囲の言葉や文と衝突し、新たな統合のあり方＝新たな思考として発明されていく。動かされた肉体によって次の一文が書き足される。テクストを用いた〈私〉の思考とは、この「仮構－衝突－組み換わり」の連なりそのものにほかならない。</p>
+<p>したがって〈レイアウト〉は、紙面上の文字の配置だけでなく、表現がどのように切り分けられ、並べられ、ぶつかり、空白を生み、別の環境や主体を立ち上げるかを規定する<strong>表現そのものの条件</strong>を指す。ギブソン／佐々木の生態心理学から来た「環境の面の配置」とも響き合っている。詩の行分け、小説の章構成、紙面デザイン、講演資料の順序、舞台上の俳優配置を、すべて同じ理論地平で扱うことができるのは、いずれも〈私＋環境〉の並べ方をめぐる問題だからである。</p>
+<h4>〈物性〉としてのレイアウトの法則</h4>
+<p>こうした〈私〉のレイアウトは、書き手が自由に設計するものではない。『主観性の蠢きとその宿』では、〈物性〉がレイアウトをめぐる法則性として定義されている。部屋にいる人物の視点で書かれたテクストには、キッチンとテレビの位置関係、草の匂い、窓の存在といった〈環境〉が、はっきりと言及されていなくても言葉の選択と並び方によって暗に体現される。〈物性〉はこのように、表現の内容と表現のレイアウトが重なり合い、一文の法則性が文と文の配置の法則性へ拡張されていく事態を捉えるための概念である。</p>
+<p>大江健三郎論「新たな距離」では、大江が絵画や映画や演劇の描写を通じてテクストのなかに通常とは異なる〈物性〉を持ち込み、特異な言葉の並びを発明してきたことが扱われる。さらにそこでは、ひとつのテクストに複数の〈私＋環境〉が並列され、朝の私と夜の私、生者の私と死者の私がまったく異なりながら奇妙な類似で接続される事態が、多宇宙論を手がかりに〈新たな距離〉として定式化される。テクストとは〈私〉のレイアウトであるという認識が、宇宙論的なスケールの問いにまで開かれているのである。</p>
+<h4>詩歌への展開</h4>
+<p><a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">『新たな距離』</a>にはこの視座を具体的な作品分析に適用した論考が多数収められている。なかでも<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">「生（活）の配置、〈調べ〉の気づき――必然の混雑なる場をもたらす詩の形式について」</a>は、詩の形式をめぐる歴史的問いを正面から扱った論考であり、萩原朔太郎の〈調べ〉から新国誠一の視覚詩＝〈象形詩〉と朗読＝〈象音詩〉の並走、さらには福田尚代・ni_ka・TOLTAなど同時代の実践までを視野に収め、紙面上の文字が編む複層状の感情空間としての〈空白〉を論じている。</p>
+<p>同書にはほかにも、俳句における時空のオブジェ化を論じた福田若之論、詩作のプロセスそのものを問う貞久秀紀論、最果タヒにおける空白と私の部屋の配置を論じた論考、加藤広太における世界の配置と鉱物化された奥行きを論じた論考が収められており、いずれも〈主観性〉〈物性〉〈レイアウト〉の理論を詩歌の個別分析として展開したものである。</p>
+</details>
+<details class="h3d" id="s19">
+<summary class="h3s">〈アトリエ〉</summary>
+<blockquote class="bq">〈アトリエ atelier〉という語は本書において、制作者の肉体の置かれた物理的な環境と、制作者が制作に向けて準備し構築し出力していく抽象的な場（体系、マトリクス）を、あえて重ねるかたちで指すものとして運用している。制作者は雑多な日々を過ごしながらも、そこに立ち返りさえすれば制作の蓄積を再起動し、次なる一筆／一語を置きうる。加えてそうした〈アトリエ〉は、制作者を遡行的に把握する上で、その者に制作を強いた（アフォードした）環境として、例えばテクストの構成要素の一つに数え上げられるもの（その高度な単位）でもある。</blockquote>
+<p>></p>
+<blockquote class="bq">――山本浩貴『新たな距離』13頁</blockquote>
+<p><strong>山本の近年の中心概念。</strong>第一にアトリエは制作を継続させる技術であり中断をまたいで持続する単位、第二に受け取り手がテクストから遡行的に仮構する環境としての分析単位、第三に教育されうる伝承と共同体設計の基礎単位でもある。〈アトリエ〉は単に後期の新概念ではなく、前期の〈主観性〉〈物性〉〈レイアウト〉を束ね直すハブとして機能している。〈演技〉は、このアトリエを肉体で引き受け、通過し、変形し、他者にも開く実践を指す。</p>
+<h4>「アトリエのためのメモ」</h4>
+<p>『新たな距離』所収の<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">「アトリエのためのメモ」</a>は、この概念のもっとも凝縮された定義文にあたる。そこでは「ひとはそれまで触れてきた環境の束（地層）である」という命題から出発し、環境の束と行為のあいだの、周囲からは把握不可能な結合関係が〈アトリエ〉と呼ばれる。「言葉」や「芸術」は、環境の束をより十全に圧縮して肉体の外に「置く」ための手だてとしてある。</p>
+<p>或る肉体によって出力された洗練された行為は、別の肉体にとって「こんな環境の束がありうるのか」という新たな環境として到来し、同時に「このように環境の束を表現できるのか」という方法面での伝達・教育にもなる。ひとはそのように作られた結節点としての表現を通じて、別の〈アトリエ〉の存在を知り、自身を喩えているものとして見立て使用することで〈アトリエ〉をめぐる技術の蓄積を学び、自らを救うための〈アトリエ〉の設計に向かう。<strong>個のための行為はそのまま他のための行為となり、私の生はそのまま他の生の喩えとなる</strong>――この認識が、利己的であることがそのまま利他的になりうるという山本の根幹的な考え方の基盤をなしている。</p>
+</details>
+<details class="h3d" id="s20">
+<summary class="h3s">即興と書き直し</summary>
+<p>山本の理論において、即興と書き直しは対立する概念ではなく、表裏一体の関係にある。</p>
+<p>人体がある法＝戯曲（〈物性〉）に触れるとき、その法と人体の掛け合わせとして即興的な表現が発生する。この即興は一回きりの偶発ではなく、法の構造と肉体の応答の交差として生じるものであり、それを多重化し多様な演技へ開いていくことで、はじめて自由意志が事後的に発見される（この問題は大林宣彦論で詳細に検討されている）。</p>
+<p><a href="https://inunosenakaza.com/archives/20150501" target="_blank" rel="noopener">いぬのせなか座の立ち上げ宣言文</a>にも「一回だけの即興なんてものを信じちゃいけない。即興に利点を見いだそうとするなら、何重にも重ねた即興であるべき」という一節がある。「生にとって言語表現とはなにか」では、保坂和志を起点にこの問題が整理され、即興の一回性を信じることと書き直しの技術を対置させるのではなく、即興の掛け合わせとしての書き直しが模索されている。</p>
+<p>他方、書き直しは〈物性〉の側から見れば、表現の法則性を反復的に通過するなかで、そのプロセスに誤認（〈信〉）を食い込ませ、〈主観性〉を立ち上げ直す行為でもある。法＝戯曲が表現をそうであらしめる力（〈物性〉）として先にあり、そこから表現が立ち上がるプロセスのなかで「私」は事後的に発見される。書き直しはこの発見を繰り返し更新する技術にほかならない。</p>
+<p>〈アトリエ〉概念はこの即興と書き直しの結節点にある。一度離れてもそこに立ち返れば制作の蓄積が再起動するというアトリエの性質は、即興を一回きりの出来事に閉じず、書き直しを通じて蓄積・伝達可能にするための条件であり、制作の継続と共同体への伝承を支える技術的基盤でもある。</p>
+</details>
+<details class="h3d" id="s21">
+<summary class="h3s">〈新たな距離〉と〈死からの視線〉</summary>
+<p>〈新たな距離〉は、いぬのせなか座の立ち上げ宣言文（2015年5月1日）と大江健三郎論の末尾において、ほぼ同時にその原型が提示された概念である。立ち上げ宣言文で山本は、「私がものをつくるなかでいくつもにちらばり矛盾しはじめた私らを使って、常に『この私』を救い（投げ）出しながら思考する、その過程において獲得されるだろう多宇宙間の幅の瞬間的な知覚」と記している。<a href="https://inunosenakaza.stores.jp/items/5c1d99341444482501948d82" target="_blank" rel="noopener">大江論</a>では、多宇宙理論を背景に、表現を通じて複数の時空間が接続されるなかで、朝の私と夜の私、生まれた瞬間の私と死ぬ直前の私がまったく異なりながら奇妙な類似でつながっていることが知覚される、その瞬間的な質感が論じられていた。</p>
+<p>2026年3月版の定義群では、〈アトリエ〉を通じて生じた共同体が「強固に構築された〈喩〉として表現の中に再度発見される」際、その〈喩〉は表現と〈私〉のあいだの特異な隔たりをもたらすものとして〈新たな距離 renewed distances〉とも称される。<strong>共同体の成立そのものではなく、個々の孤絶を保ったまま表現・批評・技術・アトリエを介して行き来できる差異の距離を指す。</strong></p>
+<h4>〈死からの視線〉</h4>
+<p>この概念の内実をさらに掘り下げる鍵となるのが〈死からの視線〉である。レクチャー＋ワークショップ<a href="https://www.dropbox.com/scl/fi/dxs38571kr8p8sbcy5t8l/_20240330.pdf?rlkey=jkxg1essx0n10hht0ne6jahmo&e=1&st=wyy2q4ow&dl=0" target="_blank" rel="noopener">「〈死からの視線〉をつくる」</a>（blanClass+神村恵「身ひとつで生きる」、BankART Life7、2024年）では、吉本隆明が都市論『ハイ・イメージ論』で展開した〈世界視線〉――上方から世界を一挙に俯瞰するイデアルな視線――の由来をたどり直すことで、それが柳田國男の「常民」と「旅人」の構図、宮沢賢治における科学と信仰の重なり、臨死体験における幽体離脱的経験に根を持つ〈死からの視線〉であったことが明らかにされる。</p>
+<p>〈死からの視線〉とは、別の場所から距離を隔てて今ここを見つめる視点の知覚であるとともに、ある法則性のもとすべてが先んじて記述され尽くす事態でもある。山本はこれを、紙面の「手前側の生」へ接続し、〈アトリエ〉の多重的発生をもたらす装置＝環境として都市を捉え直すところまで議論を展開している。</p>
+<p>『新たな距離』所収の「アトリエのためのメモ」は、〈アトリエ〉概念のもっとも凝縮された定義文であると同時に、〈死からの視線〉を〈アトリエ〉概念と絡めて展開したものでもあり、たがいに孤絶しながら喩えあい〈アトリエ〉にしあう関係性として共同体を捉える山本の根幹的な考え方が示されている（詳しくは「理論地図」の〈アトリエ〉を参照）。同じく同書所収の清原惟論<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">「死からの視線」</a>は、映画『すべての夜を思いだす』を対象に、生き残った者が死者の視線を引き受け、その視線のもとで現在を生き直す経験を論じたものであり、〈死からの視線〉と〈新たな距離〉が映画批評のなかで具体化されている。</p>
+</details>
+<details class="h3d" id="s22">
+<summary class="h3s">理論的基盤</summary>
+<p>以上の概念群の背後には複数の理論的系譜がある。中心的な参照先と、それを補う思想的系譜に分けて整理する。</p>
+<h4>中心的参照</h4>
+<p>山本の理論言語を直接的に形成したのは、以下の三つの系譜である。</p>
+<p>時枝誠記の言語過程説は、山本の理論の骨格にもっとも深く関わっている。『主観性の蠢きとその宿』で山本は、認知言語学（ロナルド・ラネカーの〈Ground〉概念）よりも早く主体と場面の問題を問い詰めた理論として時枝を再読している。時枝の〈詞〉（素材をあらわす語）と〈辞〉（主体の志向をあらわす語）の区分、それらが入れ子状に折り重なる多重的なレイヤー構造、「零記号の辞」の概念が重視される。山本の〈主観性〉〈物性〉〈空白〉の概念はいずれもこの時枝的な枠組みを引き継ぎつつ抽象化したものと言える。</p>
+<p>吉本隆明は、山本において政治思想家や詩人としてだけでなく、〈喩〉や〈信〉をめぐる理論的資源として読まれている。吉本が時枝の〈辞〉〈詞〉を展開した〈自己表出〉と〈指示表出〉の区分、韻律を「指示性の根源」として位置づけたこと、〈虚喩〉の概念、都市論『ハイ・イメージ論』で展開した〈世界視線〉（山本により〈死からの視線〉として再定式化された）は、いずれも山本の概念形成に直接関わっている。</p>
+<p>生態心理学は、佐々木正人を媒介に、J.J.ギブソンの知覚論が日本の芸術・デザイン・肉体論に接続されたことが決定的であった。佐々木は知覚を環境探索と行為の問題として捉え、世界を多重的な「レイアウト」として理解した。山本の〈レイアウト〉概念はここに由来する。さらに、平倉圭が『ゴダール的方法』などで示した「芸術作品への暴露を通じて肉体そのものの感覚編成が変わりうる」という議論は、表現を環境への適応ではなく新しい環境＝アトリエの設計として捉える山本の方向づけを支えた。</p>
+<h4>思想的補助線</h4>
+<p>ポール・ド・マンのプロソポペイア論は、〈喩〉概念の形成にとって重要な足場である。「磨損としての自叙伝」における、あらゆるテクストが自叙伝的構造を持ちうるという議論は、<a href="https://inunosenakaza.stores.jp/items/5c1d99341444482501948d82" target="_blank" rel="noopener">大江論「新たな距離」</a>で提示されたのち<a href="https://ekrits.jp/2018/12/2914/" target="_blank" rel="noopener">「制作的空間と言語」</a>で本格的に展開された。安川奈緒の抒情詩論からド・マン、さらにブリュノ・クレマンの『垂直の声』へという参照の連鎖は、〈喩〉が肉体に声を触発する力であるという認識を支えている。</p>
+<p>エドゥアルド・ヴィヴェイロス・デ・カストロのパースペクティヴィズム（多自然主義）は、〈私が私であること〉概念と深く共鳴する。「座談会5」（2017年）ではヴィヴェイロスのテクストを直接引用しながら、〈私が私であること〉の複数性と相互包摂が論じられた。この座談会は、山本と鈴木一平のあいだの理論的差異がもっとも明確に言語化された場でもある。</p>
+<p>ヴァルター・ベンヤミン、ニコラウス・クザーヌス、デイヴィッド・ドイッチュは、いずれも初期の山本の思想形成に大きな影響を与えており、特に大江論「新たな距離」の注や「座談会1」で詳しく触れられている。ベンヤミンの過去の救済論、クザーヌスの「汝は汝のものとなるべし」、ドイッチュの多宇宙論は、〈新たな距離〉概念の形成に直接関わっている。</p>
+</details>
+</details>
+<hr>
+<details id="s23">
+<summary>主要論考</summary>
+<p>以下では、山本の理論形成において特に重要な論考を、発表順に紹介する。各論考は独立して読めるものだが、互いに概念や問題を引き継いでおり、全体としてひとつの理論体系を形作っている。</p>
+<details class="h3d" id="s24">
+<summary class="h3s">「新たな距離――大江健三郎における制作と思考」</summary>
+<div class="meta">初出：<a href="https://inunosenakaza.stores.jp/items/5c1d99341444482501948d82" target="_blank" rel="noopener">『いぬのせなか座』1号</a>（2015年）。のち<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">『新たな距離』</a>（フィルムアート社、2024年）所収。</div>
+<p>山本にとって大江健三郎は単なる重要作家ではなく、自分自身がいかなる制作者でありうるかを考えるための基幹的装置である。<strong>この<a href="https://inunosenakaza.stores.jp/items/5c1d99341444482501948d82" target="_blank" rel="noopener">大江論</a>には、山本の後の仕事全般の核にあたる問題群がすでに展開されている。</strong>なお、同論の注にはベンヤミン、クザーヌス、ド・マン、ドイッチュといった思想家からの影響が詳述されている（内容については理論地図「理論的基盤」を参照）。</p>
+<p>論は、小説が「たった数キロバイトの素材で作られた」表現でありながら生と宇宙に根本的なしかたで関わるという宣言から始まり、大江の〈擬似私小説〉的手法の分析へと進む。大江は制作過程において自らの記憶と虚構が混ざりあい、そのつど自己が書き換えられてしまう。山本はそこに、小説の制作が思考であるということの二重性――行為として思考であること、制作素材として思考を扱うこと――を読み取る。</p>
+<h4>〈映画の小説〉と〈森のフシギ〉</h4>
+<p>次に〈映画の小説〉という大江独自の概念を手がかりに、小説に視覚も聴覚もないはずなのに読み書きする肉体の思考内部にフィクショナルに「過剰すぎる」視覚が発生してしまうことが論じられる。『水死』における「大眩暈」の場面では、語り手の見る丸石に刻まれた詩が紙面上にインクで物質的に反復され、語り手の私と読み手の私が「同じ対象を見る」経験が成立する。その成立は視覚的類似ではなく、言葉がその手前側の肉体を指示し触発することで起動させる〈私〉自身の反復性に由来するとされる。</p>
+<p>さらに〈森のフシギ〉という大江作品に頻出する概念が三つの性質のもとで整理される。①言葉に反応し形と色を変える宇宙からの記録媒体、②あらゆる魂がかつて多でありながら一であったときの総体（〈懐かしさ〉の力による輪廻転生）、③障碍を持った子どもの音楽に対する形容（まったく異なる音色でありながら「本当に同じ」もの）。「私が私であること」の空白は、この〈森のフシギ〉の核にあるものとして位置づけられる。</p>
+<h4>〈文体〉と〈演劇的教育〉</h4>
+<p>大江の独特の〈文体〉概念も検討される。言葉を書いている人間がどのような人間であるかを言葉に書かれている内容以上に言葉そのものが伝達してしまうこと、これが大江にとっての〈文体〉であり、山本は認知言語学や生態心理学の言語観との親近性を指摘しつつ、テクストがそれを制作した〈私＋環境〉を手前側の肉体に遡行的に仮構させる機能として読み替えている。</p>
+<p>論の後半では〈演劇的教育〉と〈異化〉が論じられる。具体的対象物を指す言葉を抽象的に理解させ、具体的対象物を指さないはずの言葉を具体的に理解させる二種類の言語使用法の錯誤が、文節・文章レベルで作動したとき、それは肉体を巻きこんだ〈文体〉すなわち〈声〉としてかたちを成す。詩の引用と翻訳の問題もここに接続される。原文と訳文という異なるふたつが連れ立って向かう先に訳者の読みが浮かびあがること、すなわち翻訳のプロセスにおいて前景化する読みの主体を最たる素材として用いることが、大江の小説制作の核心とされる。</p>
+<h4>〈おかしな二人組〉と見あやまり</h4>
+<p>〈おかしな二人組〉という技術も分析される。類似する人物同士のずれた関係が新たな物語を生むという大江の方法は、人物結合として〈演劇的教育〉の語りの層で統合作用を果たす。さらにそこから、人物同士の結合（類感呪術の論理）だけでなく、人と事物の結合（感染呪術の論理）、すなわち非人間的な語りの生成が目指されていることも論じられる。父親の「見あやまり」――「森々」と「淼々」を取り違え、そこに新たな〈文体〉を認めてしまうこと――が、この技術の到達点として位置づけられている。</p>
+<h4>〈新しい人〉と死後の教育</h4>
+<p>論の結論部では、〈新しい人〉の問題が展開される。小説家は「童子」的な並列分散処理的思考に浸りきることはできないが、「私が私であること」の誤認の力を共同性へと転用させる技術を携えることで、死後への転生可能性を小説の制作過程に埋めこみ、世界の持続を支える。大江の目指す〈擬似私小説〉とは、比喩的回路を否定するのではなく破綻寸前まで加速させていくことで、自叙伝的構造そのものを制作の素材に転化する技術であったと結ばれる。</p>
+<p>後に山本自身が大林宣彦論を「大江論の続編のような気持ちで書いた」と述べているように、ここで扱われた〈演劇的教育〉、〈異化〉、〈声〉、〈おかしな二人組〉、〈映画の小説〉、見あやまり、翻訳、死後の教育と〈新しい人〉の問題は、<a href="https://inunosenakaza.com/craZZZyfishstudio/theory/obayashi" target="_blank" rel="noopener">大林論</a>、<a href="https://note.com/inunosenakaza/n/n8dda3f1c6768" target="_blank" rel="noopener">ホラー論</a>、アトリエ論、演技論へと直接的に引き継がれている。</p>
+<h4>「絶望とモデル」――〈アトリエ〉としての大江</h4>
+<p>なお、大江の死後に組まれた雑誌特集に寄せられた<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">「絶望とモデル――私的感慨と『文学ノート』におけるアトリエ」</a>（『ユリイカ』2023年7月臨時増刊号）は、大江読解を〈アトリエ〉概念で読み直した論考である。</p>
+<p>福島県大熊町での遺骨捜索、大江の最晩年の講演での「絶望」の目撃から出発し、<strong>「小説は世界を変えることができない。しかし小説を書くことで変容した私が、それ以前にはない仕方で世界と関わることはある」</strong>という認識のもと、大江の『文学ノート』を五つの節（①カオスと自由、②具体・経験・総体、③アトリエとしての作中人物、④書き直し、⑤共有）に圧縮して読み直す。大江健三郎を「私に実装すべき小説家の素材として、手づくりする」こと――大江という〈アトリエ〉の使用方法――が、大江の「絶望」を引き受けるための方法として提示されている。</p>
+</details>
+<details class="h3d" id="s25">
+<summary class="h3s">「生にとって言語表現とはなにか――保坂和志と表層の手前側のリテラリズム」</summary>
+<div class="meta">『新たな距離』所収。もとは小冊子<a href="https://inunosenakaza.stores.jp/items/654ede2f2a81740025c81eb1" target="_blank" rel="noopener">『言語表現を酷使する（ための）レイアウト――或るワークショップの記録 第0部 生にとって言語表現とはなにか』</a>（いぬのせなか座、2023年）として先行。</div>
+<p>なぜ文学や言語表現を選ぶのかという問いが正面から扱われる。山本はまず、テクストの受容をめぐる時代的変遷を、「奥のリテラリズム」（作者像や世界観、主題のもとでテクストを統合して読む姿勢）から「表層のリテラリズム」（ドゥルーズや蓮實重彦に代表される、テクスト表層の微細な運動を注視する姿勢）、そして「手前側の生のリテラリズム」（保坂和志に代表される、テクストとその手前側の生の関係をそのまま見つめる姿勢）へという三段階で整理する。</p>
+<p>保坂は小説を映画やテレビと同じ娯楽市場の一商品ではなく、散歩や園芸のような余暇時間の使い方と競合するものとして捉え、プロットによる管理を疑い、一日一日の書くことそのものを最大限遠くへ飛ばすことを重視した。山本はこの姿勢から強く助けられつつも、保坂的立場がテクストの手前側の生を重視するあまり書き手の「そのまま」の反映にとどまり、ポストフォーディズム下のパーソナリティ消費と結果的に合流しうる危険を見据える。「書き手の反映」として作品を読むことも「テクスト内部の運動」としてだけ作品を読むことも退けた第三の立場――言語表現を「生を共同で組み換えるための実験場」として使うこと――が模索される。</p>
+<h4>「発見」としての表現と書き直し</h4>
+<p>この論考で提示される方法論の核は、書くことにも読むことにも、作ることにも受け取ることにも寄らない、より根本的なレベルで「表現を（自他に）発見すること」のもと一元論的に記述・操作していこうとする態度である。人はテクストを前にするたびに、そこに自他の生に紐づく表現を否応なくフィクショナルに見出してしまう。テクストの改変を生の改変と同一視してしまうこの誤認のありようにこそ、言語表現の代え難さがある。また一回きりの即興（を通じた、私の表現への反映）ではなく、多重的な即興の塗り重ねを語れるようにするものでなければならないとされ、即興の掛け合わせとしての書き直しの問題系が準備されている（理論地図「即興と書き直し」を参照）。</p>
+<h4>平倉圭の〈形象〉と山本の〈喩〉</h4>
+<p>また同論考では、平倉圭の〈形象 figure〉概念と山本自身の〈喩 figure〉概念の関係にも触れられている。平倉が「形象」として取り出したのは、芸術作品への暴露を通じて肉体の感覚編成そのものが変わりうるという事態であり、山本の〈喩〉はこの平倉的な〈形象〉の議論を引き受けつつ、言語表現の場において〈主観性〉の内部を構成する傾向・質としてより特定的に定式化したものと位置づけられる。両者がともに figure という語を用いていることは、肉体への作用という共通の問題圏を示している。</p>
+<p>山本の理論が「文学論」単体ではなく「なぜ言語表現を行なうのか」という実践的自己問答として始まっていることを示す論考であり、〈主観性〉〈物性〉〈レイアウト〉〈アトリエ〉といった概念の背後にある問題意識が、もっとも平明なかたちで記されている。</p>
+</details>
+<details class="h3d" id="s26">
+<summary class="h3s">「制作的空間と言語――『あそこに私がいる』で編まれた共同体の設計にむけて」</summary>
+<div class="meta">『新たな距離』所収。初出は<a href="https://ekrits.jp/2018/12/2914/" target="_blank" rel="noopener">『エクリ』（2018年）</a>。上妻世海『制作へ』刊行記念トークをもとにした論考。</div>
+<p>山本の単著所収論考のなかでも最長のひとつであり、言語表現をめぐる問題を美術・建築・知覚論の側から再設定し拡張した論考である。</p>
+<p>論考は上妻世海「制作へ」を出発点とする。上妻が〈制作〉を「三種のよって」（因って＝因果関係、依って＝縁起・制作的空間、由って＝絶対無からの肯定と否定の出現）を通じてなされる私・五感・肉体の組み換えのプロセスとして論じたことを踏まえ、山本はその議論が言語に大きく賭けていながら、しかし具体的な言語表現の技術との接続がなお見えにくいと指摘する。ここから四部構成の議論が展開される。</p>
+<h4>四部構成の議論</h4>
+<p>第1部「非人称的空間」では宮川淳の仕事が、1960年代日本美術における〈反芸術論争〉（東野芳明との対立）および〈影論争〉（中原佑介との対立）のなかで辿り直される。宮川が「客観的なレアリテの概念」の瓦解のあとに注目したのは、表現の自立化それ自体ではなく、空白な空間を満たさずにはいられない「われわれの営為」――表現主体の出現の不可避性――であった。宮川はこの〈非人称的空間〉を、作品とその手前側の者のあいだで生じる重要な素材＝メディアとして捉える。</p>
+<p>第2部「抒情主体と〈喩〉」では、安川奈緒による抒情詩論（入沢康夫と北川透の論争の整理）を経由して、テクストの制作が否応なく発話者の到来を招く不可避性の問題が論じられ、さらにポール・ド・マンの「摩損としての自叙伝」における〈摸写的鏡像構造〉論、ブリュノ・クレマンの〈プロソポペイア（活喩法）〉論へと接続される。ここで山本は、宮川が言う「空白な空間を満たすもの」とはすなわち〈喩〉であったと結論し、言語表現はその素材からして既に〈非人称的空間〉＝〈制作的空間〉を食い込ませたものとしてあると論じる。安川の「わたしはきみになるために、わたしを破棄しよう」は、「わたしはきみになるために、わたしを制作しよう」と言い換えられる。</p>
+<p>第3部「さらにミメーシスの方へ」では荒川修作の仕事がデュシャンからの系譜のなかで詳細に辿られる。デュシャンがキュビズムの多視点から出発し、マイブリッジの連続写真やオブジェクトの影を経由して〈第四の次元〉を探求し、最終的に〈アンフラマンス〉概念に至ったこと。荒川がそのデュシャンから運動・矢印・影のモチーフをほぼそのまま受け継ぎ、しかし独自の方向に展開したこと。その過程で荒川が到達した核心的認識は、遠近法＝線＝言語の等置である。あらゆる事物がすでにして何らかの表現としてあり、その同一性は常になんらかの表現主体の知覚形式＝遠近法にさらされた結果として成立する。色も形も線も肉体も事物もすべてはすでに「言葉」であり、それぞれに遠近法＝〈作者〉＝「空間の意味」が埋め込まれている。</p>
+<p>ダ・ヴィンチの「作者が死に続けるのなら、誰がそれを新たに作るのか？」という問いが荒川の生涯の主題として据えられ、〈ブランク〉概念の探求を経て建築作品へと至る過程が論じられる。『極限で似るものの家』（養老天命反転地）の分析では、壁に分断された家具の模型があちこちに反復配置される空間を歩く肉体が、ひとつのベッドをめぐる複数の遠近法を高速で積み上げさせられ、距離を隔てて遍在する私らのネットワークが新たに生まれる事態が記述される。</p>
+<h4>結論――〈指示書〉としての詩</h4>
+<p>結論部「『あそこに私がいる』で編まれた共同体の設計へ」では、言語が「認知の根底にある〈摸写的鏡像構造〉を自らの手前側に立つ肉体に高速かつ手軽に触発する傾向・質でもって構成された素材＝メディウム」として定義され、テクストは自ずと避けがたく〈非人称的空間〉＝〈制作的空間〉を立ち上げるものとされる。そのうえで貞久秀紀の詩が、相容れないいくつもの私を投入し行き交わせることを肉体に強いる〈指示書〉として提示される。詩を携えて散歩するとき、私と散歩道は〈非人称的空間〉＝〈制作的空間〉の実験場となっており、そのような〈アトリエ〉を携えることを可能にするものこそが〈指示書〉＝詩であった、と論じられる。山本の思想において荒川修作が重要なのは、肉体と環境を再設計する技術として芸術を考える筋道を与えたからである。</p>
+<h4>〈空白 blank〉の由来</h4>
+<p>なお、山本の理論における〈空白 blank〉概念は、荒川＋ギンズが中期の仕事を通じて探求した〈ブランク〉概念に由来している。荒川の〈ブランク〉は単なる無や空虚ではなく、行為や認知を持続させる媒体であり、「私」の内外を多重的に行き交う交通網として、位置とボリュームを持つものとされた。</p>
+<div class="brk"></div><p>この問題は<a href="https://ekrits.jp/2018/12/2914/" target="_blank" rel="noopener">「制作的空間と言語」</a>や<a href="https://inunosenakaza.stores.jp/items/5c1d99341444482501948d82" target="_blank" rel="noopener">大江論「新たな距離」</a>のほか、<a href="https://www.art-c.keio.ac.jp/news/archives/correspondence-poems/" target="_blank" rel="noopener">「私的宛先から交通網そのものの彫刻へ――marginとblankにおける『白』の位置」</a>（<a href="https://www.art-c.keio.ac.jp/news/archives/correspondence-poems/" target="_blank" rel="noopener">『交信詩あるいは書簡と触発――瀧口修造と荒川修作／マドリン・ギンズ』</a>慶應義塾大学アート・センター、2025年）でも論じられている。</p>
+<p>同論考では、瀧口修造の〈余白 margin〉が「私の外側にあって書くことを可能にする宛先」として設定されていたのに対し、荒川＋ギンズの〈空白 blank〉は私の内側から外へと放出されるものでもあり、表現可能性をめぐる多方向的な交通網として構想されていたことが、両者の差異と連続性のもとに明らかにされている。『新たな距離』にはほかに補遺「世界の実験を一本の線が代行する――荒川修作《Still Life》」が収められ、瀧口修造と荒川の関係を論じた<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">「オブジェと私、書物とアトリエ」</a>「白の位置」も所収されている。</p>
+</details>
+<details class="h3d" id="s27">
+<summary class="h3s">「日記と重力」</summary>
+<p><a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">『新たな距離』</a>所収。</p>
+<p>歌川広重の浮世絵「田毎の月」（棚田の水面に複数の月が映る、光学的にはひとつの眼の位置からはありえない構図）から出発し、日記・写生・言語表現・建築・不死を一本の線で貫く論考。広重の絵は或る瞬間の描写ではなく、月を見ながら歩く人の移動や月の昇り沈みという時間経過を埋め込まれたパノラマであり、田の水面ひとつひとつが日記の連なりに似せられる。正岡子規の「写生」もまた、風景を散歩し見つめる日々の体と、植物や生き物や抽象概念までもが俳句を介して相互に摩擦し合い、各々の持つ持続性が各々の外に作り出されていくプロセスとして捉えられる。</p>
+<h4>環境の掛け合わせとしての言語</h4>
+<p>論の中盤では、環境が意図や魂を構成するというエドウィン・B・ホルトの議論を踏まえつつ、しかし私は環境に完全には従属しきれない（自殺できる、ガス室のスイッチを入れられる）という反例が提示され、スティーヴ・パクストンの「頭のなかのガス」としての「イメージ」――周囲の環境とは別の重力を脳内に差し込むもの――が手がかりとされる。山本はこれを心身二元論に戻ることなく定義するために、言語を「環境の掛け合わせをもたらす装置」として捉える。テクストは、それを作り上げた体に根づく〈私＋環境〉を、別の体に根づく〈私＋環境〉に掛け合わせる場として機能する。体に染みついた習慣や技術も、目の前の環境とは別の環境があったことを思い出させるという点で、やはり言語として捉えられる。</p>
+<h4>荒川修作の建築と「束ね」の身振り</h4>
+<p>荒川修作＋マドリン・ギンズは体のバランスを恣意的に崩させる建築物の制作と、それを用いた「私が私であること」の分析を手続きの核としていた。建築物によって大きくバランスを崩した体は部位ごとに従う重力を散らばらせるが、「私」はそれを次の瞬間ひとつに束ねてしまう。言語表現もまた極めて日常的にこの束ねの身振りを検分している。</p>
+<p>不死とは、環境のよりよい掛け合わせに向けた試行錯誤がその成果によって自らに共同性を付与し再び試行錯誤をはじめる、終わりなき引き継ぎの循環が成立したときに得られるものだとされ、安井浩司の「樹木の枝葉や、獏や、野鼠なんかが私の俳句の読者であることを忘れてはならなかった」という言葉とともに、「私が私であること」が自らを語りえないものものらに開けた言語そのものの質として言及される。環境が魂を構成し、魂がまた環境を再編するというこの循環的な認識は、〈私〉を単一の内面としてではなく、相容れない〈者〉同士を束ね行き交わせるために立ち上げを要請される場として定義する山本の理論（定義群「4　私と物」を参照）の重要な基盤を提供している。</p>
+</details>
+<details class="h3d" id="s28">
+<summary class="h3s">「主観性の蠢きとその宿」</summary>
+<div class="meta">『言語表現を酷使する（ための）レイアウト――或るワークショップの記録 第1部 主観性の蠢きとその宿』（<a href="https://inunosenakaza.stores.jp/items/654edeaa6a8b0d218bc27b87" target="_blank" rel="noopener">いぬのせなか座、2023年</a>）。2018年のいぬのせなか座・連続講義「言語表現を酷使する（ための）レイアウト」第2回として行なわれた講義をもとに刊行。</div>
+<p><strong>山本が長く体感してきた問題をはじめて理論言語として定式化した要石。</strong>認知言語学のラネカー（言語表現における〈基盤 ground〉の客体化の三段階）を出発点とし、時枝誠記の言語過程説、吉本隆明の〈自己表出〉〈指示表出〉論および韻律論、菅谷規矩雄の「零記号の辞」論、さらにポール・ド・マンのプロソポペイア論などを組み合わせ、テクストが背後にある「私」と「環境」をどのように仮構させるのかを考察する。</p>
+<h4>時枝・吉本・菅谷からの理論構築</h4>
+<p>理論構築の過程に大きな特徴がある。まず山本は、ラネカーの認知言語学が示した「言語表現はそれを支える表現主体の存在＝〈基盤〉をどうしても隠蔽しきれない」という問題から出発し、それをより実践的な理論とするために時枝誠記の言語過程説へ進む。時枝の〈詞〉（素材をあらわす語）と〈辞〉（主体の志向をあらわす語）の区分、およびそれらが入れ子状に折り重なって一文を構成するという図式が、山本の〈主観性〉〈物性〉〈レイアウト〉の概念群の直接の足場となる。</p>
+<p>特に重要なのは、〈辞〉が省略された状態で〈詞〉だけが置かれたとき――時枝のいう「零記号の辞」――、そこに表現主体の存在が不在のまま強く仮構されてしまうという問題であり、菅谷規矩雄はこれを韻律における「休止」「無音の拍」の問題と結びつけた。山本はこの菅谷の議論を引き継ぎ、〈空白 blank〉概念の出発点のひとつとしている。</p>
+<p>次に吉本隆明の〈自己表出〉〈指示表出〉の理論が検討される。吉本が時枝の〈辞〉〈詞〉を独自に展開し、韻律を「指示性の根源」として位置づけた議論には、〈場面〉（リズム＝フレーム）が〈表現〉に先立つのか〈表現〉から事後的に発見されるのかという二重性の問題が内在しており、山本はこの問題を〈物性〉概念の設計に組みこんでいる。</p>
+<h4>俳句から散文へ――〈喩〉の位置づけ</h4>
+<p>そのうえで山本は俳句という最小の形式から出発し、わずか十七音のなかで〈主観性〉がどのように立ち上がるかを分析する。次に短歌へと進み、上句と下句の関係を通じて〈喩〉が比喩のレトリックではなく言語表現の根底にある傾向・質であることを示す。さらに詩へ、そして散文へと射程を広げることで、言語表現を俳句から小説までいちから定義し直していく。この漸進的な構成により、〈主観性〉〈物性〉〈喩〉〈空白〉〈物〉〈私〉の定義が、抽象的な概念の提示としてではなく、具体的な言語形式の分析を通じて積み上げられていく。</p>
+<p>とりわけ〈喩〉の議論では、吉本が講演で語った〈虚喩〉――ある言葉がそうとしか言えないものとして発せられ、意味にも修辞にも回収されない事態、言語表現の最も根源的な層――を出発点に、短歌における上句と下句のあいだの飛躍、定型という〈物性〉がもたらす強制力と〈主観性〉の蠢きの関係を通じて、〈喩〉が言語表現の根底に位置づけられる。<strong>山本の他のすべての仕事がこの問題設定の上に立っている。</strong></p>
+<h4>俳句の実作分析への展開</h4>
+<p>この理論を同時代の俳句の実作分析に全面展開したのが「閉鎖性を条件とする《空》の相互観測とアニミズム」（『週刊俳句』初出、のち『新たな距離』所収）である。河東碧梧桐の「切れ」の分析から出発し、俳句における「／」（切れ）が、言語表現主体を言語表面の外へ押し出し、〈素材〉の側に観測者を滑りこませることで〈物〉化を起こすプロセスが、小林かんな・嵯峨根鈴子・こしのゆみこ・黒岩徳将・広渡敬雄・野間幸恵の六つの連作の精読を通じて跡づけられる。</p>
+<p>閉鎖的な〈空〉（＝〈空白〉）が外部を観測するという逆説、物や抽象概念が互いを「知らないまま」観測しあう状態、死者が生者として私らを観測する論理、比喩の内的構造としての距離、そして句を並べるレイアウトの論理が「私」の持続性の検分とどう重なるかが、いずれも具体的な句の分析を通じて跡づけられる。結論部で示される「ふたつのルート」――テクスト内部の〈物〉化が手前側の肉体の変異を引き起こす流れと、手前側の肉体感覚の記録・分解が句のレイアウトを変容させる流れ――は、のちの〈アトリエ〉と〈演技〉の二概念を予告するものでもある。</p>
+</details>
+<details class="h3d" id="s29">
+<summary class="h3s">「主観性と物性の誤認的関係（テクストの衝突、運動の構え）」</summary>
+<div class="meta">ワークショップ「奇跡、喩、信（救い投げだす身ぶり）」第一回<a href="https://www.dropbox.com/scl/fi/06v396di1pxfa64m3fqqf/.pdf?rlkey=10myyimo02gvge6uzk9xxco0d&e=2&st=q0zpjpbr&dl=0" target="_blank" rel="noopener">発表スライド</a>（2019年）。</div>
+<p>「主観性の蠢きとその宿」が〈主観性〉〈物性〉〈喩〉〈空白〉〈物〉〈私〉の定義を整えたのに対し、この発表は、それらの概念のあいだで生じる誤認的関係――〈信 belief〉――の問題を正面から扱った、理論の次の段階にあたる。</p>
+<p>前半は吉本隆明のテクストを起点とする。吉本の〈自己表出〉と〈指示表出〉の区分を〈主観性〉と〈物性〉の対として読み替え直したうえで、両者の誤認的関係を〈信 belief〉として定式化した。この定式化が理論の次の段階を開いた点に、この発表の固有の達成がある。</p>
+<p>後半では議論がダンスや肉体運動にまで拡張され、テクストの衝突が肉体の「運動の構え」として引き受けられる局面が論じられる。言語表現の理論が紙面上の問題にとどまらず、肉体の動き――ダンスや演技を含む――にまで射程を持ちうることが、ここで予告的に開かれている。</p>
+<p>この発表は、のちの大林論（〈一人複数役〉と〈複数人一役〉の交差を通じた観客の〈信〉の発生）、ホラー論（霊的国家＝劇空間における〈信〉の故障）、<a href="https://www.suiseisha.net/blog/2023/12/14/%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B%E6%9F%B3%E7%94%B0%E5%9C%8B%E7%94%B7/" target="_blank" rel="noopener">柳田論</a>（歴史と国家が私を記述し尽くす〈既視〉としての〈信〉）のいずれにも先行する理論的基盤を提供している。2026年3月版の定義群における「3　喩と信」の節は、この発表での定式化を引き継ぎ整備したものである。</p>
+</details>
+<details class="h3d" id="s30">
+<summary class="h3s">「ただの死がもたらす群生した〈軋み〉――大林宣彦における制作と思考」</summary>
+<div class="meta">『ユリイカ』2020年9月臨時増刊号 総特集＝大林宣彦。（<a href="https://inunosenakaza.com/craZZZyfishstudio/theory/obayashi" target="_blank" rel="noopener">全文公開</a>）</div>
+<p>山本自身が大江論に対して行なったのと同じ手続きを大林に試みると明言する。遺作『海辺の映画館――キネマの玉手箱』を中心に、〈戦争〉を歴史のなかの具体的出来事というより反復する構造・呪いとして捉え、その脱出の方法として〈役者が役を演じる〉行為が設定されている点を読み取る。</p>
+<h4>〈発見〉としてのリアリズム</h4>
+<p>大林における〈発見〉――役者＝実像と役＝虚像が出会うことで生じる「あっ、私が演じているのはこういうことだったのか」の瞬間――がまず取り出される。リアリズムとは写真的再現ではなく、役と肉体の距離のなかで一瞬立ち上がる〈発見〉の質であり、大林はそれを一種のドキュメンタリーとして撮影することを映画制作の根幹としたのだとされる。</p>
+<h4>〈一人複数役〉と〈複数人一役〉</h4>
+<p>この論考で特に精密に検討されるのが、〈一人複数役〉と〈複数人一役〉の交差である。大林は同一の役者に複数の〈役〉を兼ねさせる〈一人複数役〉だけでなく、複数の役者に同一の〈役〉を演じさせる〈複数人一役〉を、繰り返し作品の核として用いた。『さびしんぼう』では、富田靖子が「橘百合子」と「さびしんぼう」の〈一人複数役〉を演じ、同時に「さびしんぼう」と藤田弓子演じる母親が同一人物とされるという〈複数人一役〉が設けられている。</p>
+<p>大林は「文学では誰もが自然に納得する」ことが映画では成立しないため、〈一人複数役〉のギミックを経由させて〈複数人一役〉への〈信〉を観客に生み出す必要があったと語っている。ここで〈一人複数役〉の展開力と〈複数人一役〉の凝縮力が二人の役者の肉体においてずれつつ交差することで、〈役〉やそれが引き連れる反復的構造（〈運命＝戯曲〉）への〈信〉が観客のもとで発生する。</p>
+<div class="brk"></div><p>この二重構造を通じて山本が取り出すのは、役者と観客のあいだでの二重の〈発見〉と、そこで起こる誤認的関係である。役者は〈役〉という〈形式〉を負って〈表現〉を為すことで自由意志を〈発見〉する。他方で観客は、その振る舞いから役者の肉体を超えた〈形式〉や〈運命＝戯曲〉を「信じて」しまう。〈表現〉の由来を事後的に演算しようとする際に、〈形式〉由来でしかなかったものを〈主観的情緒〉由来と見なし、自身においても再演してしまう――この誤認的往復が〈軋み〉であり、〈主観性〉と〈物性〉の誤認的関係としての〈信〉の問題にそのまま接続する。<strong>後年の〈演技〉概念がほぼ核心まで掘り当てられた論考。</strong></p>
+</details>
+<details class="h3d" id="s31">
+<summary class="h3s">「死の投影者（projector）による国家と死」</summary>
+<div class="meta">『ユリイカ』2022年9月号 特集＝Jホラーの現在。（<a href="https://note.com/inunosenakaza/n/n8dda3f1c6768" target="_blank" rel="noopener">全文公開</a>）</div>
+<h4>〈投影者〉と霊の再定義</h4>
+<p>〈主観性〉〈物性〉〈信〉が極端なかたちで可視化される実験場としてホラーを扱う。この論考で新たに提示されたのが〈投影者 projector〉の概念である。〈投影者〉とは、表現を前にしたとき〈喩〉を備給し投じて主体と環境を仮構する担い手を指す。</p>
+<p>山本はまず、霊を死者の残滓としてではなく、<strong>「生を生として成立させているインフラを、肉体が自己言及的に記述しようとしたとき生じる効果」</strong>として再定義する。ここが論考の出発点である。ホラーにおいて呪われた観測者は、霊を私的に投影する装置＝projectorとして機能する。しかしその霊はやがて個人の妄想にはとどまらず、場所、前世、社会制度、ジェンダー、メディアといった、より大きな法の発露として再設定されていく。</p>
+<h4>法の階層化と霊的国家</h4>
+<p>論考の中核的な議論は、この個人的な投影が社会的・制度的な法の階層構造へと接続される過程の分析にある。個々の霊はたんに「怖い存在」なのではなく、それぞれがある法（ジェンダー規範、土地の記憶、国家制度、メディアの構造など）を担って出現する。そしてそれらの法同士が、どちらがより根源的な由来であるかをめぐって競合し、階級を更新しあう。</p>
+<p>こうして世界は<strong>「あらゆる表現の背後に法があり、その法同士が階級を更新しあう騒がしい霊的国家＝劇空間」</strong>と化す。ここで「国家」とは政治体制だけでなく、あらゆる出来事の背後に原因や由来を仮構せずにいられない認識の構えそのものでもある。</p>
+<h4>〈信〉の故障と自由意志</h4>
+<p>投影（projection）は、法が個々の肉体を通じて自らを上演させるプロセスである。だが、投影される先の肉体は法の完全な反映にはなりえず、そこにはわずかながら法からの逸脱――〈信〉の故障――の余地が生じる。ホラーはこの構えを極端なかたちで加速させるジャンルであり、由来の拮抗と更新の激しさのなかで、わずかにずれる可能性をも示す。</p>
+<div class="brk"></div><p>この論考が提示した〈投影者〉〈霊的国家〉〈信の故障〉の問題系は、以後の山本の仕事に広く浸透している。上演批評で繰り返し焦点化される投影・法・自由意志の問題はここでの議論を直接の下敷きとしており、柳田論における〈既視〉と自然法の問題、大林論における〈役〉と〈運命＝戯曲〉の問題とも相互参照的な関係にある。</p>
+</details>
+<details class="h3d" id="s32">
+<summary class="h3s">「生のアトリエ――表現を真に受け、使い、自分だけの部屋を作る」</summary>
+<div class="meta">桐光学園講演会（2023年11月）での<a href="https://www.dropbox.com/scl/fi/pyybza8kupzkpk2mzmnx9/_20231104.pdf?rlkey=wc8r4fpufuesf8cip2wfp66fn&e=1&dl=0" target="_blank" rel="noopener">講演</a>。のち短縮版が<a href="https://sayusha.com/books/-/isbn978-4-86528-405-5" target="_blank" rel="noopener">『高校生と考える 人生の進路相談』</a>（左右社、2024年）に収録。</div>
+<p>「芸術や文学にいま取り組む意味」をテーマに、中高生向けに行なわれた講演。山本自身が「私の仕事のなかで最も明瞭かつ重要なもののひとつ」と位置づけている。言葉を「人間の体に働きかけられるようオーダーメイドされた、とても強くて独特で、手軽な装置」として定義し、「体へのやばい指示の大量に集められた装置が、たとえば本」であるとする。芸術や文学が歴史上すでに多くの達成を為してきたこと、人工知能の急速な発展によって人が新たに取り組む社会的意義が相当に失われていることを前提としたうえで、それでも「芸術や文学に取り組む私の生」をどう再評価できるかを問う。</p>
+<p>講演では大森靖子の歌詞、郡司ペギオ幸夫の天然知能論、吉本隆明の言葉などが引かれ、ヴァージニア・ウルフ「自分だけの部屋」への参照を通じて、表現のための場をつくることが論じられる。とりわけ重要なのは、利己的であること――自分だけのアトリエをつくること――がそのまま利他的になりうるという論点であり、個々人の生のささやかな肯定が、共同体への開かれと矛盾しないことが示される。「部屋」と呼んでいたものを「作る／作られる」関係性をより意識して「アトリエ」と呼ぶに至った経緯が平明に語られ、〈アトリエ〉概念への入口として機能する。山本がもつ「ひとりひとりの生の肯定」をめぐる考え方が集約されたテクストである。</p>
+</details>
+<details class="h3d" id="s33">
+<summary class="h3s">「世界の把握はいかにして国家に似、歴史に似、瀰漫する未来として私を記述し尽くすのか」</summary>
+<div class="meta">大塚英志編<a href="https://www.suiseisha.net/blog/2023/12/14/%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B%E6%9F%B3%E7%94%B0%E5%9C%8B%E7%94%B7/" target="_blank" rel="noopener">『接続する柳田國男』</a>所収。</div>
+<p>〈主観性〉〈物性〉〈信〉の問題を国家と歴史のスケールへ拡張した、山本の論考のなかでも特に広い射程を持つ。</p>
+<p>出発点は吉本隆明の「柳田国男論」（1984–87年）に頻出する〈既視〉――柳田の文体に触れた者が「あっ、この感じはいつかもあった」と感じてしまう事態――である。山本はこの〈既視〉を〈信〉の一形態として読み替える。〈既視〉とは、テクストを読む肉体が、記述の内部にいる感覚と外部から俯瞰する視線を同時に抱え込まされたとき、その〈空隙〉において生じるものである。</p>
+<h4>旅人の文体と自然法</h4>
+<p>論考は吉本の柳田論を精密にたどり直すかたちで進む。吉本において柳田は、「常民」という一貫した人体モデルを設定し、それが土地ごとの〈習俗〉――ルソーのいわゆる第四番目の「法」に相当する不文の格率――を装填されることでその反映として生き、死んでいくさまを記述した。「旅人」は複数の土地を渡り歩くことで複数の習俗を貫通する視点を「上方からの俯瞰の視線」として得、それが「文体」へと反映される。ただし柳田は「旅人」そのものではなく「旅人の文体」として自らを設計しており、吉本はそこに、自らを複数の土地・習俗に代入可能な加速する観測装置として制作するという方法論を読み取る。</p>
+<p>この「旅人の文体」がもたらす俯瞰の視線を、山本は上方から世界を見下ろす〈圧〉として捉え直す。その〈圧〉の源泉として吉本が設定しているのが「山」であり、自然法である。習俗＝自然法は土地から人へ、人から「家」へ、「家」から「村落」へ、そして国家へとボトムアップで上昇し、各段階で自らを反映させていく。柳田の国家観は、ホッブスやロックの第三者権力説に似つつ、しかし万人の自由と平等を〈起源〉に置かない点で独特であるとされる。個々の肉体は自然法のもとで「因果応報」的に駆動され、そこから逃れがたい。</p>
+<h4>「悲劇」と宮沢賢治</h4>
+<p>論考の核のひとつは、この自然法がもたらす「悲劇」の問題である。柳田が蒐集した事件の記録群――自然法的な裁定が習俗によって黙々と行なわれた結果として生じた不可避の殺人や死――において、肉体は「風光の無関心（イナートネス）」に「すこし遠くから斜めに俯瞰され」ながら「不可避に〈死〉へつれてゆ」かれる。ここで〈死〉とは個体の生物学的な終わりというより、自然そのものから記述し尽くされる〈圧〉の持続として、〈既視〉と地続きに理解される。</p>
+<p>一方、宮沢賢治は吉本にとって、単一の土地において科学と信仰の「総合」を企図した存在として、柳田と対比される。宮沢における〈実験の方法〉が閉じた系のなかでの進化論的発展に近いのに対し、柳田の〈実験の方法〉は複数の肉体・土地・自然を行き交わせる術としてあった。吉本は両者を同一の方法論の根に置くことで、宮沢的な科学的楽観と柳田的な自然法からの〈圧〉の両方を引き受ける視座を得る。</p>
+<h4>現在との接続</h4>
+<div class="brk"></div><p>山本はこの議論を、現在のパーソナリティ消費・SNS・人工知能といった状況と接続し、個と共同のあいだの関係を「私」の経験の内側から記述・構成する手立てが問われる。ホラー論が霊的国家＝劇空間を個々の肉体における〈信〉の故障として扱ったのに対し、柳田論ではそれがより持続的で瀰漫した制度や歴史記述の力として現れている。</p>
+<p>吉本の読み替えが山本の理論においてどれほど深く機能しているかを示す論考でもある。なお、この柳田論をさらに発展させたものとして、レクチャー＋ワークショップ<a href="https://www.dropbox.com/scl/fi/dxs38571kr8p8sbcy5t8l/_20240330.pdf?rlkey=jkxg1essx0n10hht0ne6jahmo&e=1&st=wyy2q4ow&dl=0" target="_blank" rel="noopener">「〈死からの視線〉をつくる」</a>（blanClass+神村恵「身ひとつで生きる」、BankART Life7、2024年）がある。そこでは吉本の〈世界視線〉の由来が柳田・宮沢賢治・臨死体験にたどり直され、〈死からの視線〉として再定式化されたうえで、〈アトリエ〉概念と接続されている（詳しくは理論地図「〈新たな距離〉と〈死からの視線〉」を参照）。</p>
+</details>
+</details>
+<hr>
+<details id="s34">
+<summary>日記と「日記帳」――フィクションの再定義</summary>
+<p>山本の理論は批評や上演だけでなく、「日記」と「フィクション」の関係を問い直すことでも展開されている。<a href="https://inunosenakaza.stores.jp/items/691d9aa0928f9714111d6d06" target="_blank" rel="noopener">『フィクションと日記帳』</a>の「はじめに」で山本は、「小説も批評もエッセイも、さらには映像や音楽や上演や美術だって、ぜんぶがある日ある場所である体が為した表現の積み重なった結果であるのなら、すべては日記から成ると言っていいんじゃないか」と記している。ただし山本はこの日記性を「本当のこと」や「当事者性」の礼賛へ接続しない。</p>
+<details class="h3d" id="s35">
+<summary class="h3s">二つの命題――日記・フィクション・アーカイブ</summary>
+<p>表題論考<a href="https://inunosenakaza.stores.jp/items/691d9aa0928f9714111d6d06" target="_blank" rel="noopener">「フィクションと日記帳」</a>では、日記から言語表現全般を再定義するための二つの命題が提示されている。<strong>第一に、「文章とは、それぞれの背後に日付を抱えた、いくつもの日記のレイアウトである」。</strong>何日もかけて書かれたエッセイや小説は、日記を「がしゃんがしゃんとくっつけて書く」ことで成り立つ地層であり、一文一文はある日付のある時間に即興的に書かれたものである。<strong>第二に、「日記はある一日の私に何日もの私を引き受けさせることのできる表現形式である」。</strong>ある出来事をきっかけに十年前の記憶が想起されて今日の日付のもとに書かれてしまうように、私はいくつもの日付を抱えながら今を生きている。</p>
+<p>この両者を重ね合わせたところに、日記的な断片や経験を、どの順序で、どの速度で、どの空白を挟み、どの宛先に向け、どの肉体に引き受けさせるかというレイアウトの仕事としてのフィクションが位置づけられ、フィクションのレイアウトの方法を別の肉体へ輸送する技術としてのアーカイブがそれに続く。この三つは一本の線上にある。同論考では、アンネ・フランクの「キティー」への呼びかけ、大江健三郎の『晩年様式集』、小島信夫の往復書簡小説、瀧口修造や吉増剛造の「葉書詩」、そして近年の交換日記の実践に至るまで、日記が「宛先」を構成し多重化していくプロセスを跡づける。</p>
+<div class="brk"></div><p>この考え方は2010年代の日本文学状況への山本の見立てとも深く関わる。保坂和志以後の即興的執筆、当事者性や政治性の前景化、日記ブーム。これらを山本は「書くことのシミュレート性」「演技性」の問題として捉え直している。</p>
+</details>
+<details class="h3d" id="s36">
+<summary class="h3s">日記ブームとフィクションの意義</summary>
+<p>『フィクションと日記帳』所収の「ささやかな『本当らしさ』からこの世界そのものの『フィクション』へ」では、日記ブームとホラーブームがともに2020年前後を端緒とし、ともにファウンド・フッテージ形式に依拠し、「本当らしさ」と「パーソナリティ」の結託のもと情動と思考を触発するコンテンツとして流通している点が指摘される。</p>
+<p>山本はそこから、個々のフッテージがもつ「ささやかな本当らしさ」が、ある程度の長さと複雑さを持って編まれていくことで、「この私」とフッテージのあいだに距離（真に受けられなさ）が生じ、この世界そのものを複数の現実の行き交いの場として捉える姿勢が立ち上がりうると論じる。かつてフィクションと呼ばれてきたものの人類史的意義は、「お話」そのものの価値以上に、そうした制作と受容のプロセスにおいて発明しえた距離に基づく世界への想像力や倫理のありようにこそあるとされる。</p>
+<p>同じく所収の「それが『作家』の『日記』と呼ばれること」では、金井美恵子の日記文学を参照しつつ、作家が日々を書くことが「作家の日記」という制度的枠組みに回収されてしまう問題と、それでもなお「過剰な現在」を引き受けて書き続けることの意義が論じられている。</p>
+</details>
+<details class="h3d" id="s37">
+<summary class="h3s">「座談会9」――日記帳・書簡・即興的上演</summary>
+<p>こうした視座のもとで、「座談会9」（2024/08/18→2024/11/30、後半部分は『フィクションと日記帳』に再録）では、山本が「日記」をめぐる自身の立場をより率直に語っている。</p>
+<p><strong>山本にとって日記は、日付ごとに一日を振り返る形式よりも、日々を投げ込んではこちらの世界の見え方が変わっていく「日記帳」そのものを書きながら作っていくような営みとして捉えられている。</strong>その「日記帳」こそが小説や詩であった。また山本は、誰にも宛てていない日記よりも、特定の誰かに向けて報告し伝える「書簡」のほうに信頼を向けてきたとも語っており、「座談会」という形式の本質も往復書簡であるとする。</p>
+<p>さらに山本は、何かを引き受け、そのつど即興的に上演すること――引き受ける先が変わればいくらでもキャラブレしてしまうが、常に精一杯生きていること――そうした状態を素朴に起こさせる装置として「日記」は肯定されるべきだと述べる。そのうえで、日記をさらに引き受け合い、〈アトリエ〉を多重化していくことで立ち上がる「日記帳」としてのフィクションの可能性が問われている。この認識は、後述する「法と上演」の問題系に直接つながっている。</p>
+</details>
+</details>
+<hr>
+<details id="s38">
+<summary>法と上演――〈役〉をめぐる思考</summary>
+<p>山本の仕事において「上演」は、舞台芸術の一ジャンルにとどまらず、表現一般に関わる問題として捉えられている。以下ではまず、その理論的な骨格を整理したうえで、上演批評・戯曲論・演出の具体的な実践をたどり、最後に、それらが小説や詩歌とどのように連続しているかを確認する。</p>
+<details class="h3d" id="s39">
+<summary class="h3s">理論的背景――四つの鍵語</summary>
+<p>山本の上演論を貫くのは、<strong>〈法〉〈役〉〈投影〉〈自由意志〉</strong>の四つの概念の関係である。</p>
+<p><strong>〈法〉</strong>とは、表現をそうであらしめる法則性（＝〈物性〉）のことであり、戯曲、自然法、国家、習俗、物理法則など、肉体の外から行為を規定する力の総称として用いられる。<strong>〈役〉</strong>とは、その法のもとで肉体が引き受けざるをえないもの――ある振る舞いのかたちや位置――を指す。<strong>〈投影 projection〉</strong>は、法が個々の肉体を通じて自らを上演させるプロセスであり、<a href="https://note.com/inunosenakaza/n/n8dda3f1c6768" target="_blank" rel="noopener">ホラー論</a>で詳しく展開された。そして<strong>〈自由意志〉</strong>は、法と肉体のあいだの距離のなかでこそ事後的に測定されるものとして位置づけられる。</p>
+<p><a href="https://inunosenakaza.com/craZZZyfishstudio/theory/obayashi" target="_blank" rel="noopener">大林論</a>で取り出された〈軋み〉（役者と役の出会いが生む〈発見〉の瞬間）、ホラー論で提示された「霊的国家＝劇空間」（あらゆる表現の背後に法を仮構せずにいられない認識の構え）、<a href="https://www.suiseisha.net/blog/2023/12/14/%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B%E6%9F%B3%E7%94%B0%E5%9C%8B%E7%94%B7/" target="_blank" rel="noopener">柳田論</a>で検討された〈既視〉と自然法（歴史と国家が私を記述し尽くす〈圧〉）――いずれもこの四語の組み合わせとして理解できる。</p>
+<p>こうした上演の問題は、山本にとって初期から小説論と地続きに存在していた。<a href="https://inunosenakaza.stores.jp/items/5c1d99341444482501948d82" target="_blank" rel="noopener">大江論</a>における〈演劇的教育〉や〈擬似私小説〉の議論にはすでにその萌芽があり、大林論で展開された〈戯曲〉＝〈形式〉と個々の肉体のあいだの交換関係、〈同行二人〉モデル、役の交替と死後の視線といった問題へと発展している。荒川修作＋マドリン・ギンズが建築によって肉体のバランスを崩させ、肉体の各部位がそれぞれ異なる法に従って散らばるなか〈私〉がそれを束ねてしまうという事態もまた、この文脈にある。</p>
+</details>
+<details class="h3d" id="s40">
+<summary class="h3s">上演批評の実践</summary>
+<p>山本の上演批評は近年はじまった仕事であり、理論地図で整理した〈法〉〈役〉〈投影〉〈自由意志〉の問題を、実際の肉体がある場所でどう検証できるかをめぐる実験記録として読むことができる。</p>
+<h4>〈役〉と肉体の引き受け</h4>
+<p>上演批評において最も繰り返し焦点化されるのは、〈役〉を肉体がどう引き受けるかという問いである。三野新『外が静かになるまで』をめぐる批評<a href="https://note.com/inunosenakaza/n/nd4087ae78855" target="_blank" rel="noopener">「あなたを演じる場所」</a>では、「私は眠っている」という矛盾した自称から〈役〉の最小構成要素が取り出され、〈役〉が没入の対象ではなく「ここ」と「よそ」を生み出す隔たりであること、その隔たりの往来こそが〈劇〉であることが示される。</p>
+<p>7度「東京ノート」批評では、複数人を想定した戯曲を一人の肉体が処理するとき生じる「量的ギャップ」――社会や時代という膨大な「数」が、作品というごく限られた人体・時空間へ圧縮され、さらにそれが単一の肉体へと圧縮される事態――が注目される。ここでは<a href="https://inunosenakaza.com/craZZZyfishstudio/theory/obayashi" target="_blank" rel="noopener">大林論</a>の〈一人複数役〉と〈複数人一役〉の問題が、より切迫したかたちで個々の上演に見出されている。</p>
+<h4>投影と法――映像・展示・お笑い</h4>
+<p><a href="https://note.com/inunosenakaza/n/n8dda3f1c6768" target="_blank" rel="noopener">ホラー論</a>で展開された〈投影 projection〉の問題――法が肉体を通じて自らを上演させるプロセス――は、上演批評においても中心的な主題となっている。大岩雄典展評「国と毒薬」では、鑑賞者の行為が法によって先取り（Projection）される事態が検討される。鈴木一平との対談「シネマの再創造・パフォーマンス『清掃する女』をめぐって」では、七里圭の作品における紗幕への映像投影と舞台上の肉体の同居が分析され、紗幕の映像のほうに確固たる自由意志があり舞台上の肉体はそれに追随しているだけであるかのように見えてくる事態が記述される。法＝戯曲と上演と自由意志の関係が、母娘間の振り付け的関係という主題に重ねて考察される。</p>
+<p>山本の上演への関心は狭義の演劇やダンスにとどまらない。『ユリイカ』2024年12月号「特集＝お笑いと批評」掲載の鼎談（鈴木亘＋つやちゃん＋山本浩貴）では、コント漫才を、素の肉体とフィクショナルな役柄のあいだの交代劇をきわめて凝縮されたかたちで実現する上演芸術として論じ、お笑いが社会的な〈役〉を発明し流通させる起点として機能している状況を指摘している。</p>
+<h4>方法の共有と制作プロセスの記録</h4>
+<p>上演批評のもうひとつの特徴は、批評が制作プロセスの記録と一体化している点にある。石川朝日≠ハラサオリ「（しつつ）」ショーイング評では、共同リサーチャーとして数か月間の稽古に関わった過程が記録され、ショーイングの一部として差し出される。「物をケアする場としての『ライフ』」（ながめくらしつ「ライフワーク」評）やハラサオリ『P wave』劇評でも、肉体は閉じた主体ではなく環境内の情報を探索し引き受ける開かれた場として描かれ、観察と記述が理論的な記述と分かちがたく結びついている。ｈとの共同執筆による「スペースノットブランク『本人たち』プレビュー上演」では、上演は「伝える」ことの成功例ではなく「伝える」ことをめぐる方法論の提示として読まれる。</p>
+<p>なお、<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">『新たな距離』</a>所収の鈴木一平の詩集をめぐる連作論考（「<a href="https://inunosenakaza.stores.jp/items/5c1d9c2ec2fc28029dbed7fe" target="_blank" rel="noopener">『灰と家』</a>を上演するための４つのノート」「物化するプロセス、閉鎖から滲み出る距離、遍在する家々の期待」「閉鎖性を条件とする《空》の相互観測とアニミズム」）では、テクストを読むこと自体を上演として捉え、詩集を「上演する」ための方法が模索されている。</p>
+</details>
+<details class="h3d" id="s41">
+<summary class="h3s">戯曲論――形式への問い</summary>
+<p>山本の上演をめぐる思考には、「戯曲」という形式そのものへの問いが含まれている。</p>
+<p>山本は2021年に戯曲「うららかとルポルタージュ」を執筆しており、この作品をめぐるイベント（哲学オンラインセミナー「W山本のレッスンみたいな」、2021年）での発表<a href="https://www.dropbox.com/scl/fi/avu30e13ix9p7ezv2ato9/_-20211024.pdf?rlkey=bzjsdu5z3vwrgm2ikpk511o89&st=4uiedcgg&dl=0" target="_blank" rel="noopener">「戯曲にとって私／空間／肉体／喩とはなにか？」</a>では、同作が背景に持つ政治的・文化的モチーフ、具体的手法の開示、登場人物や物語の構造分解に加え、「戯曲」という表現形式に対して山本が抱いている考えが、「舞台」「役柄」「ト書き」「抽象と具象の関係」といった観点から語られている。</p>
+<p>「脱獄計画（仮）」ミニシンポジウム（Dr. Holiday Laboratory）での発表は、戯曲とは何かをより原理的に考察したものでもある。ビオイ＝カサレスの小説『脱獄計画』を起点に、山本ジャスティン伊等による戯曲「脱獄計画（仮）」、そしてその上演へと議論が展開されるなかで、小説の形式と物語内容の重ね合わせ（総督の実験の内実を小説というかたちで読者に再演させること）が論じられ、それが戯曲という形式ではどう変換されるかが検討される。テクストの法たる「抽象的な場」（ト書き、メタ的自己言及、時間の混線、夢と閉鎖）が〈役〉や〈魂〉とどう関係するかという問いが立てられ、戯曲を「或る法のもとでの肉体の上演を設計するテクスト」として捉える視座が示されている。</p>
+<p>ここでの「法＝戯曲」と「肉体の自由意志」の緊張関係は、大林論やホラー論で論じられた〈形式〉と〈表現〉の〈軋み〉と同一の問題構造を持つ。</p>
+</details>
+<details class="h3d" id="s42">
+<summary class="h3s">演出の実践</summary>
+<p>2025年に演出を手がけた松原俊太郎作<a href="https://inunosenakaza.com/performance/20251114" target="_blank" rel="noopener">『インポッシブル・ギャグ リーディング公演』</a>の当日パンフレットでは、山本自身の演出の考え方が直接的に記されている。山本は、ひとの行為が「自由意志」や「心」から起こるのではなく、外から降ってきた「シチュエーション」に強いられたものでしかないという認識を出発点に置く。リーディング公演という形式は、テキストを手に持ち読み上げることで、言葉と肉体のあいだの「奇妙な距離」を肉体の内部に隠さず物理的に可視化する。テキストの置かれる場所（紙、スマホ、ディスプレイ）を空間的に設計することで、「役柄」は内的なものから外的なものへと移される。</p>
+<p>山本はここで、「自由意志」や「心」と呼ばれるものも「いまここの周囲にはないがどこかにはあるシチュエーションの束」と言い換えられるとし、内心とシチュエーションは「体に言葉をそう発せさせた原因」として地続きであると述べている。この認識は、大林論やホラー論で展開された法＝戯曲と肉体のあいだの距離、〈信〉と自由意志の問題を、演出という実践として引き受けたものである。</p>
+<h4>『温室／オンシル』</h4>
+<p>2026年には三野新作<a href="https://inunosenakaza.com/performance/20260117" target="_blank" rel="noopener">『温室／オンシル』</a>の演出も手がけるなど、舞台芸術への関与を拡大している。</p>
+</details>
+<details class="h3d" id="s43">
+<summary class="h3s">「書くという演技」――小説と上演の架橋</summary>
+<p><a href="https://inunosenakaza.stores.jp/items/691d9aa0928f9714111d6d06" target="_blank" rel="noopener">『フィクションと日記帳』</a>では、何かを引き受けて書くことが即興的上演であるという認識が語られている（「日記と『日記帳』」を参照）。<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">『新たな距離』</a>所収の山下澄人論<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">「書くという演技――山下澄人『FICTION』」</a>は、この演劇と小説の架橋をもっとも全面的に展開した論考である。</p>
+<p>山本はここで山下の小説を「小説で書かれた演劇論」と位置づけ、その基礎に「人の見ている中に生きた人間を立たせればそれは必ず何かに見える」という「見立て」の不可避性を見出す。「ラボ」と呼ばれる作中の試み――二人もしくは三人に前に出てもらいその肉体や発話や関係をみなで見つめる――は、この「見立て」の不可避性だけがある場所から演劇を再構成しようとするミニマムなモデルとされる。</p>
+<h4>「俳優」と「準備」</h4>
+<p>「演技」は外から与えられた役の再現ではなく、そのつどの「見立て」を十全に駆動させるための「準備」と定義され、その「準備」を担う肉体がはじめて「俳優」と名付けられる。「俳優」は能動性や優れた内面を持つ者ではなく、空っぽだからこそ幾つもの意志や場が行き交う場――「空なる奇妙な同一性」の宿――としてある。</p>
+<h4>小説における「死者を書く」こと</h4>
+<p>一方、たった一人で書かれる小説は、演劇とは違い、「よく見られる」対象である生きた人間を書くことを通じてこの世界に立たせるところから始めなければならず、そこから〈アトリエ〉の設えと実行、発見と再利用をめぐる問いと実践の連鎖が生じる。死者を引き受け〈アトリエ〉とすることで「このわたしが初めて書いてしまうもの」を見つめること、それが「死者を書く」ことの実態だとされる。演劇と小説、肉体と言葉、生者と死者、複数とひとりのあいだで往来し実現されようとする総体が「劇」であるという結論は、山本の上演論と小説論を不可分なものとして示している。</p>
+</details>
+<details class="h3d" id="s44">
+<summary class="h3s">詩・小説・上演を貫くレイアウトの法則</summary>
+<p>AAF戯曲賞関連プログラム（2024年）での講演<a href="https://www.dropbox.com/scl/fi/5wly51uee7i854zw3zhry/AAF-_20240310.pdf?rlkey=m6jxl16lwhbttvta2g5jn4j3h&dl=0" target="_blank" rel="noopener">「言葉を扱うとは何を扱うことなのか？　いぬのせなか座における演出＝レイアウト」</a>は、「演出」をキーワードに、いぬのせなか座がこれまで行なってきた実践と議論を網羅的にたどった資料であり、山本自身が「私がこの10年間で行なってきた実践と議論を振り返ったものとしては、最も圧縮的かつ貫通的だ」と記している。ここでは、「レイアウトの法則」という視座が、詩歌・小説・デザインを貫通するものとして位置づけられている。</p>
+<p><strong>詩</strong>は、少ない分量のなかで〈主観性〉と〈物性〉の衝突を極度に凝縮し、〈喩〉を発生させる形式である。<strong>小説</strong>は、それよりはるかに長い時間と分量を用いて、複数の〈環境〉と〈者〉のカップリングを掛け合わせ、〈アトリエ〉を立ち上げる形式である。<strong>上演</strong>は、それらが実際の肉体・空間・時間のなかで引き受けられ、〈役〉と〈法〉の距離のなかで肉体が試される場である。</p>
+<p>この連続性のもとで、山本の理論は詩論としても小説論としても上演論としても作動する。詩の行分け、小説の章構成、舞台上の俳優配置、紙面のデザインは、すべて〈主観性〉と〈物性〉のレイアウトの問題として同一の理論的地平で扱われる。</p>
+</details>
+</details>
+<hr>
+<details id="s45">
+<summary>小説の実作――「私」の閉鎖性と共同性</summary>
+<p>「出発点」および「『私が私であること』からの逃れ難さ」で見たように、山本の活動は小説の実作から始まっている。主な小説に、<a href="https://puboo.jp/book/73331" target="_blank" rel="noopener">「Puffer Train」</a>（2012–13年）、SFホラー小説<a href="https://anchor-and-void.inunosenakaza.com/" target="_blank" rel="noopener">「無断と土」</a>（樋口恭介編『異常論文』早川書房、2021年初出）、その続編にあたる『SFマガジン』連載中の<a href="https://anchor-and-void.inunosenakaza.com/" target="_blank" rel="noopener">「親さと空」</a>がある。これらの小説は、テーマとしては「記憶と死者の再生」「戦争と動員」「AIと日記」「天皇制と慰霊」「摂食障害とジェンダー」「動物（異種）と自己同一性」などさまざまだが、いずれにおいても、表現を行なうこの私の閉鎖性とそれが社会の共同性に接続する（してしまう）事態が取り扱われている。</p>
+<details class="h3d" id="s46">
+<summary class="h3s">「Puffer Train」</summary>
+<p><a href="https://puboo.jp/book/73331" target="_blank" rel="noopener">「Puffer Train」</a>（2012–13年）は山本の初期代表作にあたる長編小説である。同作の前半部（全3章中、第1章から第2章の4まで）の改行などをなるべく削ったものが第56回群像新人文学賞の最終候補となった。小説家・町屋良平は山本を「二〇一〇年代を代表する作家」と呼び、「Puffer Train」を含む初期小説群を「二〇一〇年代に書かれたもっとも優れた作品の一つである」と評している。</p>
+<p>三部＋エピローグから成り、冒頭にニコラウス・クザーヌスとヘンリ・モアの多宇宙をめぐるエピグラフが置かれる。第1部「trial and error」では、ある「わたし」の日常が語られる。送信済みメールをすべて削除する習慣、母親との二人暮らし、友人ハルから「死んだはずのカズナが街を歩いている」と聞かされること。ただし「わたし」はカズナと数日前にもメールを交わしており、死んだという認識を持っていない。語り手が誰であるかは曖昧なまま、喫茶店でカズナと会えば腕が三本ある女が窓の外を歩き、胃のなかで数万匹のエビがうごめく感覚が生じる。やがて「わたし」は学校と逆方向の電車に乗り、かつて海水浴に行った駅で降り、海に辿り着けないまま見知らぬ土地をさまよい、動物園の奥のファーストフード店で働きはじめる。視点は徐々にカズナの側へずれこんでいく。</p>
+<p>第2部「tank mate」ではカズナの視点に移る。船舶解体場でのアルバイト、「わたし」（シャライ）との同居、同僚ツヅキと事故死した恋人○×さんとの関係。この世界では死者を「再生」できることが、ハルがひいおじいさんの死を前に「なんで生き返らせないの？」と問われる場面で明かされる。シャライの肉体からエビが溢れ出し、再生のための「データの齟齬」が大きすぎると告げられ、シャライは死に向かう。ハルのひいおじいさんの日記――日付と天気と出来事だけがひたすら記された大学ノート――が読まれる場面は、「日記」をめぐる山本の問題意識がもっとも初期のかたちで現れた箇所のひとつでもある。</p>
+<p>第3部「phylogenetic tree」では視点が一気に宇宙的・地質学的スケールへ拡張され、鉱物の結晶構造、惑星の循環、恐竜から鳥への進化、監視衛星、戦場、犬や猫の生に至るまでが途切れなく連続する。登場人物たちの名がDNAの連なりの断片として計算に用いられていたことが示唆され、街そのものが死者の記憶ログを再編する大規模な計算システムであるというSF的設定が浮上する。エピローグ「shrimp」では親密な生活の細部に帰還し、ノートに描かれたうさぎとサッカーボール、情報収集衛星の周回、空爆された街と散髪屋の犬が同一の文体で並べられる。SF的設定は説明として前景化されることはなく、死者と生者の境界が曖昧なまま日常が営まれていく質感そのものとして小説に埋め込まれている。</p>
+</details>
+<details class="h3d" id="s47">
+<summary class="h3s">連作「フィギュラル・ヴォイド」</summary>
+<p>「無断と土」と「親さと空」は連作『フィギュラル・ヴォイド』を構成する。「無断と土」がそのエピソードゼロ、「親さと空」がpart.2にあたる。1900年代初頭から2037年までの百年以上の時間を、日本・フィリピン・中国を含むアジア諸国を舞台に描く。作品の設定やあらすじは著者監修のもと<a href="https://anchor-and-void.inunosenakaza.com" target="_blank" rel="noopener">特設ページ</a>で公開されている。</p>
+</details>
+<details class="h3d" id="s48">
+<summary class="h3s">「無断と土」</summary>
+<p>全編が学術的な発表原稿とその質疑応答で構成される。発表は、開発者不明のVRホラーゲーム『WPS（Without Permission and Soil）』の分析を主軸に据え、四部にわたって展開される。1900年代から1920年代の「怪談の時代」と宮城出身の詩人・菅原文草の仕事、天皇制をめぐる詩と上演の構想、WPSのMAP構造と菅原の舞台設計メモの一致、WPS終盤に現れる詩篇が明治天皇・昭和天皇の短歌のアナグラムであることの論証が重ねられ、天皇制の「奇形的発達をめぐる具体的遂行＝上演例」としてWPSが位置づけられる。バートランド・ラッセルのセンシビリア論、折口信夫の外界観念、吉本隆明の初期歌謡論・ハイ・イメージ論など、山本の理論的参照先が小説の素材として全面的に動員されている。質疑応答では実在の詩人・鈴木一平が「質問者4」として登場し、虚実の境界を意図的に攪乱する。</p>
+<p>樋口恭介は『異常論文』の作品紹介で本作をボルヘスの変奏と位置づけつつ、古谷利裕は大江健三郎や深沢七郎の系列に連なる「天皇制小説」として画期的であると同時に、荒川修作＋マドリン・ギンズの「共同性」概念に明確な像を与えている点でも画期的であると評している。</p>
+</details>
+<details class="h3d" id="s49">
+<summary class="h3s">「親さと空」</summary>
+<p>「親さと空」（ちかしさとくう）は『SFマガジン』にて連載中の長編小説である。2028年にフィリピン上空で核兵器が起爆され（マニラ核閃光事件）、翌年には新型コロナウイルスの変異株によるパンデミック（J-アムネジア）が人類の約3割にエピソード記憶の障害をもたらす。記憶がインフラとして再定義された2037年の日本では、人格補助AI〈ノーカー〉が成人の95%以上に普及し、個人の自己同一性を支えるシステムとして機能している。</p>
+<p>この社会を舞台に、ノーカーのメンターとして働く二神柚葉、9年間の音信不通を経てフィリピンから来日するマリア・K・バウティスタ、柚葉をゲームと詩の世界に引き込んだ根路銘万葉らの関係が、テクノロジーと国家制度のはざまで描かれる。ノーカーの脱獄を推進するナショナリスト集団「ゆら」の思想源泉が「無断と土」の講演テキストであるという設定は、前作と本作を虚構内で入れ子状に接続させている。</p>
+<p>第1回ではノーカーが初期化される直前0.5秒に生成した報告書が大半を占め、世界設定の開示と同時にAIの「遺書」として機能する。第2回では2037年の現在と2017年のオンラインでの出会いが並走し、二人が共にプレイしたゲーム「Ark-Chain」のなかで歴史的事件の断片が不意に「上演」される。第3回では2025年に時間軸が移り、柚葉がChatGPTを用いてマリアの対話ログから「マリアっぽい」会話相手を密かに運用していたことが明かされる。各回が異なる形式を採り、個人の記憶と国家の記憶、親密な関係と制度的暴力、芸術制作と政治運動のあいだの緊張を浮かび上がらせる。</p>
+<p><a href="https://puboo.jp/book/22915" target="_blank" rel="noopener">「遠路市街」</a>で体感された「私が私であること」からの逃れ難さは、これらの小説のなかで、そのつど異なる社会的・技術的条件のもとに配置し直されている。詩歌の活動もいぬのせなか座の刊行物等を通じて継続されている。</p>
+</details>
+</details>
+<hr>
+<details id="s50">
+<summary>出版・編集・デザインという理論実践</summary>
+<p>山本の仕事において、<strong>編集・造本・デザインは「周辺業務」ではなく、理論の実践そのものである。</strong><a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">『新たな距離』</a>所収の<a href="https://note.com/inunosenakaza/n/n41ba469c1179" target="_blank" rel="noopener">「言語表現の運用に『紙の出版物』はどう有効か？」</a>で山本は、表現の「内側」（作品制作や理論形成）と「外側」（出版やプロデュース）に同時に関わる必要を論じている。ここで外側とは宣伝や流通だけでなく、どの媒体で、どの判型で、どの順序で、どの余白をもって、どの共同体へ向けて、どのような速度で作品を届けるかという条件全体のことである。</p>
+<p>いぬのせなか座の出版活動はこの考えをもっともよく示す。メンバーの作品集や批評集、外部作家の単著、座談会、ドキュメントを、それらがどう相互に参照され、どう読み始められ、どう別の制作へ受け渡されるかまで含めて設計しているからである。ページ上の言葉の並び、章の順序、装丁、紙面の余白、注の付け方は、「読みやすさ」のためだけにあるのではなく、どのような〈主観性〉を仮構させるか、どのようなアトリエを読者に逆算させるかを調整する装置としてある。</p>
+<details class="h3d" id="s51">
+<summary class="h3s">三野新論――写真・編集・共同制作</summary>
+<p>山本が『早稲田文学』編集や『クイック・ジャパン』アートディレクション、書籍デザインや企画編集に継続的に関わってきたことは、他者の表現をどう置き直し、どう別の共同体へ運び、どう後続にとっての環境を作るかをめぐる実地の理論実験であった。</p>
+<p><a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">『新たな距離』</a>所収の三野新論「より演劇的かつ仮設的な〈舞台〉で。」は、いぬのせなか座と三野新の共同プロジェクト<a href="https://inunosenakaza.com/book/kubakara" target="_blank" rel="noopener">『クバへ／クバから』</a>をめぐって、沖縄の風景、（非）当事者性と表現、写真集の編集・制作プロセスを論じたものである。沖縄にルーツを持たない者が沖縄を撮影し東京で発表することへの抵抗感を出発点に、三野が写真と舞台芸術に共通する「分ける」性質を手がかりとして仮設的な〈舞台＝浜〉を設計していく過程が跡づけられる。</p>
+<p>クバ（ビロウ）の植生分布が福岡から沖縄までの距離をつなぐものとして発見されたこと、写真集制作の過程で左右ページを発話者とする戯曲が導入され〈私〉性を即物的に操作する役者が紙面に出現したこと、東松照明の「群写真」や名取洋之助の「組写真」を踏まえた〈撮影行為＋組写真〉の方法論が「より演劇的かつ仮設的」に推し進められたことが論じられている。写真集の編集・デザインが表現の（非）当事者性をいかに組み替えるかをめぐる、山本の出版実践の一例でもある。</p>
+</details>
+<details class="h3d" id="s52">
+<summary class="h3s">東松照明論――写真と紙面レイアウト</summary>
+<p>同じく『新たな距離』所収の<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">「紙面レイアウトにより上演されたルポルタージュ――東松照明と名取洋之助における公共と私性」</a>は、三野新論の補遺として書かれた論考であり、写真と紙面レイアウトの関係を〈主観性〉と〈物性〉の問題として正面から扱う。名取洋之助が複数の写真をキャプションとともに組み合わせ単一の物語＝「事実」を共有する方法論（「組写真」）と、東松照明がそれに抗して提唱した、写真同士を掛け合わせることで「名付けられる以前のさまざまな現実」を立ち上げる方法論（「群写真」）が対比される。</p>
+<p>岡﨑乾二郎による東松論（「この沖縄は沖縄ではない」→「この沖縄ではない沖縄こそ本当の沖縄かも知れない」というズレが写真の物質性を際立たせ〈リアリティ〉を喚起するとする分析）を踏まえつつ、東松が目指した「『私性』の彼方に撮ってしまった『公共』」としてのルポルタージュの内的構造が検討されている。名取の戦時プロパガンダ雑誌制作から東松の沖縄写真集に至るまでの、写真と国家の関係にも目が向けられている。三野新論で扱われた『クバへ／クバから』における沖縄写真の問題が、ここではより広い写真史のなかに位置づけられている。</p>
+</details>
+<details class="h3d" id="s53">
+<summary class="h3s">戸田ツトム論――デザインと言語表現の接続</summary>
+<p>戸田ツトム論「すべてはそこから始まったはずなのだ、とさえ思える鮮烈な光景の記憶、何が鮮烈なのかさえ不確かなのだが……――戸田ツトムにおける擬場」は、山本のデザイン論のなかで最も長く密度の高い論考である。戸田の〈擬場〉――有界の・閉じられた系である・高度な秩序による論理構造――を軸に、紙面が仮構する空間、デザインと言語表現の接続点、自然と経済の同一性と分裂が論じられる。</p>
+<p>山本は戸田の思考を以下のように整理する。〈擬場〉が外部からの観測を許し社会化されるとき、論理が展開＝〈表現〉として外在化される。その際に生じる〈ノイズ〉（状態の構造変動を引き起こす因子）がメディア＝触媒の内実であり、〈陰影〉（情報がまだ立ち現れていない状態の密度）と〈表面積〉（存在が自らを更新し拡張していく過程）の問題へとつながる。</p>
+<p>特に重要なのは、戸田が時枝誠記の〈詞〉と〈辞〉をめぐる議論に接近していた点であり、漢字＝〈詞〉（強固な視覚的イメージ）の周辺でひらがな＝〈辞〉が音や触覚へと開くルートとして機能すること、それがデザインにおける「音韻空間」の問題と地続きであることが論じられる。</p>
+<h4>DTP以後の〈紙面〉</h4>
+<p>コンピュータのGUI（乱層するデスクトップ）における〈紙面〉の変容、DTP以後の「文人」的制作者の地平も視野に収められている。山本の理論における〈主観性〉と〈物性〉、〈喩〉と〈空白〉の問題が、デザインの実践においてどのように作動するかを示す論考として位置づけられる。</p>
+</details>
+<details class="h3d" id="s54">
+<summary class="h3s">いぬのせなか座叢書と「認識の積み木」</summary>
+<p>いぬのせなか座叢書としてのデザイン実践も重要である。叢書第一弾の鈴木一平詩集<a href="https://inunosenakaza.stores.jp/items/5c1d9c2ec2fc28029dbed7fe" target="_blank" rel="noopener">『灰と家』</a>、第二弾の河野聡子詩集<a href="https://inunosenakaza.stores.jp/items/5bdc4c1f5496ff580f5b0003" target="_blank" rel="noopener">『地上で起きた出来事はぜんぶここからみている』</a>（いぬのせなか座、2017年）はいずれも<a href="https://inunosenakaza.com/member" target="_blank" rel="noopener">山本浩貴＋ｈ</a>による編集・デザインであり、テクストの紙面上の配置を〈私＋環境〉のレイアウトとして設計する実践が行なわれた。</p>
+<h4>河野聡子詩集と「座談会5」</h4>
+<p>河野聡子詩集では、システマティックな改行によってかたどられるテキストボックスの枠の固定と文字サイズの伸縮、見開き単位での作品展開とデザインの引き継ぎ・相互干渉、紙面上のオブジェクト配置などを通じて、詩における複数の「ここ」――言葉の配置される場、〈私＋環境〉にとっての基底となる場――がいくつ、どのように、どんな相互関係のもとにあるかを操作する試みが行なわれている。同詩集に同封された「座談会5」「詩（集）にとってデザイン／レイアウトとはなにか？」では、こうしたデザインの問題が〈私が私であること〉の複数性、パースペクティヴィズム、言葉の物質性をめぐる理論的討議へと展開されている（理論地図「理論的基盤」を参照）。</p>
+<h4>「認識の積み木」</h4>
+<p>現代詩アンソロジー<a href="https://bijutsutecho.com/magazine/series/s10/16929" target="_blank" rel="noopener">「認識の積み木」</a>（<a href="https://bijutsutecho.com/magazine/series/s10/16929" target="_blank" rel="noopener">『美術手帖』2018年3月号</a> 特集「言葉の力。」掲載）は、レイアウト理論を詩のアンソロジー編集として実践した仕事である。いぬのせなか座による編集・解説・デザインのもと、九つのカテゴリ＝見開きと合計17の詩作品、九つの解説テキストから構成される。編集コンセプトそのものを「レイアウト」に設定し、創成期から現在までの日本近現代詩の営みを記述するための技術的分類の一例として全体が準備された。</p>
+<p>制作ノートでは、詩とは既存の文法・意味・組版ルールといった言葉の配置関係＝レイアウトに必然をもたらす論理を内側から破り再設計することで生まれた特異な思考の場であること、散文詩もまた（組版ルールのもとで強制的に改行がなされた）改行詩であること、ゆえに詩集のデザインは作品を作品たらしめている必然性の操作にまで結びつかざるをえないことが宣言されている。音響詩や視覚詩といった傍流とされがちな作品群を詩の本流へ引きずり込む姿勢、他ジャンルとの技術移転の手立てを失いブラックボックス化した日本の詩を〈使える〉ものとして開くという目標が明確に掲げられており、いぬのせなか座の詩観がもっとも端的に表明されたテクストのひとつである。</p>
+<p>鈴木一平による詩の選定とカテゴリ設定、メンバー全員による書き直し、山本浩貴＋ｈによるデザインという共同制作のプロセスも記録されている。</p>
+</details>
+<details class="h3d" id="s55">
+<summary class="h3s">『妖精DIZZY』のデザイン</summary>
+<p>こうしたデザイン理論の最も踏み込んだ実践例が、野村喜和夫の詩集<a href="http://www.shichosha.co.jp/newrelease/item_2756.html" target="_blank" rel="noopener">『妖精DIZZY』</a>（思潮社、2023年）のデザインである。同書は山本＋ｈによるデザインのもと、同一テクストをまったく異なるレイアウトで提示するBook 1（激しく操作されたデザイン）とBook 2（プレーンなデザイン）の二分冊として刊行された。</p>
+<h4>制作過程</h4>
+<p>鼎談「眩暈の構築」（鈴木一平＋野村喜和夫＋山本浩貴）では、その制作過程が詳細に語られている。山本はBook 1において、テクスト内部に張り巡らされた音韻の対応関係を紙面上の配置として視覚的に解剖・増幅し、改行や空白の挿入、文字サイズの変更など通常のデザインでは行なわない操作を施した。一ページごとにテクストと向き合いそのつどレイアウトの法則を新たに発見していく制作は一年半に及び、「ほとんど自分で詩を書いているのに近いような感覚」が生じたという。</p>
+<p>「眩暈原論」（散文詩）では前ページのレイアウトが「痕跡」として次ページに引き継がれ、恣意性を次の必然性の土台とする書き直しのプロセスが紙面上で可視化される。「絵本『眩暈』のために」（改行詩）では改行詩自体がすでにひとつのレイアウトであるため文字への介入は抑制され、代わりにレイアウトのシルエットがブロックとして次の見開きに引き継がれる。</p>
+<h4>マラルメから戸田ツトムへ――視覚詩の系譜</h4>
+<div class="brk"></div><p>山本はマラルメの「賽の一振り」における「読むという行為に空間を導入する」視覚詩の系譜、新国誠一の視覚詩に付された「音読すること」という指示、戸田ツトムの〈ノイズ〉としてのレイアウト論を参照しつつ、テクストのデザインが単なる流し込みではなく、テクストの詩性を「上演」する〈アトリエ〉に立つことであるという認識を示している。</p>
+</details>
+</details>
+<hr>
+<details id="s56">
+<summary>近年の拡張と現在地</summary>
+<p>近年の山本の仕事では、初期からの問題がより大きなスケールへ押し広げられている。とりわけ前景化しているのは、日記をめぐる理論、AIをめぐる思考、およびそれらを通じた「人間が表現を行なうこと」の意義への問いである。</p>
+<details class="h3d" id="s57">
+<summary class="h3s">「偶然と人物の位置」――AIと詩</summary>
+<p>「偶然と人物の位置」（『現代詩手帖』2025年7月号）は、副題に「『総合の夢』はAI以後どのように継承され、そこで『詩論と実作』に従事する人類はいかなる機能を果たす（と信じる）のか」と掲げられた、AIと詩をめぐる論考である。山本はまず詩を「この世界をめぐる既存の法則性を包摂するより高次の法則性を、人体に新たに発見・上演させる装置を制作・分析する営み」と定義したうえで、LLM内部に複数のオブジェクトをシミュレートさせ、それらが相互に改訂しあうシステムを設計するという実践を記述する。そこで詩人は「ひとつひとつの文字を並べる主体」から「法則性を新たに発生させるためのシステムの設計協力者兼測定器具」へと変わる。</p>
+<p>チャンス・オペレーションとの接続、瀧口修造の「個人の化学」、20世紀前半の芸術・科学・宗教が目指した「総合の夢」のAI以後における継承可能性が問われており、「人物」という高次オブジェクトがテクストにもたらす効果への考察は、小説と詩の境界の問題にも及んでいる。</p>
+</details>
+<details class="h3d" id="s58">
+<summary class="h3s">「気分」――現在地</summary>
+<p>「気分」（『ユリイカ』2025年7月臨時増刊号 総特集＝岡﨑乾二郎）は、短いが山本の現在地をもっとも率直に記したテクストである。芸術とは、人間とは、すでに終わったものなのだという認識から書き始められる。AIが高次の法則性の発見を担いうる時代に、人間がなお表現を行なう意義を「個々人の生の大切さ」以外のところから見出すすべを急速に失いつつあるという自覚。</p>
+<p>それでもこの私／この肉体のカップリングは解きがたく、荒川修作について語られた「世界中がかさぶたで膨張している」というイメージや「孤立無援な間抜けさ」という言葉が忘れがたいものとして転がり続ける。教育装置としての作品を受け取り後世に残そうとしてきた営みが根こそぎゼロになる段階がまもなく訪れるような「気分」を率直に記しつつ、<strong>「新しい表現形式が作りたい。そこでいまだからこそ十分にこの身を間抜けに使い尽くし、みなであーだこーだ元気に問うていられる形式が」</strong>という一文で閉じられる。</p>
+</details>
+<details class="h3d" id="s59">
+<summary class="h3s">三部作の構想</summary>
+<p><a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">『新たな距離』</a>は三部作の第一冊として構想されている。山本自身の記述によれば、本書が言語表現を「私／生のレイアウト」という観点から検討するものであるのに対し、二冊目の『死と群生』は「肉体と上演」の観点から法と自由意志への抵抗を、三冊目の『生のアトリエ』は〈主観性〉〈喩〉〈物性〉といった概念からなる言語表現のオリジナルな理論を三部作を貫通・圧縮するものとして展開する。</p>
+</details>
+</details>
+<hr>
+<details id="s60">
+<summary class="st">定義群（2026年3月版）全文</summary>
+<div class="sb">
+<p>以下は、山本浩貴「定義群」（2026年3月時点）の全文である。</p>
+<details class="h3d" id="s61">
+<summary class="h3s">1　主観性と物性</summary>
+<p class="def">●知覚し思考し得るあらゆるものは、それを〈表現 expression〉として為したとされる〈者 person〉を、その周囲の〈環境 environment〉とともに仮構させる傾向・質を持つ。その一定のまとまり・単位を〈主観性 subjectivity〉と呼ぶ。</p>
+<p class="def">●〈環境〉は、〈者〉が知覚し操作した（すなわち〈表現〉した）とされる〈素材 material〉と、〈者〉から〈素材〉へ向かう拡充の傾向・質としての〈志向性 intentionality〉によって、構成される。例えば言語表現の場合、〈素材〉は名詞をはじめとする詞が、〈志向性〉は助動詞をはじめとする辞が、それぞれ指す力を強く持つ。</p>
+<p class="def">●〈表現〉を規定しそれたらしめた法則性を〈物性 objectivity〉と呼ぶ。</p>
+<p class="def">●〈物性〉は、〈志向性〉をあてがわれることによって〈素材〉の位置する時空間的広がりをその内部に見出されたとき、〈環境〉となる。〈環境〉は〈者〉による支えを必須とするため、〈者〉と常に同時に生じ、切り離せない。</p>
+<p class="def">●〈表現〉は、〈者〉が〈物性〉に向けて〈志向性〉をあらわし自らを拡充することで〈物性〉を〈素材〉化したとされるとき、事後的に発見されるプロセスとしてある。言い換えれば、〈素材〉が知覚されるときそこには常に〈志向性〉を通じて自らを拡充した（それを〈表現〉した）〈者〉が見出される。</p>
+<p class="def">●テクストとは、それを能動的に表した手つきへの遡行を強いる力たる〈主観性〉と、それを受動的に表すよう強いた力たる〈物性〉の、両者が多重的に折り重なったかたちでレイアウトされた構築物である。</p>
+</details>
+<details class="h3d" id="s62">
+<summary class="h3s">2　レイアウトと空白</summary>
+<p class="def">●〈表現〉がひとつに閉じるとき、その外に生じるものを〈空白 blank〉と呼ぶ。</p>
+<p class="def">●〈空白〉によって閉じた〈表現〉はさらに別の〈表現〉によって包み込まれ、多重的なレイヤー構造をつくったり、拮抗するかたちで並べられたりする。そうして生まれる〈表現〉のレイアウトの法則として〈物性〉はある。</p>
+<p class="def">●〈物性〉によって〈表現〉の特異なレイアウトが成立し、〈空白〉に半ば強引に〈表現〉が見出されようとするとき、〈主観性〉が未分化なまま単一に定まらない事態――〈主観性〉の蠢き――が生じる。</p>
+</details>
+<details class="h3d" id="s63">
+<summary class="h3s">3　喩と信</summary>
+<p class="def">●〈主観性〉の内部を構成する傾向・質を〈喩 figure〉と呼ぶ。〈主観性〉の蠢きはその強い例である。</p>
+<p class="def">●〈喩〉は、単一の〈者〉と〈環境〉のカップリングに対応して成る単位としての〈主観性〉の内実でありながら、そのスケール（言語表現においては「文法」を基にした「文」を第一の指針とする幅）を超えて機能する、より根底的かつ広範なものとしてある。むしろそのような〈主観性〉からの逸脱の地点においてこそ、固有のものとして認識され、名付けられていることが多い（例えば表現と表現の間、表現と〈私〉の間など。前者は換喩、後者は隠喩と呼ばれる）。そこで〈喩〉は、傾向・質である以上に、それがもたらす極めて抽象的な距離そのものとしてまずは意識され、対象化されている。</p>
+<p class="def">●〈主観性〉と〈物性〉の誤認的関係を〈信 belief〉と呼ぶ。</p>
+<p class="def">●〈主観性〉により〈者〉と〈環境〉の仮構が生じようとしたとき、その仮構の担い手を〈投影者 projector〉と呼ぶ。</p>
+<p class="def">●〈投影者〉が仮構に際して備給し、投じ、対象を表現にするのは〈喩〉である。その〈喩〉をしかし拘束するものとして〈信〉はある。</p>
+</details>
+<details class="h3d" id="s64">
+<summary class="h3s">4　私と物</summary>
+<p class="def">●相容れない〈者〉同士を束ね行き交わせるために、〈表現〉の外において立ち上げを要請される場を〈私 subject〉と呼ぶ。〈私〉は〈者〉や〈環境〉の特異な掛け合わせを生じさせる。またそこで〈者〉や〈環境〉同士を接着する機能を果たすのもやはり〈喩〉である。</p>
+<p class="def">●異なる〈主観性〉同士が相互包摂状態を起こすとき――すなわち異なる〈信〉同士が衝突し輻輳化した先で――要請される、〈者〉が〈素材〉の側へ押し出され成立した状態を〈物 object〉と呼ぶ。</p>
+<p class="def">●〈物〉化した〈素材〉は〈主観性〉を圧縮し梱包・輸送する宿として機能する。結果、〈者〉そのものを指すようにも感じられる。</p>
+<p class="def">●〈物〉化が多重的に起こったとき、言葉と言葉の紙面上の距離と、時空間座標における距離が、ともに〈物〉と〈物〉のあいだでの（〈表現〉の）切り替わりをあらわすものとしても感じられるようになる。それは、レイアウトの法則としての〈物性〉が、〈物〉らの隔たり＝〈空白〉を生むものとしてあることとも関連する。</p>
+<p class="def">●複数の〈物〉によって編まれた距離や〈空白〉を、抱え込み行き交わせる場として、〈私〉が紙面上に事後的に構築される。そのような〈私〉を構成、発明する術として言語表現はある。</p>
+</details>
+<details class="h3d" id="s65">
+<summary class="h3s">5　アトリエと距離</summary>
+<p class="def">●レイアウトは〈物〉と〈私〉を行き来させ、〈環境〉を多重的に開く。〈環境〉の描く軌跡を〈アトリエ atelier〉と呼ぶ。</p>
+<p class="def">●〈アトリエ〉は、〈信〉を生むトリガーであると同時に、〈信〉を変容させる技術として、また〈信〉を分析する際の高度な単位として、異なる〈投影者〉間、異なる時空間で伝達・共有され得る。</p>
+<p class="def">●〈アトリエ〉を通じて生じた共同体は、強固に構築された〈喩〉として表現の中に再度発見されることになる。このとき〈喩〉は表現と〈私〉のあいだの特異な隔たりをもたらすものとして、〈新たな距離 renewed distances〉とも称される。</p>
+</details>
+</div>
+</details>
+    </div>
+  </div>
+  <div class="f">Last updated: 2026.03</div>
+</div>
+<script>
+document.querySelectorAll("a[href^='#']").forEach(function(a){
+  a.addEventListener("click",function(e){
+    e.preventDefault();
+    var id=a.getAttribute("href").slice(1),t=document.getElementById(id);
+    if(!t)return;
+    if(t.tagName==="DETAILS") t.open=true;
+    var el=t;
+    while(el=el.parentElement){if(el.tagName==="DETAILS")el.open=true;}
+    setTimeout(function(){t.scrollIntoView({behavior:"smooth",block:"start"})},60);
+  });
+});
+var first=document.querySelector("details");
+if(first) first.open=true;
+if(window.innerWidth>760){
+  document.querySelectorAll("details.h3d").forEach(function(d){d.open=true;});
+}
+</script>
+</body>
+</html>
