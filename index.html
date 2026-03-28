@@ -227,6 +227,7 @@ details.h3d > summary.h3s::-webkit-details-marker { display: none; }
   font-size: 14px; line-height: 1.85;
   color: var(--text-light);
 }
+.bq + .bq { margin-top: -12px; border-top-right-radius: 0; }
 
 /* ── Infobox ── */
 .ib {
@@ -976,9 +977,6 @@ document.querySelectorAll("a[href^='#']").forEach(function(a){
 });
 var first=document.querySelector("details");
 if(first) first.open=true;
-if(window.innerWidth>760){
-  document.querySelectorAll("details.h3d").forEach(function(d){d.open=true;});
-}
 </script>
 </body>
 </html>
