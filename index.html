@@ -363,6 +363,12 @@ a:hover .wt { color: var(--green); }
   .fig-perf img { max-width: 100%; }
 }
 
+/* ── Infobox Photo ── */
+.ib-photo {
+  display: block; width: 100%; height: auto;
+  border-bottom: 1px solid var(--border-light);
+}
+
 .lang-toggle { display: flex; gap: 4px; padding-top: 2px; }
 .lang-toggle button, .lang-toggle .lang-link {
   font-family: var(--sans); font-size: 10px; font-weight: 600;
@@ -471,7 +477,8 @@ a:hover .wt { color: var(--green); }
 <details id="s1">
 <summary>プロフィール</summary>
 <div class="ib">
-<div class="ib-title">山本浩貴</div>
+<div class="ib-title">山本浩貴（いぬのせなか座）</div>
+<img class="ib-photo" src="https://www.dropbox.com/scl/fi/7f0xhvqrutz0g5fb8l96v/202510.jpg?rlkey=csz3xom3l11edwbh9dlwjm90g&raw=1" alt="山本浩貴">
 <table>
 <tr><th colspan="2">基本情報</th></tr>
 <tr><td>生年</td><td>1992年、愛媛県</td></tr>
@@ -535,7 +542,7 @@ a:hover .wt { color: var(--green); }
 <summary class="h3s">初期の核――保坂和志、大江健三郎、荒川修作</summary>
 <p>山本の理論形成において、保坂和志、大江健三郎、荒川修作をめぐる仕事は特別な位置にある。</p>
 <h4>保坂和志――リテラリズムとその先</h4>
-<p>保坂和志から山本が引き受けたのは、小説を物語消費ではなく生活時間、肉体感覚、思考のしかたそのものに関わるものとして捉える視点である。<a href="https://inunosenakaza.stores.jp/items/654ede2f2a81740025c81eb1" target="_blank" rel="noopener">「生にとって言語表現とはなにか」</a>で詳しく扱われているように、保坂は小説を、映画やテレビと同じ娯楽市場の一商品ではなく、散歩や園芸のような余暇時間の使い方と競合するものとして位置づけ、プロットによる管理を疑い、一文一文をそのまま真に受ける「リテラリズム」の姿勢を実作と批評の両面で展開した。</p>
+<p>保坂和志から山本が引き受けたのは、小説を物語消費ではなく生活時間、肉体感覚、思考のしかたそのものに関わるものとして捉える視点である。<a href="https://inunosenakaza.stores.jp/items/646962d9a89fa500ad7fc8ee" target="_blank" rel="noopener">「生にとって言語表現とはなにか」</a>で詳しく扱われているように、保坂は小説を、映画やテレビと同じ娯楽市場の一商品ではなく、散歩や園芸のような余暇時間の使い方と競合するものとして位置づけ、プロットによる管理を疑い、一文一文をそのまま真に受ける「リテラリズム」の姿勢を実作と批評の両面で展開した。</p>
 <p>山本はこの姿勢に強く助けられつつも、保坂的立場がテクストの手前側の生を重視するあまり、ポストフォーディズム下のパーソナリティ消費と結果的に合流しうる危険を見据えている。ここから「書き手の反映」でも「テクスト内部の運動」でもない第三の立場――言語表現を「生を共同で組み換えるための実験場」として使うこと――が模索される（詳しくは「手前側の生」および保坂論の項を参照）。</p>
 <h4>大江健三郎――「私」と「死後」を背負う制作者</h4>
 <p>大江健三郎はさらに中心的な参照先である。山本にとって大江は、日本語の小説が「私」「戦後」「国家」「死者」「教育」「世界との関係」をどう背負いうるかを問い続けた作家であり、その制作プロセスを分析することは、同時に自分自身が制作者として何を背負いうるかを考えることであった。後述するように、大江論「新たな距離――大江健三郎における制作と思考」（2015年）には、山本の後の仕事全般の核にあたる問題群が詰め込まれている。</p>
@@ -593,7 +600,7 @@ a:hover .wt { color: var(--green); }
 <summary class="h3s">言語表現と肉体――理論の起点</summary>
 <p>山本の理論の起点には、言葉を意味伝達の道具としてだけ見ないという決定がある。桐光学園講演会での講演<a href="https://www.dropbox.com/scl/fi/pyybza8kupzkpk2mzmnx9/_20231104.pdf?rlkey=wc8r4fpufuesf8cip2wfp66fn&e=1&dl=0" target="_blank" rel="noopener">「生のアトリエ」</a>（2023年）では「言葉は実は、人間の体に働きかけられるようオーダーメイドされた、とても強くて独特で、手軽な装置である」と述べられている。本、ページ、戯曲、詩、批評文は、読まれることで肉体に一定の動きや思考や仮構を起こさせる。</p>
 <p>この認識の核心にあるのは、<strong>言語表現がそれを前にした肉体に「表現の担い手＝〈者〉とその周囲の〈環境〉」を仮構させずにはいられない</strong>という性質である。例えば「いぬが塀の向こう側からやってきた」という文は、文字通りには書かれていない「こちら側」を、読む肉体に発生させる。機械的に並べられた言葉であっても、そこに表現を見出す以上、それを為した者の存在と周囲の環境を読み取ってしまう。</p>
-<div class="brk"></div><p>この意味で言語表現は、意味の分析だけでなく、レイアウト、速度、反復、空白、フォーマット、媒体を含む「表現の担い手＋環境」の配置をめぐる問題として捉えられる必要がある。<a href="https://inunosenakaza.stores.jp/items/654ede2f2a81740025c81eb1" target="_blank" rel="noopener">「生にとって言語表現とはなにか」</a>で提示された、書くことにも読むことにも寄らず「表現を（自他に）発見すること」のもと一元論的に記述・操作していく方法論は、この認識を出発点としている。</p>
+<div class="brk"></div><p>この意味で言語表現は、意味の分析だけでなく、レイアウト、速度、反復、空白、フォーマット、媒体を含む「表現の担い手＋環境」の配置をめぐる問題として捉えられる必要がある。<a href="https://inunosenakaza.stores.jp/items/646962d9a89fa500ad7fc8ee" target="_blank" rel="noopener">「生にとって言語表現とはなにか」</a>で提示された、書くことにも読むことにも寄らず「表現を（自他に）発見すること」のもと一元論的に記述・操作していく方法論は、この認識を出発点としている。</p>
 </details>
 <details class="h3d" id="s15">
 <summary class="h3s">〈私＋環境〉</summary>
@@ -850,12 +857,12 @@ a:hover .wt { color: var(--green); }
 <p>山本の上演批評は近年はじまった仕事であり、理論地図で整理した〈法〉〈役〉〈投影〉〈自由意志〉の問題を、実際の肉体がある場所でどう検証できるかをめぐる実験記録として読むことができる。</p>
 <h4>〈役〉と肉体の引き受け</h4>
 <p>上演批評において最も繰り返し焦点化されるのは、〈役〉を肉体がどう引き受けるかという問いである。三野新『外が静かになるまで』をめぐる批評<a href="https://note.com/inunosenakaza/n/nd4087ae78855" target="_blank" rel="noopener">「あなたを演じる場所」</a>では、「私は眠っている」という矛盾した自称から〈役〉の最小構成要素が取り出され、〈役〉が没入の対象ではなく「ここ」と「よそ」を生み出す隔たりであること、その隔たりの往来こそが〈劇〉であることが示される。</p>
-<p>7度「東京ノート」批評では、複数人を想定した戯曲を一人の肉体が処理するとき生じる「量的ギャップ」――社会や時代という膨大な「数」が、作品というごく限られた人体・時空間へ圧縮され、さらにそれが単一の肉体へと圧縮される事態――が注目される。ここでは<a href="https://inunosenakaza.com/craZZZyfishstudio/theory/obayashi" target="_blank" rel="noopener">大林論</a>の〈一人複数役〉と〈複数人一役〉の問題が、より切迫したかたちで個々の上演に見出されている。</p>
+<p>7度<a href="https://shihai2023.studio.site/h7XpozYG/nanado_TN_yamamoto" target="_blank" rel="noopener">「東京ノート」批評</a>では、複数人を想定した戯曲を一人の肉体が処理するとき生じる「量的ギャップ」――社会や時代という膨大な「数」が、作品というごく限られた人体・時空間へ圧縮され、さらにそれが単一の肉体へと圧縮される事態――が注目される。ここでは<a href="https://inunosenakaza.com/craZZZyfishstudio/theory/obayashi" target="_blank" rel="noopener">大林論</a>の〈一人複数役〉と〈複数人一役〉の問題が、より切迫したかたちで個々の上演に見出されている。</p>
 <h4>投影と法――映像・展示・お笑い</h4>
-<p><a href="https://note.com/inunosenakaza/n/n8dda3f1c6768" target="_blank" rel="noopener">ホラー論</a>で展開された〈投影 projection〉の問題――法が肉体を通じて自らを上演させるプロセス――は、上演批評においても中心的な主題となっている。大岩雄典展評「国と毒薬」では、鑑賞者の行為が法によって先取り（Projection）される事態が検討される。鈴木一平との対談「シネマの再創造・パフォーマンス『清掃する女』をめぐって」では、七里圭の作品における紗幕への映像投影と舞台上の肉体の同居が分析され、紗幕の映像のほうに確固たる自由意志があり舞台上の肉体はそれに追随しているだけであるかのように見えてくる事態が記述される。法＝戯曲と上演と自由意志の関係が、母娘間の振り付け的関係という主題に重ねて考察される。</p>
+<p><a href="https://note.com/inunosenakaza/n/n8dda3f1c6768" target="_blank" rel="noopener">ホラー論</a>で展開された〈投影 projection〉の問題――法が肉体を通じて自らを上演させるプロセス――は、上演批評においても中心的な主題となっている。大岩雄典展評<a href="https://towadaartcenter.com/wordpress/wp-content/uploads/2023/03/230317_p_in_case_catalog_web.pdf" target="_blank" rel="noopener">「国と毒薬」</a>では、鑑賞者の行為が法によって先取り（Projection）される事態が検討される。鈴木一平との対談「シネマの再創造・パフォーマンス『清掃する女』をめぐって」では、七里圭の作品における紗幕への映像投影と舞台上の肉体の同居が分析され、紗幕の映像のほうに確固たる自由意志があり舞台上の肉体はそれに追随しているだけであるかのように見えてくる事態が記述される。法＝戯曲と上演と自由意志の関係が、母娘間の振り付け的関係という主題に重ねて考察される。</p>
 <p>山本の上演への関心は狭義の演劇やダンスにとどまらない。『ユリイカ』2024年12月号「特集＝お笑いと批評」掲載の鼎談（鈴木亘＋つやちゃん＋山本浩貴）では、コント漫才を、素の肉体とフィクショナルな役柄のあいだの交代劇をきわめて凝縮されたかたちで実現する上演芸術として論じ、お笑いが社会的な〈役〉を発明し流通させる起点として機能している状況を指摘している。</p>
 <h4>方法の共有と制作プロセスの記録</h4>
-<p>上演批評のもうひとつの特徴は、批評が制作プロセスの記録と一体化している点にある。石川朝日≠ハラサオリ「（しつつ）」ショーイング評では、共同リサーチャーとして数か月間の稽古に関わった過程が記録され、ショーイングの一部として差し出される。「物をケアする場としての『ライフ』」（ながめくらしつ「ライフワーク」評）やハラサオリ『P wave』劇評でも、肉体は閉じた主体ではなく環境内の情報を探索し引き受ける開かれた場として描かれ、観察と記述が理論的な記述と分かちがたく結びついている。ｈとの共同執筆による「スペースノットブランク『本人たち』プレビュー上演」では、上演は「伝える」ことの成功例ではなく「伝える」ことをめぐる方法論の提示として読まれる。</p>
+<p>上演批評のもうひとつの特徴は、批評が制作プロセスの記録と一体化している点にある。石川朝日≠ハラサオリ<a href="https://shihai2023.studio.site/h7XpozYG/shitsutsu_review" target="_blank" rel="noopener">「（しつつ）」ショーイング評</a>では、共同リサーチャーとして数か月間の稽古に関わった過程が記録され、ショーイングの一部として差し出される。<a href="https://shihai2023.studio.site/h7XpozYG/lifework_yamamoto" target="_blank" rel="noopener">「物をケアする場としての『ライフ』」</a>（ながめくらしつ「ライフワーク」評）やハラサオリ<a href="https://shihai2023.studio.site/h7XpozYG/pwave_yamamoto" target="_blank" rel="noopener">『P wave』劇評</a>でも、肉体は閉じた主体ではなく環境内の情報を探索し引き受ける開かれた場として描かれ、観察と記述が理論的な記述と分かちがたく結びついている。ｈとの共同執筆による<a href="https://spacenotblank.com/message/13352" target="_blank" rel="noopener">「伝達の成立（不）可能性を方法化する──小野彩加 中澤陽 スペースノットブランク『本人たち』プレビュー上演」</a>では、上演は「伝える」ことの成功例ではなく「伝える」ことをめぐる方法論の提示として読まれる。</p>
 <p>なお、<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">『新たな距離』</a>所収の鈴木一平の詩集をめぐる連作論考（「<a href="https://inunosenakaza.stores.jp/items/5c1d9c2ec2fc28029dbed7fe" target="_blank" rel="noopener">『灰と家』</a>を上演するための４つのノート」「物化するプロセス、閉鎖から滲み出る距離、遍在する家々の期待」「閉鎖性を条件とする《空》の相互観測とアニミズム」）では、テクストを読むこと自体を上演として捉え、詩集を「上演する」ための方法が模索されている。</p>
 </details>
 <details class="h3d" id="s41">
@@ -867,11 +874,13 @@ a:hover .wt { color: var(--green); }
 </details>
 <details class="h3d" id="s42">
 <summary class="h3s">演出の実践</summary>
-<div class="fig fig-wide"><img src="https://www.dropbox.com/scl/fi/eh708q05966f6nbky6d71/93207699.jpg?rlkey=jnokhhbfecq1br5v4v0yi18sp&raw=1" alt="インポッシブル・ギャグ" loading="lazy"><img src="https://www.dropbox.com/scl/fi/qyqm8lx8rxf46w9spnjqd/s-2249x1500_v-frms_webp_742affb4-9692-400f-ba1a-18c8d190e587_middle.jpg?rlkey=n678x19r5u8d8j0c6jtjt31ao&raw=1" alt="温室／オンシル" loading="lazy"></div>
+<div class="fig"><img src="https://www.dropbox.com/scl/fi/eh708q05966f6nbky6d71/93207699.jpg?rlkey=jnokhhbfecq1br5v4v0yi18sp&raw=1" alt="インポッシブル・ギャグ" loading="lazy"></div>
 
 <p>2025年に演出を手がけた松原俊太郎作<a href="https://inunosenakaza.com/performance/20251114" target="_blank" rel="noopener">『インポッシブル・ギャグ リーディング公演』</a>の当日パンフレットでは、山本自身の演出の考え方が直接的に記されている。山本は、ひとの行為が「自由意志」や「心」から起こるのではなく、外から降ってきた「シチュエーション」に強いられたものでしかないという認識を出発点に置く。リーディング公演という形式は、テキストを手に持ち読み上げることで、言葉と肉体のあいだの「奇妙な距離」を肉体の内部に隠さず物理的に可視化する。テキストの置かれる場所（紙、スマホ、ディスプレイ）を空間的に設計することで、「役柄」は内的なものから外的なものへと移される。</p>
 <p>山本はここで、「自由意志」や「心」と呼ばれるものも「いまここの周囲にはないがどこかにはあるシチュエーションの束」と言い換えられるとし、内心とシチュエーションは「体に言葉をそう発せさせた原因」として地続きであると述べている。この認識は、大林論やホラー論で展開された法＝戯曲と肉体のあいだの距離、〈信〉と自由意志の問題を、演出という実践として引き受けたものである。</p>
 <h4>『温室／オンシル』</h4>
+<div class="fig fig-wide"><img src="https://www.dropbox.com/scl/fi/qyqm8lx8rxf46w9spnjqd/s-2249x1500_v-frms_webp_742affb4-9692-400f-ba1a-18c8d190e587_middle.jpg?rlkey=n678x19r5u8d8j0c6jtjt31ao&raw=1" alt="温室／オンシル" loading="lazy"></div>
+
 <p>2026年には三野新作<a href="https://inunosenakaza.com/performance/20260117" target="_blank" rel="noopener">『温室／オンシル』</a>の演出も手がけるなど、舞台芸術への関与を拡大している。</p>
 </details>
 <details class="h3d" id="s43">
@@ -949,12 +958,14 @@ a:hover .wt { color: var(--green); }
 </details>
 <details class="h3d" id="s54">
 <summary class="h3s">いぬのせなか座叢書と「認識の積み木」</summary>
-<div class="fig"><img src="https://www.dropbox.com/scl/fi/y0edj77ttk343qpnwhydi/.png?rlkey=rfkifxbqaxcy9ty5n56fp3bs4&raw=1" alt="河野聡子" loading="lazy"><img src="https://www.dropbox.com/scl/fi/ifvftrvo7teh1p30le55n/.png?rlkey=hppgmqdwh8ycw07oavoew2rld&e=1&raw=1" alt="認識の積み木" loading="lazy"></div>
-
 <p>いぬのせなか座叢書としてのデザイン実践も重要である。叢書第一弾の鈴木一平詩集<a href="https://inunosenakaza.stores.jp/items/5c1d9c2ec2fc28029dbed7fe" target="_blank" rel="noopener">『灰と家』</a>、第二弾の河野聡子詩集<a href="https://inunosenakaza.stores.jp/items/5bdc4c1f5496ff580f5b0003" target="_blank" rel="noopener">『地上で起きた出来事はぜんぶここからみている』</a>（いぬのせなか座、2017年）はいずれも<a href="https://inunosenakaza.com/member" target="_blank" rel="noopener">山本浩貴＋ｈ</a>による編集・デザインであり、テクストの紙面上の配置を〈私＋環境〉のレイアウトとして設計する実践が行なわれた。</p>
 <h4>河野聡子詩集と「座談会5」</h4>
+<div class="fig"><img src="https://www.dropbox.com/scl/fi/y0edj77ttk343qpnwhydi/.png?rlkey=rfkifxbqaxcy9ty5n56fp3bs4&raw=1" alt="河野聡子" loading="lazy"></div>
+
 <p>河野聡子詩集では、システマティックな改行によってかたどられるテキストボックスの枠の固定と文字サイズの伸縮、見開き単位での作品展開とデザインの引き継ぎ・相互干渉、紙面上のオブジェクト配置などを通じて、詩における複数の「ここ」――言葉の配置される場、〈私＋環境〉にとっての基底となる場――がいくつ、どのように、どんな相互関係のもとにあるかを操作する試みが行なわれている。同詩集に同封された「座談会5」「詩（集）にとってデザイン／レイアウトとはなにか？」では、こうしたデザインの問題が〈私が私であること〉の複数性、パースペクティヴィズム、言葉の物質性をめぐる理論的討議へと展開されている（理論地図「理論的基盤」を参照）。</p>
 <h4>「認識の積み木」</h4>
+<div class="fig"><img src="https://www.dropbox.com/scl/fi/ifvftrvo7teh1p30le55n/.png?rlkey=hppgmqdwh8ycw07oavoew2rld&e=1&raw=1" alt="認識の積み木" loading="lazy"></div>
+
 <p>現代詩アンソロジー<a href="https://bijutsutecho.com/magazine/series/s10/16929" target="_blank" rel="noopener">「認識の積み木」</a>（<a href="https://bijutsutecho.com/magazine/series/s10/16929" target="_blank" rel="noopener">『美術手帖』2018年3月号</a> 特集「言葉の力。」掲載）は、レイアウト理論を詩のアンソロジー編集として実践した仕事である。いぬのせなか座による編集・解説・デザインのもと、九つのカテゴリ＝見開きと合計17の詩作品、九つの解説テキストから構成される。編集コンセプトそのものを「レイアウト」に設定し、創成期から現在までの日本近現代詩の営みを記述するための技術的分類の一例として全体が準備された。</p>
 <p>制作ノートでは、詩とは既存の文法・意味・組版ルールといった言葉の配置関係＝レイアウトに必然をもたらす論理を内側から破り再設計することで生まれた特異な思考の場であること、散文詩もまた（組版ルールのもとで強制的に改行がなされた）改行詩であること、ゆえに詩集のデザインは作品を作品たらしめている必然性の操作にまで結びつかざるをえないことが宣言されている。音響詩や視覚詩といった傍流とされがちな作品群を詩の本流へ引きずり込む姿勢、他ジャンルとの技術移転の手立てを失いブラックボックス化した日本の詩を〈使える〉ものとして開くという目標が明確に掲げられており、いぬのせなか座の詩観がもっとも端的に表明されたテクストのひとつである。</p>
 <p>鈴木一平による詩の選定とカテゴリ設定、メンバー全員による書き直し、山本浩貴＋ｈによるデザインという共同制作のプロセスも記録されている。</p>
