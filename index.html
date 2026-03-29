@@ -257,7 +257,7 @@ details.h3d > summary.h3s::-webkit-details-marker { display: none; }
   font-size: 17px; font-weight: 700; color: #fff;
   background: var(--green); letter-spacing: .04em;
 }
-.ib table { width: 100%; border-collapse: collapse; }
+.ib table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 .ib th {
   background: var(--green-light); color: var(--green);
   font-size: 10px; font-weight: 600; letter-spacing: .06em;
@@ -266,8 +266,9 @@ details.h3d > summary.h3s::-webkit-details-marker { display: none; }
 }
 .ib td {
   padding: 5px 10px; border-bottom: 1px solid var(--border-light); vertical-align: top;
+  word-break: break-word; overflow-wrap: break-word;
 }
-.ib td:first-child { color: var(--text-muted); width: 64px; white-space: nowrap; font-size: 11px; }
+.ib td:first-child { color: var(--text-muted); width: 50px; white-space: nowrap; font-size: 11px; }
 .ib-concepts { font-size: 11.5px; line-height: 1.6; color: var(--text-light); }
 
 /* ── Definitions ── */
@@ -365,8 +366,8 @@ a:hover .wt { color: var(--green); }
 
 /* ── Infobox Photo ── */
 .ib-photo {
-  display: block; width: 100%; height: auto;
-  border-bottom: 1px solid var(--border-light);
+  display: block; width: 65%; height: auto;
+  margin: 10px auto; border-radius: 2px;
 }
 
 .lang-toggle { display: flex; gap: 4px; padding-top: 2px; }
@@ -492,8 +493,6 @@ a:hover .wt { color: var(--green); }
 <tr><td colspan="2" class="ib-concepts">〈主観性〉〈物性〉〈レイアウト〉〈喩〉〈信〉〈投影者〉〈アトリエ〉〈新たな距離〉〈死からの視線〉</td></tr>
 </table>
 </div>
-<div class="fig"><img src="https://www.dropbox.com/scl/fi/19giyilbduc25diryshcb/.png?rlkey=8jsgdtugtm0atxe1i3rxmj1al&e=1&raw=1" alt="新たな距離" loading="lazy"><img src="https://www.dropbox.com/scl/fi/0gwvvdf04fh7i1jrvhbuk/.jpg?rlkey=a0yds3pxb80a2b1s8r109r1zn&raw=1" alt="フィクションと日記帳" loading="lazy"></div>
-
 <p>1992年愛媛県生まれ。10代より小説を執筆し、第111回「文學界新人賞」三次選考通過、第53回「群像新人文学賞」小説部門最終候補などの評価を受ける。2015年に制作集団・出版版元「いぬのせなか座」を立ち上げ、小説や詩歌の執筆に加え、批評、編集、デザイン、出版、上演制作へと活動領域を広げた。</p>
 <p>2016年から2022年まで文芸誌『早稲田文学』編集部に在籍し、複数の特集を企画・編集。2022年には『クイック・ジャパン』（159–167号）のアートディレクションを担当。現在も、自身の著作・実作に加え、他者の作品の編集・デザイン・上演化を含むかたちで、表現の制作と流通の両面に関わっている。</p>
 <p>主な批評に<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">『新たな距離――言語表現を酷使する（ための）レイアウト』</a>（フィルムアート社、2024年）、<a href="https://inunosenakaza.stores.jp/items/691d9aa0928f9714111d6d06" target="_blank" rel="noopener">『フィクションと日記帳――私らは何を書き、読み、引き継いでいるのか？』</a>（いぬのせなか座、2025年）。主な小説に<a href="https://puboo.jp/book/73331" target="_blank" rel="noopener">「Puffer Train」</a>（2012–13年）、<a href="https://anchor-and-void.inunosenakaza.com/" target="_blank" rel="noopener">「無断と土」</a>（樋口恭介編『異常論文』早川書房、2021年）、<a href="https://anchor-and-void.inunosenakaza.com/" target="_blank" rel="noopener">「親さと空」</a>（『SFマガジン』連載中）。デザインに吉田恭大<a href="https://inunosenakaza.stores.jp/items/5c5e243dc2fc286e0a802e36" target="_blank" rel="noopener">『光と私語』</a>（<a href="https://inunosenakaza.stores.jp/items/5c5e243dc2fc286e0a802e36" target="_blank" rel="noopener">いぬのせなか座、2019年</a>)、『クイック・ジャパン』159–167号。企画・編集に<a href="https://www.chikumashobo.co.jp/special/wasebun_horror/" target="_blank" rel="noopener">『早稲田文学特集＝ホラーのリアリティ』</a>（筑摩書房、2021年）。演出に<a href="https://inunosenakaza.com/performance/20251114" target="_blank" rel="noopener">『インポッシブル・ギャグ リーディング公演』</a>（松原俊太郎作、2025年）、<a href="https://inunosenakaza.com/performance/20260117" target="_blank" rel="noopener">『温室／オンシル』</a>（三野新作、2026年）。</p>
@@ -595,7 +594,7 @@ a:hover .wt { color: var(--green); }
 <hr>
 <details id="s13">
 <summary>理論地図</summary>
-<p>山本の理論は、いくつかの中心概念とその相互関係によって構成されている。以下では、それぞれの概念が何を指し、互いにどのように結びついているかを整理する。末尾の「理論的基盤」では、これらの概念がどのような先行する思想から養分を得ているかを示す。</p>
+<p>山本の理論は、いくつかの中心概念とその相互関係によって構成されている。以下では、それぞれの概念が何を指し、互いにどのように結びついているかを整理する。末尾の「理論的基盤」では、これらの概念がどのような先行する思想的系譜に連なるかを示す。</p>
 <details class="h3d" id="s14">
 <summary class="h3s">言語表現と肉体――理論の起点</summary>
 <p>山本の理論の起点には、言葉を意味伝達の道具としてだけ見ないという決定がある。桐光学園講演会での講演<a href="https://www.dropbox.com/scl/fi/pyybza8kupzkpk2mzmnx9/_20231104.pdf?rlkey=wc8r4fpufuesf8cip2wfp66fn&e=1&dl=0" target="_blank" rel="noopener">「生のアトリエ」</a>（2023年）では「言葉は実は、人間の体に働きかけられるようオーダーメイドされた、とても強くて独特で、手軽な装置である」と述べられている。本、ページ、戯曲、詩、批評文は、読まれることで肉体に一定の動きや思考や仮構を起こさせる。</p>

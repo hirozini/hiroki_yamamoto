@@ -257,7 +257,7 @@ details.h3d > summary.h3s::-webkit-details-marker { display: none; }
   font-size: 17px; font-weight: 700; color: #fff;
   background: var(--green); letter-spacing: .04em;
 }
-.ib table { width: 100%; border-collapse: collapse; }
+.ib table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 .ib th {
   background: var(--green-light); color: var(--green);
   font-size: 10px; font-weight: 600; letter-spacing: .06em;
@@ -266,8 +266,9 @@ details.h3d > summary.h3s::-webkit-details-marker { display: none; }
 }
 .ib td {
   padding: 5px 10px; border-bottom: 1px solid var(--border-light); vertical-align: top;
+  word-break: break-word; overflow-wrap: break-word;
 }
-.ib td:first-child { color: var(--text-muted); width: 64px; white-space: nowrap; font-size: 11px; }
+.ib td:first-child { color: var(--text-muted); width: 50px; white-space: nowrap; font-size: 11px; }
 .ib-concepts { font-size: 11.5px; line-height: 1.6; color: var(--text-light); }
 
 /* ── Definitions ── */
@@ -365,8 +366,8 @@ a:hover .wt { color: var(--green); }
 
 /* ── Infobox Photo ── */
 .ib-photo {
-  display: block; width: 100%; height: auto;
-  border-bottom: 1px solid var(--border-light);
+  display: block; width: 65%; height: auto;
+  margin: 10px auto; border-radius: 2px;
 }
 
 .lang-toggle { display: flex; gap: 4px; padding-top: 2px; }
@@ -492,8 +493,6 @@ a:hover .wt { color: var(--green); }
 <tr><td colspan="2" class="ib-concepts">〈subjectivity〉〈objectivity〉〈layout〉〈figure〉〈belief〉〈projector〉〈atelier〉〈renewed distances〉〈the gaze from death〉</td></tr>
 </table>
 </div>
-<div class="fig"><img src="https://www.dropbox.com/scl/fi/19giyilbduc25diryshcb/.png?rlkey=8jsgdtugtm0atxe1i3rxmj1al&e=1&raw=1" alt="Aratana Kyori" loading="lazy"><img src="https://www.dropbox.com/scl/fi/0gwvvdf04fh7i1jrvhbuk/.jpg?rlkey=a0yds3pxb80a2b1s8r109r1zn&raw=1" alt="Fiction to Nikkichō" loading="lazy"></div>
-
 <p>Born 1992, Ehime Prefecture. From his teens Yamamoto wrote fiction, receiving recognition including a third-round pass for the 111th Bungakukai New Writers' Prize and a final-round nomination for the 53rd Gunzō New Writers' Prize (fiction division). In 2015 he founded the production collective and publishing house Inunosenakaza, expanding his activities from fiction and poetry to criticism, editing, design, publishing, and performance production.</p>
 <p>From 2016 to 2022 he was a member of the editorial department of the literary journal <em>Waseda Bungaku</em>, where he planned and edited several special issues. In 2022 he served as art director for <em>Quick Japan</em> (issues 159–167). He continues to be involved in both the production and circulation of expression, including the editing, design, and staging of other artists' work alongside his own writing and practice.</p>
 <p>Major criticism: <a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Aratana Kyori</em> (Renewed Distances: Layout for (the Purpose of) Pushing Linguistic Expression to Its Limits)</a> (Filmart, 2024); <a href="https://inunosenakaza.stores.jp/items/691d9aa0928f9714111d6d06" target="_blank" rel="noopener"><em>Fiction to Nikkichō</em> (Fiction and the Diary-Notebook: What Are We Writing, Reading, and Passing On?)</a> (Inunosenakaza, 2025). Major fiction: <a href="https://puboo.jp/book/73331" target="_blank" rel="noopener">"Puffer Train"</a> (2012–13); <a href="https://anchor-and-void.inunosenakaza.com/" target="_blank" rel="noopener">"Mudan to Tsuchi" (Without Permission and Soil)</a> (in樋口恭介 ed., <em>Ijō Ronbun</em> [Anomalous Papers], Hayakawa Shobō, 2021); <a href="https://anchor-and-void.inunosenakaza.com/" target="_blank" rel="noopener">"Chikashisa to Kū" (Anchor and Void)</a> (serializing in <em>SF Magazine</em>). Design: Yoshida Yasuhiro, <a href="https://inunosenakaza.stores.jp/items/5c5e243dc2fc286e0a802e36" target="_blank" rel="noopener"><em>Hikari to Shigo</em> (Light and Asides)</a> (Inunosenakaza, 2019); <em>Quick Japan</em> 159–167. Planning and editing: <a href="https://www.chikumashobo.co.jp/special/wasebun_horror/" target="_blank" rel="noopener"><em>Waseda Bungaku Special Issue: The Reality of Horror</em></a> (Chikuma Shobō, 2021). Direction: <a href="https://inunosenakaza.com/performance/20251114" target="_blank" rel="noopener"><em>Impossible Gag: Reading Performance</em></a> (text by Matsuhara Shuntarō, 2025); <a href="https://inunosenakaza.com/performance/20260117" target="_blank" rel="noopener"><em>Onshitsu / Onsil</em></a> (text by Mino Arata, 2026).</p>
@@ -595,7 +594,7 @@ a:hover .wt { color: var(--green); }
 <hr>
 <details id="s13">
 <summary>Theoretical Map</summary>
-<p>Yamamoto's theory is composed of several central concepts and their interrelations. Below, we organize what each concept refers to and how they are connected. The final subsection, "Theoretical Foundations," indicates the prior intellectual traditions from which these concepts draw nourishment.</p>
+<p>Yamamoto's theory is composed of several central concepts and their interrelations. Below, we organize what each concept refers to and how they are connected. The final subsection, "Theoretical Foundations," indicates the prior intellectual traditions to which these concepts are connected.</p>
 <details class="h3d" id="s14">
 <summary class="h3s">Linguistic Expression and the Body — The Starting Point of Theory</summary>
 <p>At the starting point of Yamamoto's theory is the decision not to see language merely as a tool for conveying meaning. In the lecture <a href="https://www.dropbox.com/scl/fi/pyybza8kupzkpk2mzmnx9/_20231104.pdf?rlkey=wc8r4fpufuesf8cip2wfp66fn&e=1&dl=0" target="_blank" rel="noopener">"Sei no Atelier"</a> (2023), he states: "Language is in fact a very powerful, distinctive, and handy device, custom-made to act on the human body." Books, pages, scripts, poems, and critical essays, when read, generate certain movements, thoughts, and constructions in the body.</p>
