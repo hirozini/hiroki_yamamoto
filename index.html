@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -49,105 +50,121 @@ body {
 
 /* ── Layout ── */
 .W {
-  max-width: 1020px; margin: 0 auto; background: var(--card);
-  box-shadow: 0 0 50px rgba(0,0,0,.04); min-height: 100vh;
+max-width: 1020px; margin: 0 auto; background: var(–card);
+box-shadow: 0 0 50px rgba(0,0,0,.04); min-height: 100vh;
 }
 .H {
-  padding: 48px 40px 28px;
-  border-bottom: 2px solid var(--green);
-  background: linear-gradient(180deg, #fff 0%, var(--warm-bg) 100%);
+padding: 56px 40px 32px;
+border-bottom: 1px solid var(–border-light);
+background: var(–warm-bg);
+position: relative;
 }
+.H::after {
+content: ‘’; position: absolute; bottom: -1px; left: 40px;
+width: 48px; height: 3px; background: var(–green);
+}
+.H-inner {
+display: flex; align-items: flex-start; justify-content: space-between;
+gap: 16px; flex-wrap: wrap;
+}
+.H-text { flex: 1; min-width: 0; }
 .H h1 {
-  font-family: var(--serif);
-  font-size: 36px; font-weight: 700; line-height: 1.3;
-  letter-spacing: .05em; color: var(--fg); margin-bottom: 6px;
+font-family: var(–serif);
+font-size: 28px; font-weight: 700; line-height: 1.35;
+letter-spacing: .06em; color: var(–fg); margin: 0 0 12px;
 }
 .H .sub {
-  font-family: var(--serif);
-  font-size: 13.5px; color: var(--accent2); letter-spacing: .08em;
-  font-style: italic;
+font-family: var(–serif);
+font-size: 13px; color: var(–accent2); letter-spacing: .06em;
+font-style: italic; line-height: 1.5;
+}
+.H .kana {
+font-family: var(–sans);
+font-size: 10px; color: var(–fg-dim); letter-spacing: .14em;
+text-transform: uppercase; margin-bottom: 10px; display: block;
+font-weight: 500;
 }
 .B { display: flex; }
 
 /* ── Sidebar ── */
 .N {
-  width: 210px; min-width: 210px;
-  padding: 24px 14px 60px 18px;
-  border-right: 1px solid var(--border-light);
-  position: sticky; top: 0; align-self: flex-start;
-  max-height: 100vh; overflow-y: auto;
-  background: var(--warm-bg); font-size: 12.5px;
+width: 210px; min-width: 210px;
+padding: 24px 14px 60px 18px;
+border-right: 1px solid var(–border-light);
+position: sticky; top: 0; align-self: flex-start;
+max-height: 100vh; overflow-y: auto;
+background: var(–warm-bg); font-size: 12.5px;
 }
 .nt {
-  font-family: var(--serif);
-  font-weight: 600; font-size: 12px; color: var(--green);
-  letter-spacing: .1em;
-  margin-bottom: 12px; padding-bottom: 8px;
-  border-bottom: 1px solid var(--border);
+font-family: var(–serif);
+font-weight: 600; font-size: 12px; color: var(–green);
+letter-spacing: .1em;
+margin-bottom: 12px; padding-bottom: 8px;
+border-bottom: 1px solid var(–border);
 }
 .N a {
-  display: block; color: var(--text-light); text-decoration: none;
-  padding: 3px 8px; line-height: 1.5; border-radius: 3px; transition: all .12s;
+display: block; color: var(–text-light); text-decoration: none;
+padding: 3px 8px; line-height: 1.5; border-radius: 3px; transition: all .12s;
 }
-.N a:hover { color: var(--green); background: rgba(0,0,0,.03); }
-.N .s { padding-left: 16px; font-size: 11px; color: var(--text-muted); }
-.N .s:hover { color: var(--green); }
+.N a:hover { color: var(–green); background: rgba(0,0,0,.03); }
+.N .s { padding-left: 16px; font-size: 11px; color: var(–text-muted); }
+.N .s:hover { color: var(–green); }
 .N::-webkit-scrollbar { width: 3px; }
-.N::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.N::-webkit-scrollbar-thumb { background: var(–border); border-radius: 2px; }
 
 /* ── Content ── */
 .C { flex: 1; padding: 20px 40px 80px; min-width: 0; }
 .C p { margin: 14px 0; text-align: justify; }
-.C strong { font-weight: 700; color: var(--fg); }
+.C strong { font-weight: 700; color: var(–fg); }
 
 /* ── Links ── */
-a { color: var(--green); text-decoration: none; }
+a { color: var(–green); text-decoration: none; }
 a:visited { color: #3a7a3a; }
-a:hover { color: var(--green-hover); }
+a:hover { color: var(–green-hover); }
 .C a {
-  text-decoration: underline;
-  text-decoration-color: rgba(45,106,46,.25);
-  text-underline-offset: 2px;
-  transition: text-decoration-color .15s;
+text-decoration: underline;
+text-decoration-color: rgba(45,106,46,.25);
+text-underline-offset: 2px;
+transition: text-decoration-color .15s;
 }
-.C a:hover { text-decoration-color: var(--green); }
+.C a:hover { text-decoration-color: var(–green); }
 
 /* ── Sections (details/summary) ── */
 details { margin: 0; }
 details > summary {
-  font-family: var(--serif);
-  font-size: 1.28rem;
-  font-weight: 700;
-  color: var(--fg);
-  cursor: pointer;
-  padding: .6em 0;
-  list-style: none;
-  display: flex;
-  align-items: baseline;
-  gap: .5em;
-  border-bottom: 1px solid transparent;
-  transition: color .12s, border-color .12s;
-  user-select: none;
-  letter-spacing: .02em;
-  line-height: 1.35;
+font-family: var(–serif);
+font-size: 1.28rem;
+font-weight: 700;
+color: var(–fg);
+cursor: pointer;
+padding: .6em 0;
+list-style: none;
+display: flex;
+align-items: baseline;
+gap: .5em;
+border-bottom: 1px solid transparent;
+transition: color .12s, border-color .12s;
+user-select: none;
+letter-spacing: .02em;
+line-height: 1.35;
 }
-details > summary:hover { color: var(--green); }
+details > summary:hover { color: var(–green); }
 details[open] > summary {
-  color: var(--green);
-  border-bottom-color: var(--border-light);
-  margin-bottom: .15em;
+color: var(–green);
+border-bottom-color: var(–border-light);
+margin-bottom: .15em;
 }
 details > summary::before {
-  content: '';
-  display: inline-block;
-  width: 6px; height: 6px;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
-  transform: rotate(-45deg);
-  transition: transform .2s ease;
-  flex-shrink: 0;
-  position: relative; top: -1px;
-  opacity: .45;
+content: ‘’;
+display: inline-block;
+width: 6px; height: 6px;
+border-right: 1.5px solid currentColor;
+border-bottom: 1.5px solid currentColor;
+transform: rotate(-45deg);
+transition: transform .2s ease;
+flex-shrink: 0;
+position: relative; top: -1px;
+opacity: .45;
 }
 details[open] > summary::before { transform: rotate(45deg); top: -2px; }
 details > summary::-webkit-details-marker { display: none; }
@@ -158,194 +175,199 @@ details[open] > :not(summary) { animation: fadeIn .2s ease; }
 /* ── h3 collapsible ── */
 details.h3d { margin: .3em 0 0; }
 details.h3d > summary.h3s {
-  font-family: var(--serif);
-  font-size: 1.08rem;
-  font-weight: 700;
-  color: var(--fg);
-  cursor: pointer;
-  padding: .45em 0 .35em;
-  list-style: none;
-  display: flex;
-  align-items: baseline;
-  gap: .45em;
-  border-bottom: none;
-  transition: color .12s;
-  user-select: none;
-  letter-spacing: .01em;
-  line-height: 1.35;
+font-family: var(–serif);
+font-size: 1.08rem;
+font-weight: 700;
+color: var(–fg);
+cursor: pointer;
+padding: .45em 0 .35em;
+list-style: none;
+display: flex;
+align-items: baseline;
+gap: .45em;
+border-bottom: none;
+transition: color .12s;
+user-select: none;
+letter-spacing: .01em;
+line-height: 1.35;
 }
-details.h3d > summary.h3s:hover { color: var(--green); }
+details.h3d > summary.h3s:hover { color: var(–green); }
 details.h3d[open] > summary.h3s {
-  color: var(--green);
-  border-bottom: 1px solid var(--border-light);
-  margin-bottom: .1em;
+color: var(–green);
+border-bottom: 1px solid var(–border-light);
+margin-bottom: .1em;
 }
 details.h3d > summary.h3s::before {
-  content: '';
-  display: inline-block;
-  width: 5px; height: 5px;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
-  transform: rotate(-45deg);
-  transition: transform .2s ease;
-  flex-shrink: 0;
-  position: relative; top: -1px;
-  opacity: .35;
+content: ‘’;
+display: inline-block;
+width: 5px; height: 5px;
+border-right: 1.5px solid currentColor;
+border-bottom: 1.5px solid currentColor;
+transform: rotate(-45deg);
+transition: transform .2s ease;
+flex-shrink: 0;
+position: relative; top: -1px;
+opacity: .35;
 }
 details.h3d[open] > summary.h3s::before { transform: rotate(45deg); top: -2px; }
 details.h3d > summary.h3s::-webkit-details-marker { display: none; }
 
 /* ── h3 ── */
 .C h3 {
-  font-family: var(--serif);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--fg);
-  margin: 1.8em 0 .5em;
-  padding: 0 0 .3em;
-  border-bottom: 1px solid var(--border-light);
-  line-height: 1.4;
-  letter-spacing: .01em;
+font-family: var(–serif);
+font-size: 1.05rem;
+font-weight: 700;
+color: var(–fg);
+margin: 1.8em 0 .5em;
+padding: 0 0 .3em;
+border-bottom: 1px solid var(–border-light);
+line-height: 1.4;
+letter-spacing: .01em;
 }
 .C summary + h3, .C h3:first-child, .C summary + details.h3d { margin-top: .6em; }
 
 /* ── h4 ── */
 .C h4 {
-  font-family: var(--sans);
-  font-size: .87rem; font-weight: 700;
-  color: var(--accent2);
-  margin: 1.4em 0 .25em;
-  letter-spacing: .03em;
+font-family: var(–sans);
+font-size: .87rem; font-weight: 700;
+color: var(–accent2);
+margin: 1.4em 0 .25em;
+letter-spacing: .03em;
 }
 
 /* ── Blockquote ── */
 .bq {
-  margin: 16px 0; padding: 14px 20px;
-  background: var(--warm-bg);
-  border-left: 3px solid var(--border);
-  border-radius: 0 4px 4px 0;
-  font-size: 14px; line-height: 1.85;
-  color: var(--text-light);
+margin: 16px 0; padding: 14px 20px;
+background: var(–warm-bg);
+border-left: 3px solid var(–border);
+border-radius: 0 4px 4px 0;
+font-size: 14px; line-height: 1.85;
+color: var(–text-light);
 }
-.bq + .bq { margin-top: -12px; border-top-right-radius: 0; }
 
 /* ── Infobox ── */
 .ib {
-  float: right; width: 270px; margin: 0 0 20px 24px;
-  background: var(--warm-bg); border: 1px solid var(--border);
-  border-radius: 6px; font-size: 12.5px; line-height: 1.55;
-  box-shadow: var(--shadow); overflow: hidden;
+float: right; width: 270px; margin: 0 0 20px 24px;
+background: var(–warm-bg); border: 1px solid var(–border);
+border-radius: 6px; font-size: 12.5px; line-height: 1.55;
+box-shadow: var(–shadow); overflow: hidden;
 }
 .ib-title {
-  text-align: center; padding: 12px 14px;
-  font-family: var(--serif);
-  font-size: 17px; font-weight: 700; color: #fff;
-  background: var(--green); letter-spacing: .04em;
+text-align: center; padding: 12px 14px;
+font-family: var(–serif);
+font-size: 17px; font-weight: 700; color: #fff;
+background: var(–green); letter-spacing: .04em;
 }
 .ib table { width: 100%; border-collapse: collapse; }
 .ib th {
-  background: var(--green-light); color: var(--green);
-  font-size: 10px; font-weight: 600; letter-spacing: .06em;
-  padding: 5px 10px; text-align: left;
-  border-bottom: 1px solid var(--border-light);
+background: var(–green-light); color: var(–green);
+font-size: 10px; font-weight: 600; letter-spacing: .06em;
+padding: 5px 10px; text-align: left;
+border-bottom: 1px solid var(–border-light);
 }
 .ib td {
-  padding: 5px 10px; border-bottom: 1px solid var(--border-light); vertical-align: top;
+padding: 5px 10px; border-bottom: 1px solid var(–border-light); vertical-align: top;
 }
-.ib td:first-child { color: var(--text-muted); width: 64px; white-space: nowrap; font-size: 11px; }
-.ib-concepts { font-size: 11.5px; line-height: 1.6; color: var(--text-light); }
+.ib td:first-child { color: var(–text-muted); width: 64px; white-space: nowrap; font-size: 11px; }
+.ib-concepts { font-size: 11.5px; line-height: 1.6; color: var(–text-light); }
 
 /* ── Definitions ── */
 .sb { overflow: hidden; }
 .df {
-  margin: 8px 0; padding: 10px 16px 10px 2.2em; text-indent: -1.6em;
-  font-size: 14px; line-height: 1.85;
-  background: var(--warm-bg2); border-radius: 3px;
-  border-left: 2px solid var(--border);
+margin: 8px 0; padding: 10px 16px 10px 2.2em; text-indent: -1.6em;
+font-size: 14px; line-height: 1.85;
+background: var(–warm-bg2); border-radius: 3px;
+border-left: 2px solid var(–border);
 }
 
 /* ── hr ── */
 .C hr {
-  border: none; height: 1px; margin: 2em 0;
-  background: linear-gradient(90deg, transparent 0%, var(--border) 15%, var(--border) 85%, transparent 100%);
+border: none; height: 1px; margin: 2em 0;
+background: linear-gradient(90deg, transparent 0%, var(–border) 15%, var(–border) 85%, transparent 100%);
 }
 
 /* ── Meta (biblio) ── */
 .C .meta {
-  font-size: 12.5px; color: var(--text-muted); line-height: 1.6;
-  margin: -4px 0 12px; padding: 5px 12px;
-  background: var(--warm-bg2); border-radius: 3px;
-  border-left: 2px solid var(--border-light);
+font-size: 12.5px; color: var(–text-muted); line-height: 1.6;
+margin: -4px 0 12px; padding: 5px 12px;
+background: var(–warm-bg2); border-radius: 3px;
+border-left: 2px solid var(–border-light);
 }
 
 /* ── Visual break ── */
 .C .brk { margin-top: 1.4em; }
 
 /* ── Work titles ── */
-.wt { font-weight: 600; color: var(--fg); }
+.wt { font-weight: 600; color: var(–fg); }
 a .wt {
-  color: var(--fg);
-  text-decoration: underline;
-  text-decoration-color: rgba(45,106,46,.3);
-  text-underline-offset: 2px;
+color: var(–fg);
+text-decoration: underline;
+text-decoration-color: rgba(45,106,46,.3);
+text-underline-offset: 2px;
 }
-a:hover .wt { color: var(--green); }
+a:hover .wt { color: var(–green); }
 
 /* ── Footer ── */
 .f {
-  text-align: right; padding: 16px 40px;
-  border-top: 1px solid var(--border-light);
-  font-size: 11px; color: var(--text-muted); background: var(--warm-bg);
+text-align: right; padding: 16px 40px;
+border-top: 1px solid var(–border-light);
+font-size: 11px; color: var(–text-muted); background: var(–warm-bg);
 }
 
 /* ── Mobile ── */
 @media (max-width: 760px) {
-  .B { display: block; }
-  .N { display: none; }
-  .H { padding: 24px 18px 18px; }
-  .H h1 { font-size: 24px; }
-  .C { padding: 14px 18px 48px; }
-  .C h3 { font-size: .98rem; margin-top: 1.3em; }
-  details > summary { font-size: 1.1rem; }
-  details.h3d > summary.h3s { font-size: .98rem; }
-  .f { padding: 12px 18px; }
-  .ib { float: none; width: 100%; margin: 0 0 14px; font-size: 11px; line-height: 1.4; }
-  .ib-title { font-size: 13px !important; padding: 6px 8px !important; letter-spacing: .02em; }
-  .ib table, .ib td { font-size: 10px !important; line-height: 1.35 !important; }
-  .ib th { font-size: 7px !important; line-height: 1.3 !important; font-weight: 500 !important; letter-spacing: .02em !important; padding: 2px 6px !important; }
-  .ib td { padding: 3px 6px !important; }
-  .ib td:first-child { width: 44px !important; font-size: 9px !important; }
-  .ib-concepts { font-size: 9px !important; line-height: 1.3 !important; }
+.B { display: block; }
+.N { display: none; }
+.H { padding: 28px 18px 22px; }
+.H::after { left: 18px; width: 36px; }
+.H h1 { font-size: 22px; }
+.H .kana { font-size: 9px; margin-bottom: 8px; }
+.C { padding: 14px 18px 48px; }
+.C h3 { font-size: .98rem; margin-top: 1.3em; }
+details > summary { font-size: 1.1rem; }
+details.h3d > summary.h3s { font-size: .98rem; }
+.f { padding: 12px 18px; }
+.ib { float: none; width: 100%; margin: 0 0 14px; font-size: 11px; line-height: 1.4; }
+.ib-title { font-size: 13px !important; padding: 6px 8px !important; letter-spacing: .02em; }
+.ib table, .ib th, .ib td { font-size: 10px !important; line-height: 1.35 !important; }
+.ib th { padding: 3px 6px !important; }
+.ib td { padding: 3px 6px !important; }
+.ib td:first-child { width: 44px !important; font-size: 9px !important; }
+.ib-concepts { font-size: 9px !important; line-height: 1.3 !important; }
 }
 
-.lang-toggle { display: flex; gap: 4px; margin-left: auto; }
+.lang-toggle { display: flex; gap: 4px; padding-top: 2px; }
 .lang-toggle button, .lang-toggle .lang-link {
-  font-family: var(--sans); font-size: 11px; font-weight: 600;
-  padding: 3px 10px; border: 1px solid var(--border); border-radius: 3px;
-  cursor: pointer; transition: all .15s; letter-spacing: .03em;
-  text-decoration: none; display: inline-block; line-height: 1.4;
+font-family: var(–sans); font-size: 10px; font-weight: 600;
+padding: 3px 10px; border: 1px solid var(–border); border-radius: 3px;
+cursor: pointer; transition: all .15s; letter-spacing: .04em;
+text-decoration: none; display: inline-block; line-height: 1.4;
 }
 .lang-toggle button.active {
-  background: var(--green); color: #fff; border-color: var(--green);
-  cursor: default;
+background: var(–green); color: #fff; border-color: var(–green);
+cursor: default;
 }
 .lang-toggle .lang-link {
-  background: transparent; color: var(--fg-dim);
+background: transparent; color: var(–fg-dim);
 }
-.lang-toggle .lang-link:hover { border-color: var(--green); color: var(--green); }
+.lang-toggle .lang-link:hover { border-color: var(–green); color: var(–green); }
 </style>
+
 </head>
 <body>
 <div class="W">
   <div class="H">
-    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-      <h1>山本浩貴｜制作と思考の見取り図</h1>
+    <div class="H-inner">
+      <div class="H-text">
+        <span class="kana">やまもと・ひろき</span>
+        <h1>山本浩貴｜制作と思考の見取り図</h1>
+        <div class="sub">Hiroki Yamamoto ─ A Map of Making and Thinking</div>
+      </div>
       <div class="lang-toggle">
         <button class="active">JP</button>
         <a href="index_en.html" class="lang-link">EN</a>
       </div>
     </div>
-    <div class="sub">Hiroki Yamamoto ─ A Map of Making and Thinking</div>
   </div>
   <div class="B">
     <nav class="N">
@@ -549,8 +571,7 @@ a:hover .wt { color: var(--green); }
 </details>
 <details class="h3d" id="s16">
 <summary class="h3s">〈主観性〉と〈物性〉</summary>
-<blockquote class="bq">テクストは、それを〈表現 expression〉した〈者 person〉や、その周囲で〈表現〉を規定した〈環境 environment〉を、さかのぼって仮構しないではいられない。この傾向・質をめぐる一定のまとまりを〈主観性 subjectivity〉と呼ぶ。／〈表現〉を規定しそれたらしめた法則性を〈物性 objectivity〉と呼ぶ。／テクストとは、それを能動的に表した手つきへの遡行を強いる力たる〈主観性〉と、それを受動的に表すよう強いた力たる〈物性〉の、両者が多重的に折り重なったかたちでレイアウトされた構築物である。</blockquote>
-<blockquote class="bq">――山本浩貴<a href="https://inunosenakaza.stores.jp/items/654edeaa6a8b0d218bc27b87" target="_blank" rel="noopener">『主観性の蠢きとその宿』</a></blockquote>
+<blockquote class="bq">テクストは、それを〈表現 expression〉した〈者 person〉や、その周囲で〈表現〉を規定した〈環境 environment〉を、さかのぼって仮構しないではいられない。この傾向・質をめぐる一定のまとまりを〈主観性 subjectivity〉と呼ぶ。／〈表現〉を規定しそれたらしめた法則性を〈物性 objectivity〉と呼ぶ。／テクストとは、それを能動的に表した手つきへの遡行を強いる力たる〈主観性〉と、それを受動的に表すよう強いた力たる〈物性〉の、両者が多重的に折り重なったかたちでレイアウトされた構築物である。<br>――山本浩貴<a href="https://inunosenakaza.stores.jp/items/654edeaa6a8b0d218bc27b87" target="_blank" rel="noopener">『主観性の蠢きとその宿』</a></blockquote>
 <p><strong>〈主観性〉は「作者の内面」ではなく、表現がその背後に主体と環境を立ち上げさせてしまう傾向を指す。</strong></p>
 <p><strong>〈物性〉は「客観的事実」ではなく、その表現をそうであらしめた法則性の力を指す。</strong></p>
 <p><strong>表現はこの二つの誤認的な絡み合いのうちにあり、山本の理論はこうした誤認を否定するのではなく、表現の本質的プロセスとして引き受けようとする。</strong></p>
@@ -578,8 +599,7 @@ a:hover .wt { color: var(--green); }
 </details>
 <details class="h3d" id="s19">
 <summary class="h3s">〈アトリエ〉</summary>
-<blockquote class="bq">〈アトリエ atelier〉という語は本書において、制作者の肉体の置かれた物理的な環境と、制作者が制作に向けて準備し構築し出力していく抽象的な場（体系、マトリクス）を、あえて重ねるかたちで指すものとして運用している。制作者は雑多な日々を過ごしながらも、そこに立ち返りさえすれば制作の蓄積を再起動し、次なる一筆／一語を置きうる。加えてそうした〈アトリエ〉は、制作者を遡行的に把握する上で、その者に制作を強いた（アフォードした）環境として、例えばテクストの構成要素の一つに数え上げられるもの（その高度な単位）でもある。</blockquote>
-<blockquote class="bq">――山本浩貴『新たな距離』13頁</blockquote>
+<blockquote class="bq">〈アトリエ atelier〉という語は本書において、制作者の肉体の置かれた物理的な環境と、制作者が制作に向けて準備し構築し出力していく抽象的な場（体系、マトリクス）を、あえて重ねるかたちで指すものとして運用している。制作者は雑多な日々を過ごしながらも、そこに立ち返りさえすれば制作の蓄積を再起動し、次なる一筆／一語を置きうる。加えてそうした〈アトリエ〉は、制作者を遡行的に把握する上で、その者に制作を強いた（アフォードした）環境として、例えばテクストの構成要素の一つに数え上げられるもの（その高度な単位）でもある。<br>――山本浩貴『新たな距離』13頁</blockquote>
 <p><strong>山本の近年の中心概念。</strong>第一にアトリエは制作を継続させる技術であり中断をまたいで持続する単位、第二に受け取り手がテクストから遡行的に仮構する環境としての分析単位、第三に教育されうる伝承と共同体設計の基礎単位でもある。〈アトリエ〉は単に後期の新概念ではなく、前期の〈主観性〉〈物性〉〈レイアウト〉を束ね直すハブとして機能している。〈演技〉は、このアトリエを肉体で引き受け、通過し、変形し、他者にも開く実践を指す。</p>
 <h4>「アトリエのためのメモ」</h4>
 <p>『新たな距離』所収の<a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">「アトリエのためのメモ」</a>は、この概念のもっとも凝縮された定義文にあたる。そこでは「ひとはそれまで触れてきた環境の束（地層）である」という命題から出発し、環境の束と行為のあいだの、周囲からは把握不可能な結合関係が〈アトリエ〉と呼ばれる。「言葉」や「芸術」は、環境の束をより十全に圧縮して肉体の外に「置く」ための手だてとしてある。</p>
@@ -831,9 +851,12 @@ a:hover .wt { color: var(--green); }
 <details class="h3d" id="s46">
 <summary class="h3s">「Puffer Train」</summary>
 <p><a href="https://puboo.jp/book/73331" target="_blank" rel="noopener">「Puffer Train」</a>（2012–13年）は山本の初期代表作にあたる長編小説である。同作の前半部（全3章中、第1章から第2章の4まで）の改行などをなるべく削ったものが第56回群像新人文学賞の最終候補となった。小説家・町屋良平は山本を「二〇一〇年代を代表する作家」と呼び、「Puffer Train」を含む初期小説群を「二〇一〇年代に書かれたもっとも優れた作品の一つである」と評している。</p>
-<p>三部＋エピローグから成り、冒頭にニコラウス・クザーヌスとヘンリ・モアの多宇宙をめぐるエピグラフが置かれる。第1部「trial and error」では、ある「わたし」の日常が語られる。送信済みメールをすべて削除する習慣、母親との二人暮らし、友人ハルから「死んだはずのカズナが街を歩いている」と聞かされること。ただし「わたし」はカズナと数日前にもメールを交わしており、死んだという認識を持っていない。語り手が誰であるかは曖昧なまま、喫茶店でカズナと会えば腕が三本ある女が窓の外を歩き、胃のなかで数万匹のエビがうごめく感覚が生じる。やがて「わたし」は学校と逆方向の電車に乗り、かつて海水浴に行った駅で降り、海に辿り着けないまま見知らぬ土地をさまよい、動物園の奥のファーストフード店で働きはじめる。視点は徐々にカズナの側へずれこんでいく。</p>
-<p>第2部「tank mate」ではカズナの視点に移る。船舶解体場でのアルバイト、「わたし」（シャライ）との同居、同僚ツヅキと事故死した恋人○×さんとの関係。この世界では死者を「再生」できることが、ハルがひいおじいさんの死を前に「なんで生き返らせないの？」と問われる場面で明かされる。シャライの肉体からエビが溢れ出し、再生のための「データの齟齬」が大きすぎると告げられ、シャライは死に向かう。ハルのひいおじいさんの日記――日付と天気と出来事だけがひたすら記された大学ノート――が読まれる場面は、「日記」をめぐる山本の問題意識がもっとも初期のかたちで現れた箇所のひとつでもある。</p>
-<p>第3部「phylogenetic tree」では視点が一気に宇宙的・地質学的スケールへ拡張され、鉱物の結晶構造、惑星の循環、恐竜から鳥への進化、監視衛星、戦場、犬や猫の生に至るまでが途切れなく連続する。登場人物たちの名がDNAの連なりの断片として計算に用いられていたことが示唆され、街そのものが死者の記憶ログを再編する大規模な計算システムであるというSF的設定が浮上する。エピローグ「shrimp」では親密な生活の細部に帰還し、ノートに描かれたうさぎとサッカーボール、情報収集衛星の周回、空爆された街と散髪屋の犬が同一の文体で並べられる。SF的設定は説明として前景化されることはなく、死者と生者の境界が曖昧なまま日常が営まれていく質感そのものとして小説に埋め込まれている。</p>
+<p>三部構成で、冒頭にニコラウス・クザーヌスとヘンリ・モアの多宇宙をめぐるエピグラフが置かれる。</p>
+<p>第1部「trial and error」では、母と二人で暮らす「わたし」の日常が、小さな違和の累積として語られる。ある日友人のハルから、死んで一年経つカズナとそっくりな人が街を歩いていたと告げられ、「祝ってあげる」と言われる。だが「わたし」はカズナと数日前にもメールを交わしており、その言葉を現実として受け止めきれない。送信済みメールをすべて削除し、それを今後も反復しようと決めること、喫茶店でカズナと向き合う最中に見えてしまう三本腕の女や、胃のなかで数万匹のエビがうごめく感覚が、その認識の揺らぎをさらに濃くしていく。</p>
+<p>やがて「わたし」は学校と逆方向の電車に乗って海を探しに行き、帰宅後の不調や欠席をはさみつつ、夏休みには動物園の奥のファーストフード店で働きはじめる。そのさなか、赤いリュックサックの人物に「シャライだろう？」と呼ばれ、手渡されたのは「公園」そのものだった。以後、公園はポケットの中で成長し、子ども時代の遊びや記憶を内部に抱え込みながら、「わたし」の輪郭を内外から揺さぶっていく。</p>
+<p>第2部「tank mate」では、カズナの側から、彼が生き返らせたという「わたし」＝シャライとの生活が描かれる。カズナは船舶解体場で働いている。同僚ツヅキや、事故死ののち再生されたツヅキの恋人○×さんの存在を通して、この街では数十年前の死者さえ「生き返らせるプログラム」が存在することが明かされる。しかしやがてシャライの体には大きな綻びが生じ、カズナは助けを求めて「とんぼみたいな人」のもとに向かい、街・身体・ログ・再生をめぐる長い語りを聞かされる。カズナにはどうすることもできず、シャライは死に、その体から出てきたエビは自立して各地を回り、くまに後押しされて宇宙へ発つ。</p>
+<p>第3部「phylogenetic tree」では視点とスケールが一気に人間を越え、街・生物・鉱物・星・別宇宙がひとつの系統樹のように語られていく。人間のDNAと生存時のログを用いた巨大な計算機＝街という設定が前景化し、死者再生や身体の変形やエビの氾濫が、その計算と干渉の副産物として読み直される。宇宙的スケールの記述や、足の生えたくじらの神話などが語られていくうち、物語は急激に「わたし」とカズナの穏やかな日々へと引き戻されていく。</p>
+<p>本作のSF的設定は第2部から徐々に明言され、第3部で宇宙的スケールへと一気に展開するが、第1部の時点から、死者と生者の境界、自分の名と記憶の輪郭、見えるはずのないものが見えてしまう感覚として日常のなかに浸み込んでいる。設定が後から日常を裏打ちするのではなく、日常の微細な違和、それをめぐる繊細なレトリックが、そのまま宇宙論的・情報論的スケールへ伸びていくところに本作の独自性がある。</p>
 </details>
 <details class="h3d" id="s47">
 <summary class="h3s">連作「フィギュラル・ヴォイド」</summary>
@@ -842,7 +865,7 @@ a:hover .wt { color: var(--green); }
 <details class="h3d" id="s48">
 <summary class="h3s">「無断と土」</summary>
 <p>全編が学術的な発表原稿とその質疑応答で構成される。発表は、開発者不明のVRホラーゲーム『WPS（Without Permission and Soil）』の分析を主軸に据え、四部にわたって展開される。1900年代から1920年代の「怪談の時代」と宮城出身の詩人・菅原文草の仕事、天皇制をめぐる詩と上演の構想、WPSのMAP構造と菅原の舞台設計メモの一致、WPS終盤に現れる詩篇が明治天皇・昭和天皇の短歌のアナグラムであることの論証が重ねられ、天皇制の「奇形的発達をめぐる具体的遂行＝上演例」としてWPSが位置づけられる。バートランド・ラッセルのセンシビリア論、折口信夫の外界観念、吉本隆明の初期歌謡論・ハイ・イメージ論など、山本の理論的参照先が小説の素材として全面的に動員されている。質疑応答では実在の詩人・鈴木一平が「質問者4」として登場し、虚実の境界を意図的に攪乱する。</p>
-<p>樋口恭介は『異常論文』の作品紹介で本作をボルヘスの変奏と位置づけつつ、古谷利裕は大江健三郎や深沢七郎の系列に連なる「天皇制小説」として画期的であると同時に、荒川修作＋マドリン・ギンズの「共同性」概念に明確な像を与えている点でも画期的であると評している。</p>
+<p>樋口恭介は『異常論文』の作品紹介で本作をボルヘス「トレーン、ウクバール、オルビス・テルティウス」の変奏と位置づけつつ、思考の深度と作品構築の緻密さにおいてボルヘスを超えているとまで評した。大森望は虚実を混合しながら天皇と天皇制のずれを論じる手法にレムの『ソラリス』を連想し、沼野充義は「人文知とインターネットテクノロジー時代のゲーム感覚が融合した作品」と評している。古谷利裕は大江健三郎や深沢七郎の系列に連なる「天皇制小説」として画期的であると同時に、荒川修作＋マドリン・ギンズの「共同性」概念に明確な像を与えている点でも画期的であると評している。</p>
 </details>
 <details class="h3d" id="s49">
 <summary class="h3s">「親さと空」</summary>
@@ -961,7 +984,7 @@ a:hover .wt { color: var(--green); }
 </details>
     </div>
   </div>
-  <div class="f">Last updated: 2026.03</div>
+  <div class="f">Last updated: 2026.03.29<br>本ページは著者・山本浩貴の監修のもと、いぬのせなか座が制作・運営しています。© Hiroki Yamamoto / Inu no Senaka-za</div>
 </div>
 <script>
 document.querySelectorAll("a[href^='#']").forEach(function(a){
@@ -977,6 +1000,7 @@ document.querySelectorAll("a[href^='#']").forEach(function(a){
 });
 var first=document.querySelector("details");
 if(first) first.open=true;
+// h3 sections remain collapsed by default on all screen sizes
 </script>
 </body>
 </html>
