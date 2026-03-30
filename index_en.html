@@ -376,6 +376,26 @@ a:hover .wt { color: var(--green); }
   margin: 10px auto; border-radius: 2px;
 }
 
+/* ── Expand/Collapse all ── */
+.expand-ctl {
+  text-align: right; padding: 0; margin: 0;
+}
+.expand-ctl button {
+  background: var(--warm-bg); border: 1px solid var(--green);
+  border-radius: 4px; padding: 5px 14px;
+  font-size: 11.5px; color: var(--green);
+  cursor: pointer; font-family: var(--sans);
+  letter-spacing: .03em; font-weight: 500;
+}
+.expand-ctl button:hover {
+  background: var(--green); color: #fff;
+}
+.H-right {
+  display: flex; flex-direction: column; align-items: flex-end;
+  flex-shrink: 0; align-self: stretch;
+}
+.H-right .expand-ctl { margin-top: auto; }
+
 .lang-toggle { display: flex; gap: 4px; padding-top: 2px; }
 .lang-toggle button, .lang-toggle .lang-link {
   font-family: var(--sans); font-size: 10px; font-weight: 600;
@@ -401,9 +421,14 @@ a:hover .wt { color: var(--green); }
         <h1>Hiroki Yamamoto ─ A Map of Making and Thinking</h1>
         <div class="sub">山本浩貴｜制作と思考の見取り図</div>
       </div>
-      <div class="lang-toggle">
-        <button class="active">EN</button>
-        <a href="index.html" class="lang-link">JP</a>
+      <div class="H-right">
+        <div class="lang-toggle">
+          <button class="active">EN</button>
+          <a href="index.html" class="lang-link">JP</a>
+        </div>
+        <div class="expand-ctl">
+          <button onclick="toggleAll()" id="expandBtn">▼ Expand all</button>
+        </div>
       </div>
     </div>
   </div>
@@ -452,33 +477,34 @@ a:hover .wt { color: var(--green); }
 <a class="s" href="#s40">Theoretical Background — Four Keywords</a>
 <a class="s" href="#s41">Performance Criticism in Practice</a>
 <a class="s" href="#s42">Dramaturgical Theory — A Question of Form</a>
-<a class="s" href="#s43">Direction in Practice</a>
-<a class="s" href="#s44">&quot;Writing as Acting&quot; — Bridging Fiction and Performance</a>
-<a class="s" href="#s45">The Simulate-Nature of Description — On Furuya Toshihiro&#x27;s *Cézanne no Inu*</a>
-<a class="s" href="#s46">The Law of Layout Spanning Poetry, Fiction, and Performance</a>
-<a href="#s47">Fiction in Practice — The Closedness of &quot;the Self&quot; and Community</a>
-<a class="s" href="#s48">&quot;Puffer Train&quot;</a>
-<a class="s" href="#s49">*Kusa no Aida kara / pot hole (gakki no yōna oto)* (From Between the Grass / pot hole [a sound like an instrument])</a>
-<a class="s" href="#s50">The Serial Work &quot;Figural Void&quot;</a>
-<a class="s" href="#s51">&quot;Mudan to Tsuchi&quot; (Without Permission and Soil)</a>
-<a class="s" href="#s52">&quot;Chikashisa to Kū&quot; (Anchor and Void)</a>
-<a href="#s53">Publishing, Editing, and Design as Theoretical Practice</a>
-<a class="s" href="#s54">Mino Arata Essay — Photography, Editing, Collaborative Production</a>
-<a class="s" href="#s55">Tōmatsu Shōmei Essay — Photography and Page Layout</a>
-<a class="s" href="#s56">Toda Tsutomu Essay — Design and Linguistic Expression</a>
-<a class="s" href="#s57">Inu no Senaka-za Book Series and &quot;Ninshiki no Tsumiki&quot; (Building Blocks of Cognition)</a>
-<a class="s" href="#s58">Katō Jirō&#x27;s *Confusion* and &quot;Transparent Layout&quot;</a>
-<a class="s" href="#s59">The Design of *Yōsei DIZZY*</a>
-<a href="#s60">Recent Expansion and Current Position</a>
-<a class="s" href="#s61">&quot;Gūzen to Jinbutsu no Ichi&quot; (Chance and the Position of Persons) — AI and Poetry</a>
-<a class="s" href="#s62">&quot;Kibun&quot; (Mood) — Current Position</a>
-<a class="s" href="#s63">The Trilogy Plan</a>
-<a href="#s64">Definitions (March 2026 Version) — Full Text</a>
-<a class="s" href="#s65">1　Subjectivity and Objectivity</a>
-<a class="s" href="#s66">2　Layout and Blank</a>
-<a class="s" href="#s67">3　Figure and Belief</a>
-<a class="s" href="#s68">4　Self and Object</a>
-<a class="s" href="#s69">5　Atelier and Distance</a>
+<a class="s" href="#s43">The Experiment of 〈Law〉 and 〈Soul〉 — On &quot;Datsugoku Keikaku (Kari)&quot;</a>
+<a class="s" href="#s44">Direction in Practice</a>
+<a class="s" href="#s45">&quot;Writing as Acting&quot; — Bridging Fiction and Performance</a>
+<a class="s" href="#s46">The Simulate-Nature of Description — On Furuya Toshihiro&#x27;s *Cézanne no Inu*</a>
+<a class="s" href="#s47">The Law of Layout Spanning Poetry, Fiction, and Performance</a>
+<a href="#s48">Fiction in Practice — The Closedness of &quot;the Self&quot; and Community</a>
+<a class="s" href="#s49">&quot;Puffer Train&quot;</a>
+<a class="s" href="#s50">*Kusa no Aida kara / pot hole (gakki no yōna oto)* (From Between the Grass / pot hole [a sound like an instrument])</a>
+<a class="s" href="#s51">The Serial Work &quot;Figural Void&quot;</a>
+<a class="s" href="#s52">&quot;Mudan to Tsuchi&quot; (Without Permission and Soil)</a>
+<a class="s" href="#s53">&quot;Chikashisa to Kū&quot; (Anchor and Void)</a>
+<a href="#s54">Publishing, Editing, and Design as Theoretical Practice</a>
+<a class="s" href="#s55">Mino Arata Essay — Photography, Editing, Collaborative Production</a>
+<a class="s" href="#s56">Tōmatsu Shōmei Essay — Photography and Page Layout</a>
+<a class="s" href="#s57">Toda Tsutomu Essay — Design and Linguistic Expression</a>
+<a class="s" href="#s58">Inu no Senaka-za Book Series and &quot;Ninshiki no Tsumiki&quot; (Building Blocks of Cognition)</a>
+<a class="s" href="#s59">Katō Jirō&#x27;s *Confusion* and &quot;Transparent Layout&quot;</a>
+<a class="s" href="#s60">The Design of *Yōsei DIZZY*</a>
+<a href="#s61">Recent Expansion and Current Position</a>
+<a class="s" href="#s62">&quot;Gūzen to Jinbutsu no Ichi&quot; (Chance and the Position of Persons) — AI and Poetry</a>
+<a class="s" href="#s63">&quot;Kibun&quot; (Mood) — Current Position</a>
+<a class="s" href="#s64">The Trilogy Plan</a>
+<a href="#s65">Definitions (March 2026 Version) — Full Text</a>
+<a class="s" href="#s66">1　Subjectivity and Objectivity</a>
+<a class="s" href="#s67">2　Layout and Blank</a>
+<a class="s" href="#s68">3　Figure and Belief</a>
+<a class="s" href="#s69">4　Self and Object</a>
+<a class="s" href="#s70">5　Atelier and Distance</a>
     </nav>
     <div class="C">
 <p><a href="https://inunosenakaza.com/member/hiroki_yamamoto" target="_blank" rel="noopener">Hiroki Yamamoto</a> (b. 1992) is a Japanese novelist, critic, designer, editor, and director. He leads <a href="https://inunosenakaza.com/" target="_blank" rel="noopener">Inu no Senaka-za</a>, a publishing house and production collective, working across fiction, criticism, poetry, performance, book design, editing, and publishing.</p>
@@ -827,10 +853,18 @@ a:hover .wt { color: var(--green); }
 </details>
 <details class="h3d" id="s42">
 <summary class="h3s">Dramaturgical Theory — A Question of Form</summary>
-<p>Yamamoto's thinking on performance includes a question about the form of "script" itself. The presentation <a href="https://www.dropbox.com/scl/fi/avu30e13ix9p7ezv2ato9/_-20211024.pdf?rlkey=bzjsdu5z3vwrgm2ikpk511o89&st=4uiedcgg&dl=0" target="_blank" rel="noopener">"Gikyoku ni totte Watashi / Kūkan / Nikutai / Yu to wa Nani ka?"</a> (2021) discusses the political and cultural motifs behind the play "Uraraka to Ruporutāju" alongside Yamamoto's conception of "script" as a form.</p>
-<p>The presentation <a href="https://docs.google.com/document/d/1tLIbpi3VieCdM-pPSBGW8IffDuq1UDP1BScJe4Sz2Ko/edit#heading=h.yacwdhr5tu6h" target="_blank" rel="noopener">"Variations of 〈Self + Environment〉"</a> at the <a href="https://drholidaylab.com/mini-symposium" target="_blank" rel="noopener">"Datsugoku Keikaku (Kari)" mini-symposium</a> (Dr. Holiday Laboratory), taking Bioy Casares's novel <em>Plan de evasión</em> as its starting point, examines more radically what a script is: the tension between "law = script" and "the body's free will" possesses the same problem-structure as the 〈creaking〉 between 〈form〉 and 〈expression〉 treated in the Ōbayashi and horror essays.</p>
+<p>Yamamoto's thinking on performance consistently includes a question about the form of "script" (gikyoku) itself. The talk event <a href="https://inunosenakaza.com/archives/20190727" target="_blank" rel="noopener">"Poetry and Theater: Their Possibilities and Impossibilities"</a> (Yoshida Yasuhiro × Kageyama Kishōdai × Yamada Ryōta × Yamamoto Hiroki, Aoyama Book Center, July 2019; <a href="https://docs.google.com/document/d/1KvMJKr9EJanWh4is6eNkrfE0Raghntb5KIB1kdEOupE/edit?usp=sharing" target="_blank" rel="noopener">presentation materials</a>), and the lecture <a href="https://inunosenakaza.com/archives/20190907" target="_blank" rel="noopener">"Performance as Form, the Position of Communality — On a New Medium Constructible from Linguistic Expression"</a> (guest: Matsuhara Shuntarō, Jōdo Fukugō School, September 2019; <a href="https://www.dropbox.com/scl/fi/dkdei90ybx66035axvfpy/_-_-_20190908.pdf?rlkey=09ywqy98pekucb9je0ydh9j0c&st=eai31fhc&dl=0" target="_blank" rel="noopener">presentation materials</a>) systematically discussed how the formal elements unique to scripts generate necessity in the arrangement of text, through comparison with poetry and fiction.</p>
+<p>Yamamoto focuses first on three formal elements unique to scripts. First, "role" (yakugara): the function of bracketing a quantity of text as the utterance of a specific character and juxtaposing these on the page. Assigning the same character name creates strong links between texts far apart, foregrounding dialogue. Whereas in fiction all written text uniformly evokes an integrated expressive subject, in scripts the speaker is anticipated with a clear outline. Second, "stage directions" (togaki): text not reducible to any specific speaker. Because roles are so clearly delineated in scripts, stage directions are written as a voice bearing a strangely strong anonymity, belonging neither to a character nor to the author. Third, "stage" (butai): the place where groups of texts coexist, harboring fictional space while also existing as a realizable physical space. As Ōta Shōgo argued in "Reading Scripts," the stage can be an imaginary world and simultaneously part of real space; the script becomes a text that positions itself between this duality.</p>
+<p>Crucially, physical laws and the possibility of staging intrude as constraints within the text itself. When something that cannot be realized literally on stage is written, it is processed not literally but as figurative expression (yu). Yamamoto emphasizes that this problem is not limited to scripts: in fiction too, descriptions that greatly deviate from physical law are processed figuratively. The question of the relationship between the expressive subject embedded in a text and its environment extends across all linguistic expression. Drawing on Tokieda Motoki's language-process theory and Artaud's theory of theatrical space, Yamamoto presents the perspective of treating the page itself as a theatrical space. An expressive subject is embedded in each written sentence, and this functions as a constraint on the gesture of writing the next sentence. The process by which multiple "selves" are recombined, each serving as form for the others, runs through both poetry and drama.</p>
+<p>In 2021, Yamamoto himself wrote the play "Uraraka to Ruporutāju," and in the presentation <a href="https://www.dropbox.com/scl/fi/avu30e13ix9p7ezv2ato9/_-20211024.pdf?rlkey=bzjsdu5z3vwrgm2ikpk511o89&e=1&st=4uiedcgg&dl=0" target="_blank" rel="noopener">"What Are Self / Space / Body / Figure to a Script?"</a> (philosophy online seminar "W Yamamoto no Lesson Mitai na," Yamamoto Hiroki × Yamamoto Itō, moderator: Miura Hayaki, October 2021; <a href="https://www.dropbox.com/scl/fi/avu30e13ix9p7ezv2ato9/_-20211024.pdf?rlkey=bzjsdu5z3vwrgm2ikpk511o89&e=1&st=4uiedcgg&dl=0" target="_blank" rel="noopener">presentation materials</a>), the above concerns are layered with his own creative practice, further developed through the lenses of "stage," "role," "stage directions," and "the relationship between abstraction and concreteness."</p>
 </details>
 <details class="h3d" id="s43">
+<summary class="h3s">The Experiment of 〈Law〉 and 〈Soul〉 — On "Datsugoku Keikaku (Kari)"</summary>
+<p>The presentation <a href="https://docs.google.com/document/d/1tLIbpi3VieCdM-pPSBGW8IffDuq1UDP1BScJe4Sz2Ko/edit#heading=h.yacwdhr5tu6h" target="_blank" rel="noopener">"Variations of 〈Self + Environment〉 — How Does an Abstract Body That Bundles and Transports Spacetimes Evaluate the Superposition of Theater and Soul?"</a> at the <a href="https://drholidaylab.com/mini-symposium" target="_blank" rel="noopener">"Datsugoku Keikaku (Kari)" mini-symposium</a> (Dr. Holiday Laboratory) develops the question of form treated in the dramaturgical theory at a more radical level.</p>
+<p>The presentation takes Bioy Casares's novel <em>Plan de evasión</em> as its starting point. It argues that the novel's form makes the reader re-enact the substance of the warden's experiment — manipulating the prisoners' perception and transforming the island itself into a sensory apparatus. As the discussion extends to the play "Datsugoku Keikaku (Kari)" by Yamamoto Justin Itō and its staging, the question of how the superposition of novelistic form and narrative content is converted in the form of a script is examined.</p>
+<p>What is at stake is the problem of how the "abstract space" that serves as the 〈law〉 of the text — stage directions, meta-self-reference, temporal interference, dream and enclosure — relates to 〈role〉 and 〈soul〉. Yamamoto presents the perspective of grasping a script as "a text that designs the performance of the body under a given law," and discusses the tension between that 〈law〉 and the body's free will. This problem-structure is identical to the 〈creaking〉 between 〈form〉 and 〈expression〉 developed in the Ōbayashi and horror essays, and constitutes one of the questions that runs through Yamamoto's entire theoretical system.</p>
+</details>
+<details class="h3d" id="s44">
 <summary class="h3s">Direction in Practice</summary>
 <div class="fig"><img src="https://www.dropbox.com/scl/fi/eh708q05966f6nbky6d71/93207699.jpg?rlkey=jnokhhbfecq1br5v4v0yi18sp&raw=1" alt="Impossible Gag" loading="lazy"></div>
 
@@ -841,17 +875,17 @@ a:hover .wt { color: var(--green); }
 
 <p>In 2026, Yamamoto also directed <a href="https://inunosenakaza.com/performance/20260117" target="_blank" rel="noopener"><em>Onshitsu / Onsil</em></a> (text by Mino Arata), expanding his involvement in the performing arts.</p>
 </details>
-<details class="h3d" id="s44">
+<details class="h3d" id="s45">
 <summary class="h3s">"Writing as Acting" — Bridging Fiction and Performance</summary>
 <p>In <a href="https://inunosenakaza.stores.jp/items/691d9aa0928f9714111d6d06" target="_blank" rel="noopener"><em>Fiction to Nikkichō</em></a>, the recognition that to take something on and write is improvisatory performance is articulated (see "Diary and the Diary-Notebook"). The essay "Kaku to Iu Engi" (Writing as Acting — Yamashita Sumito's <em>FICTION</em>) in <a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Aratana Kyori</em></a> is the most comprehensive development of this bridge between theater and fiction. Yamamoto positions Yamashita's novel as "a theory of theater written in novel form," identifying at its base the inescapability of "seeing-as." The conclusion — that the totality realized through the passage between theater and fiction, body and language, living and dead, plurality and solitude is "theater" — presents Yamamoto's theories of performance and fiction as inseparable.</p>
 </details>
-<details class="h3d" id="s45">
+<details class="h3d" id="s46">
 <summary class="h3s">The Simulate-Nature of Description — On Furuya Toshihiro's <em>Cézanne no Inu</em></summary>
-<p>In a presentation at the <a href="https://inunosenakaza.com/lecture/20240827" target="_blank" rel="noopener">publication talk event</a> for Furuya Toshihiro's <a href="https://inunosenakaza.com/book/20240617" target="_blank" rel="noopener"><em>Cézanne no Inu</em></a> (Cézanne's Dog, Inu no Senaka-za, 2024; co-hosted by Inu no Senaka-za and Dr. Holiday Laboratory, August 2024), Yamamoto recasts the problem of "writing as acting" as the "simulate-nature of description" (kijutsu no shimyurēto-sei), a quality he identifies broadly in Japanese fiction since Hōsaka Kazushi.</p>
+<p>In a presentation at the <a href="https://inunosenakaza.com/news/20240728" target="_blank" rel="noopener">publication talk event</a> for Furuya Toshihiro's <a href="https://inunosenakaza.com/book/20240617" target="_blank" rel="noopener"><em>Cézanne no Inu</em></a> (Cézanne's Dog, Inu no Senaka-za, 2024; co-hosted by Inu no Senaka-za and Dr. Holiday Laboratory, August 2024), Yamamoto recasts the problem of "writing as acting" as the "simulate-nature of description" (kijutsu no shimyurēto-sei), a quality he identifies broadly in Japanese fiction since Hōsaka Kazushi.</p>
 <p>Hōsaka's advocacy of "writing from the near side without pre-designing the whole," and the vogue for "radical manipulation of person" (i-ninshō) from roughly 2005 to 2015, are variations on a single question: "what kind of imagining does the act of writing impose on this body?" Yamamoto calls this the simulate-nature of description. The writer sets specific conditions — character, object, space — and simulates what can be written under them. Figures and objects that emerge within the text become the next subjects, exploring and loading surrounding space; this process is the movement of fiction itself.</p>
 <p>In his analysis of Furuya's work, this simulation directed at objects flips into simulation by objects: models compress large spaces, dreams connect disparate spacetimes, and non-visual sensations such as smell and vibration serve as triggers linking one space to another. The sensation of "living as someone dreamed by an unknown other" extends the problem of the "empty actor" presented in the Yamashita Sumito essay into the dynamics of novelistic description, and is deeply connected to Yamamoto's own concept of 〈atelier〉.</p>
 </details>
-<details class="h3d" id="s46">
+<details class="h3d" id="s47">
 <summary class="h3s">The Law of Layout Spanning Poetry, Fiction, and Performance</summary>
 <p>The lecture <a href="https://www.dropbox.com/scl/fi/5wly51uee7i854zw3zhry/AAF-_20240310.pdf?rlkey=m6jxl16lwhbttvta2g5jn4j3h&dl=0" target="_blank" rel="noopener">"Kotoba wo Atsukau to wa Nani wo Atsukau Koto na no ka?"</a> (AAF Dramaturgical Prize program, 2024) comprehensively traces Inu no Senaka-za's practice and argument under the keyword "direction," and positions the perspective of "the law of layout" as spanning poetry, fiction, and design.</p>
 <p><strong>Poetry</strong> is a form that condenses the collision of 〈subjectivity〉 and 〈objectivity〉 in a small quantity, generating 〈figure〉. <strong>Fiction</strong> uses far longer time and quantity to compound couplings of 〈environment〉 and 〈person〉 and erect an 〈atelier〉. <strong>Performance</strong> is the site where these are taken on in actual body, space, and time, and the body is tested in the distance between 〈role〉 and 〈law〉.</p>
@@ -860,10 +894,10 @@ a:hover .wt { color: var(--green); }
 </details>
 </details>
 <hr>
-<details id="s47">
+<details id="s48">
 <summary>Fiction in Practice — The Closedness of &quot;the Self&quot; and Community</summary>
 <p>As seen in "Starting Point" and "The Inescapability of 'Being Myself,'" Yamamoto's activity began with the practice of writing fiction. Major works include <a href="https://puboo.jp/book/73331" target="_blank" rel="noopener">"Puffer Train"</a> (2012–13), <a href="https://inunosenakaza.com/book/20250505" target="_blank" rel="noopener"><em>Kusa no Aida kara / pot hole (gakki no yōna oto)</em></a> (Inu no Senaka-za, 2025; first published 2017/2020), the SF-horror novel <a href="https://anchor-and-void.inunosenakaza.com/" target="_blank" rel="noopener">"Mudan to Tsuchi"</a> (Without Permission and Soil; in Higuchi Kyōsuke ed., <em>Ijō Ronbun</em>, Hayakawa Shobō, 2021), and its sequel <a href="https://anchor-and-void.inunosenakaza.com/" target="_blank" rel="noopener">"Chikashisa to Kū"</a> (Anchor and Void; serializing in <em>SF Magazine</em>). These novels treat diverse themes — memory and the resurrection of the dead, war and mobilization, AI and diary, the emperor system and memorialization, eating disorders and gender, animals (other species) and self-identity — but in every case the closedness of the self that expresses and its (inevitable) connection to the community of society are addressed.</p>
-<details class="h3d" id="s48">
+<details class="h3d" id="s49">
 <summary class="h3s">"Puffer Train"</summary>
 <p><a href="https://puboo.jp/book/73331" target="_blank" rel="noopener">"Puffer Train"</a> (2012–13) is Yamamoto's early representative work, a long novel. An abridged version of the first half of the work (from Chapter 1 through section 4 of Chapter 2, with line breaks removed as much as possible) was a final-round nominee for the 56th Gunzō New Writers' Prize. Novelist Machiya Ryōhei has called Yamamoto "an author representative of the 2010s" and described the early fiction including "Puffer Train" as "one of the finest works written in the 2010s."</p>
 <p>The novel is in three parts, opening with epigraphs on many-worlds from Nicholas of Cusa and Henry More.</p>
@@ -873,7 +907,7 @@ a:hover .wt { color: var(--green); }
 <p>Part 3, "phylogenetic tree," expands viewpoint and scale beyond the human at a stroke: town, living creatures, minerals, stars, and other universes are narrated as if forming a single phylogenetic tree. The setting of a vast computer = town using human DNA and lifetime logs is foregrounded, and the regeneration of the dead, bodily deformation, and proliferation of shrimp become legible as byproducts of that computation and interference. As cosmic-scale description and myths such as that of a whale with legs unfold, the narrative is abruptly pulled back to the quiet days of "I" and Kazuna.</p>
 <p>The SF setting is gradually made explicit from Part 2 onward and expands to a cosmic scale all at once in Part 3, yet from Part 1 it has already seeped into everyday life as the boundary between the dead and the living, the outline of one's name and memory, and the sensation of seeing what should not be visible. Rather than the setting retroactively underwriting the everyday, it is the minute anomalies of daily life, and the delicate rhetoric surrounding them, that extend directly into a cosmological and informational scale — and therein lies the novel's distinctive quality.</p>
 </details>
-<details class="h3d" id="s49">
+<details class="h3d" id="s50">
 <summary class="h3s"><em>Kusa no Aida kara / pot hole (gakki no yōna oto)</em> (From Between the Grass / pot hole [a sound like an instrument])</summary>
 <div class="fig"><img src="https://www.dropbox.com/scl/fi/bdpowswdjc1gsa2xyt02t/_pothole-3.jpg?rlkey=salfn12zkzjybwoo57fogptmh&raw=1" alt="Kusa no Aida kara / pot hole" loading="lazy"></div>
 
@@ -882,39 +916,39 @@ a:hover .wt { color: var(--green); }
 <p><em>pot hole (gakki no yōna oto)</em> is a novel in the form of a script. Repeating episodes from the preceding work, it arranges rehearsal scenes, childhood bodily sensations and landscapes, life with a dog, and memories of a mountain collapse in heavy rain and near-drowning in a river within a performance space, through seven characters and a dog. Cusanus's 〈gaze of God〉 and Augustine's theory of time form the work's backbone.</p>
 <p>In the afterword, the author states that these works were written on commission after "having almost entirely left behind voluntary novel-writing" following the event that triggered the founding of Inu no Senaka-za, and represent an attempt to settle accounts with the relation between "living and space."</p>
 </details>
-<details class="h3d" id="s50">
+<details class="h3d" id="s51">
 <summary class="h3s">The Serial Work "Figural Void"</summary>
 <p>"Mudan to Tsuchi" and "Chikashisa to Kū" constitute the serial work <em>Figural Void</em>. "Mudan to Tsuchi" is episode zero; "Chikashisa to Kū" is Part 2. Spanning more than a century from the early 1900s to 2037, the works are set across Asian countries including Japan, the Philippines, and China. Settings and synopses are published, under the author's supervision, on a <a href="https://anchor-and-void.inunosenakaza.com" target="_blank" rel="noopener">dedicated page</a>.</p>
 </details>
-<details class="h3d" id="s51">
+<details class="h3d" id="s52">
 <summary class="h3s">"Mudan to Tsuchi" (Without Permission and Soil)</summary>
 <div class="meta">The entire work is composed as an academic presentation and its Q&A. The presentation centers on the analysis of a VR horror game of unknown developer, <em>WPS (Without Permission and Soil)</em>, and unfolds in four parts. The poem-fragments appearing at the end of WPS are demonstrated to be anagrams of tanka by Emperor Meiji and Emperor Shōwa; WPS is positioned as a "concrete enactment = performance of the monstrous development" of the emperor system. In the Q&A, the real-life poet Suzuki Ippei appears as "Questioner 4," intentionally disturbing the boundary between fact and fiction.</div>
 <p>Higuchi Kyōsuke positioned the work as a variation on Borges' "Tlön, Uqbar, Orbis Tertius," judging it to surpass Borges in the depth of thought and the precision of construction. Ōmori Nozomi found in its method of blending fact and fiction while examining the gap between the emperor and the emperor system an echo of the Solaristics sections of Lem's <em>Solaris</em>. Numano Mitsuyoshi called it "a work fusing humanistic knowledge with the game-sense of the internet-technology age." Furuya Toshihiro described it as epoch-making both as a "novel of the emperor system" in the lineage of Ōe Kenzaburō and Fukazawa Shichirō, and for giving a clear image to Arakawa Shūsaku + Madeline Gins' concept of "communality."</p>
 </details>
-<details class="h3d" id="s52">
+<details class="h3d" id="s53">
 <summary class="h3s">"Chikashisa to Kū" (Anchor and Void)</summary>
 <p>A long novel serializing in <em>SF Magazine</em>. In 2028, a nuclear weapon detonates over the Philippines (the Manila Nuclear Flash Incident); the following year, a mutant strain of coronavirus (J-Amnesia) impairs the episodic memory of approximately 30% of humanity. In the Japan of 2037, the personality-assistance AI 〈Nōkā〉 has been adopted by over 95% of adults. Through the figures of Futakami Yuzuha, Maria K. Bautista, and Nerobe Mayo, tensions between individual memory and national memory, intimate relationships and institutional violence, art-making and political movement emerge. Each installment adopts a different form.</p>
 <p>"Enro Shigai" confronted the inescapability of "being myself"; in these novels, that condition is re-situated under different social and technological conditions each time. Poetry activity also continues through Inu no Senaka-za publications and related outlets.</p>
 </details>
 </details>
 <hr>
-<details id="s53">
+<details id="s54">
 <summary>Publishing, Editing, and Design as Theoretical Practice</summary>
 <p>In Yamamoto's work, <strong>editing, bookmaking, and design are not "peripheral duties" but the practice of theory itself.</strong> In <a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Aratana Kyori</em></a>, the essay <a href="https://note.com/inunosenakaza/n/n41ba469c1179" target="_blank" rel="noopener">"Gengo Hyōgen no Un'yō ni 'Kami no Shuppanbutsu' wa Dō Yūkō ka?"</a> discusses the need to be simultaneously involved in the "inside" (production and theory formation) and the "outside" (publishing and producing) of expression.</p>
 <p>This editorial practice was not limited to self-publishing. From 2016 to 2022, Yamamoto served as an editor of the literary journal <em>Waseda Bungaku</em>, planning and editing special issues on topics including "Kanai Mieko," "Economy and Art," "Onomatopoeia," and <a href="https://www.chikumashobo.co.jp/special/wasebun_horror/" target="_blank" rel="noopener">"Horror"</a> — work that constituted a form of critical practice through magazine editing.</p>
-<details class="h3d" id="s54">
+<details class="h3d" id="s55">
 <summary class="h3s">Mino Arata Essay — Photography, Editing, Collaborative Production</summary>
 <p>The Mino Arata essay "Yori Engeki-teki katsu Kasetsu-teki na 〈Butai〉 de." (On a More Theatrical and Provisional 〈Stage〉), in <a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Aratana Kyori</em></a>, discusses the collaborative project <a href="https://inunosenakaza.com/book/kubakara" target="_blank" rel="noopener"><em>Kuba e / Kuba kara</em></a> between Inu no Senaka-za and Mino Arata, treating the Okinawan landscape, (non-)positionality and expression, and the process of editing and producing a photobook.</p>
 </details>
-<details class="h3d" id="s55">
+<details class="h3d" id="s56">
 <summary class="h3s">Tōmatsu Shōmei Essay — Photography and Page Layout</summary>
 <p><a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener">The Tōmatsu essay</a> (also in <em>Aratana Kyori</em>), written as a supplement to the Mino essay, squarely treats the relation of photography and page layout as a problem of 〈subjectivity〉 and 〈objectivity〉. The "group photographs" of Tōmatsu Shōmei are contrasted with the "combination photographs" of Natori Yōnosuke.</p>
 </details>
-<details class="h3d" id="s56">
+<details class="h3d" id="s57">
 <summary class="h3s">Toda Tsutomu Essay — Design and Linguistic Expression</summary>
 <p>The longest and densest essay in Yamamoto's design theory, treating Toda Tsutomu's concept of 〈giba〉 (pseudo-site), the intersection of design and linguistic expression, and the problems of 〈noise〉, 〈shadow〉, and 〈surface area〉.</p>
 </details>
-<details class="h3d" id="s57">
+<details class="h3d" id="s58">
 <summary class="h3s">Inu no Senaka-za Book Series and "Ninshiki no Tsumiki" (Building Blocks of Cognition)</summary>
 <div class="fig"><img src="https://www.dropbox.com/scl/fi/y0edj77ttk343qpnwhydi/.png?rlkey=rfkifxbqaxcy9ty5n56fp3bs4&raw=1" alt="Kōno Satoko" loading="lazy"></div>
 
@@ -923,7 +957,7 @@ a:hover .wt { color: var(--green); }
 <div class="fig"><img src="https://www.dropbox.com/scl/fi/ifvftrvo7teh1p30le55n/.png?rlkey=hppgmqdwh8ycw07oavoew2rld&e=1&raw=1" alt="Ninshiki no Tsumiki" loading="lazy"></div>
 <p></p>
 </details>
-<details class="h3d" id="s58">
+<details class="h3d" id="s59">
 <summary class="h3s">Katō Jirō's <em>Confusion</em> and "Transparent Layout"</summary>
 <div class="fig"><img src="https://www.dropbox.com/scl/fi/64rlq6br3ea86dy0wf3cb/Confusion.jpg?rlkey=qpe8dujl0suupm7tha6yxgdbi&raw=1" alt="Confusion" loading="lazy"><img src="https://www.dropbox.com/scl/fi/j59sgy7j1li0sockrawwj/.jpg?rlkey=6cvyr951snjq7whqoum1844zo&raw=1" alt="Katō Jirō Anthology 1" loading="lazy"></div>
 
@@ -931,7 +965,7 @@ a:hover .wt { color: var(--green); }
 <p>Yamamoto set nearly all text — tanka, headnotes (kotobagaki), essays — at the same font size. Ordinarily, headnotes are set small and tanka large, visually indicating which is which. By removing this hierarchy, the reader discovers "this is tanka" only when the rhythm of the fixed form (5-7-5-7-7) is heard in the act of reading — exposing the layout inherent in tanka's being tanka. At a publication talk, Katō called this intrinsic layout quality "transparent layout."</p>
 <p>Behind this practice lies Katō's concept of 〈typographic trope〉 (hyōki-teki yu) — the phenomenon whereby symbols carrying neither meaning nor sound function as a single beat within tanka — which resonates deeply with Inu no Senaka-za's stance of treating layout as essential to linguistic expression. Yamamoto subsequently designed Katō's twelfth collection, <em>Umibe no Roller Coaster</em> (Shoshi Kankanbō, 2022) and <a href="https://www.kankanbou.com/books/tanka/katojiro/0699" target="_blank" rel="noopener"><em>Katō Jirō Anthology 1</em></a> (Shoshi Kankanbō, 2025).</p>
 </details>
-<details class="h3d" id="s59">
+<details class="h3d" id="s60">
 <summary class="h3s">The Design of <em>Yōsei DIZZY</em></summary>
 <div class="fig"><img src="https://www.dropbox.com/scl/fi/6uivkicfephvy21ximqcj/.png?rlkey=vh3iom6x6wk75tn6qtwdnaquj&raw=1" alt="妖精DIZZY" loading="lazy"></div>
 
@@ -939,28 +973,28 @@ a:hover .wt { color: var(--green); }
 </details>
 </details>
 <hr>
-<details id="s60">
+<details id="s61">
 <summary>Recent Expansion and Current Position</summary>
 <p>In Yamamoto's recent work, problems from the early period are being pushed to a larger scale. Especially foregrounded are the theory of diary, thinking about AI, and through these the question of the significance of "a human being making expression."</p>
-<details class="h3d" id="s61">
+<details class="h3d" id="s62">
 <summary class="h3s">"Gūzen to Jinbutsu no Ichi" (Chance and the Position of Persons) — AI and Poetry</summary>
 <p>"Gūzen to Jinbutsu no Ichi" (<em>Gendaishi Techō</em> July 2025) is an essay on AI and poetry. Yamamoto first defines poetry as "the activity of producing and analyzing devices that cause the human body to newly discover and perform higher-order lawfulness encompassing the existing lawfulness of the world," then describes the practice of designing a system in which multiple objects are simulated within an LLM and revise each other. The poet thereby changes from "the subject who lines up characters one by one" to "a design collaborator and measuring instrument for generating new lawfulness."</p>
 </details>
-<details class="h3d" id="s62">
+<details class="h3d" id="s63">
 <summary class="h3s">"Kibun" (Mood) — Current Position</summary>
 <p>"Kibun" (<em>Eureka</em> special issue on Okazaki Kenjirō, July 2025) is a short text that most frankly records Yamamoto's current position. It begins from the recognition that art and humanity are already things that have ended. While frankly recording the "mood" that the stage at which the activity of receiving works as educational devices and leaving them for posterity will soon be reduced to zero, it closes with the line: <strong>"I want to make a new form of expression. A form in which, precisely now, we can thoroughly and goofily use up this body of ours and cheerfully ask each other all sorts of questions."</strong></p>
 </details>
-<details class="h3d" id="s63">
+<details class="h3d" id="s64">
 <summary class="h3s">The Trilogy Plan</summary>
 <p><a href="https://www.filmart.co.jp/books/978-4-8459-2326-7/" target="_blank" rel="noopener"><em>Aratana Kyori</em></a> is conceived as the first volume of a trilogy. According to Yamamoto's own description, this book examines linguistic expression from the perspective of "the self / life's layout"; the second, <em>Shi to Gunsei</em> (Death and Clustering), will examine resistance to law and free will from the perspective of "body and performance"; and the third, <em>Sei no Atelier</em> (The Atelier of Life), will develop an original theory of linguistic expression composed of concepts such as 〈subjectivity〉, 〈figure〉, and 〈objectivity〉, threading through and compressing the trilogy.</p>
 </details>
 </details>
 <hr>
-<details id="s64">
+<details id="s65">
 <summary class="st">Definitions (March 2026 Version) — Full Text</summary>
 <div class="sb">
 <p>Below is the full text of Yamamoto Hiroki's "Definitions" (as of March 2026).</p>
-<details class="h3d" id="s65">
+<details class="h3d" id="s66">
 <summary class="h3s">1　Subjectivity and Objectivity</summary>
 <p class="def">● All that can be perceived and thought possesses the tendency/quality of causing the construction of the 〈person〉 who made it as 〈expression〉, together with the surrounding 〈environment〉. A certain coherence/unit of this is called 〈subjectivity〉.</p>
 <p class="def">● 〈Environment〉 is constituted by 〈material〉 — what the 〈person〉 perceived and operated on (i.e. 〈expressed〉) — and 〈intentionality〉, the tendency/quality of expansion from 〈person〉 toward 〈material〉. In the case of linguistic expression, 〈material〉 is strongly indicated by nouns and similar <em>shi</em>, and 〈intentionality〉 by auxiliary verbs and similar <em>ji</em>.</p>
@@ -969,13 +1003,13 @@ a:hover .wt { color: var(--green); }
 <p class="def">● 〈Expression〉 exists as a process discovered after the fact, at the point when 〈person〉 is deemed to have shown 〈intentionality〉 toward 〈objectivity〉 and, expanding itself, to have made 〈objectivity〉 into 〈material〉. In other words, whenever 〈material〉 is perceived, a 〈person〉 who expanded itself through 〈intentionality〉 (who 〈expressed〉 it) is always found.</p>
 <p class="def">● A text is a construction in which 〈subjectivity〉 — the force that compels retroactive reading into the active gesture of expression — and 〈objectivity〉 — the force that compelled expression passively — are laid out in multilayered overlap.</p>
 </details>
-<details class="h3d" id="s66">
+<details class="h3d" id="s67">
 <summary class="h3s">2　Layout and Blank</summary>
 <p class="def">● When 〈expression〉 closes into one, what arises outside it is called 〈blank〉.</p>
 <p class="def">● 〈Expression〉 closed by 〈blank〉 is further enclosed by another 〈expression〉, forming a multilayered structure, or placed alongside in contention. The lawfulness of the layout of 〈expression〉 thus born is 〈objectivity〉.</p>
 <p class="def">● When a singular layout of 〈expression〉 is established by 〈objectivity〉, and 〈expression〉 is half-forcibly discovered in 〈blank〉, the event in which 〈subjectivity〉 remains undifferentiated and refuses to settle into a single determination — the stirring of 〈subjectivity〉 — occurs.</p>
 </details>
-<details class="h3d" id="s67">
+<details class="h3d" id="s68">
 <summary class="h3s">3　Figure and Belief</summary>
 <p class="def">● The tendency/quality constituting the interior of 〈subjectivity〉 is called 〈figure〉. The stirring of 〈subjectivity〉 is a strong example.</p>
 <p class="def">● 〈Figure〉 is the content of 〈subjectivity〉 as a unit corresponding to the coupling of a single 〈person〉 and 〈environment〉, yet it functions beyond that scale (in linguistic expression, the span whose primary guideline is the "sentence" based on "grammar") as something more fundamental and extensive. It is rather at the point of such deviation from 〈subjectivity〉 that it is most often recognized and named as something distinctive (for instance, between expressions, or between expression and 〈the self〉 — the former is called metonymy, the latter metaphor). There, 〈figure〉 is first of all conscious of and objectified as the extremely abstract distance it brings about, more than as a tendency/quality.</p>
@@ -983,7 +1017,7 @@ a:hover .wt { color: var(--green); }
 <p class="def">● When the construction of 〈person〉 and 〈environment〉 is about to occur through 〈subjectivity〉, the agent of that construction is called 〈projector〉.</p>
 <p class="def">● What the 〈projector〉 supplies, projects, and uses to make the object into expression is 〈figure〉. 〈Belief〉 exists as what constrains that 〈figure〉.</p>
 </details>
-<details class="h3d" id="s68">
+<details class="h3d" id="s69">
 <summary class="h3s">4　Self and Object</summary>
 <p class="def">● The site whose erection is demanded outside 〈expression〉 in order to bundle and exchange incompatible 〈persons〉 is called 〈self (subject)〉. 〈The self〉 generates singular combinations of 〈person〉 and 〈environment〉. Here too it is 〈figure〉 that functions to bond 〈persons〉 and 〈environments〉.</p>
 <p class="def">● When different 〈subjectivities〉 enter a state of mutual inclusion — that is, at the far end of the collision and complication of different 〈beliefs〉 — the state in which 〈person〉 is pushed out to the side of 〈material〉 and established is called 〈object〉.</p>
@@ -991,7 +1025,7 @@ a:hover .wt { color: var(--green); }
 <p class="def">● When 〈objectification〉 occurs in multiple layers, the distance between words on the page and the distance in spacetime coordinates both come to be felt as representing the switching (of 〈expression〉) between 〈objects〉. This is also related to the fact that 〈objectivity〉 as the law of layout generates the gaps = 〈blanks〉 between 〈objects〉.</p>
 <p class="def">● As a site that embraces and exchanges the distances and 〈blanks〉 woven by multiple 〈objects〉, 〈the self〉 is constructed after the fact on the page. Linguistic expression exists as the art of constituting and inventing such a 〈self〉.</p>
 </details>
-<details class="h3d" id="s69">
+<details class="h3d" id="s70">
 <summary class="h3s">5　Atelier and Distance</summary>
 <p class="def">● Layout causes 〈object〉 and 〈self〉 to travel back and forth, opening 〈environment〉 in multiple layers. The trajectory drawn by 〈environment〉 is called 〈atelier〉.</p>
 <p class="def">● 〈Atelier〉 is at once a trigger for generating 〈belief〉, a technique for transforming 〈belief〉, and a high-level unit for analyzing 〈belief〉 — transmissible and shareable across different 〈projectors〉 and different spacetimes.</p>
@@ -1018,6 +1052,23 @@ document.querySelectorAll("a[href^='#']").forEach(function(a){
 var first=document.querySelector("details");
 if(first) first.open=true;
 // h3 sections remain collapsed by default on all screen sizes
+function toggleAll(){
+  var ds=document.querySelectorAll("details");
+  var btn=document.getElementById("expandBtn");
+  var allOpen=Array.from(ds).every(function(d){return d.open});
+  ds.forEach(function(d){d.open=!allOpen});
+  if(allOpen){
+    btn.textContent=btn.dataset.expand;
+  }else{
+    btn.textContent=btn.dataset.collapse;
+  }
+}
+(function(){
+  var btn=document.getElementById("expandBtn");
+  var lang=document.documentElement.lang;
+  btn.dataset.expand=lang==="ja"?"▼ すべて展開":"▼ Expand all";
+  btn.dataset.collapse=lang==="ja"?"▲ すべて折りたたむ":"▲ Collapse all";
+})()
 </script>
 </body>
 </html>
